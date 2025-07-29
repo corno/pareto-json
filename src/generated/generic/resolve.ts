@@ -22,7 +22,7 @@ export type Key_Value_Location_Triplet<Source, T> = {
     'value': T,
     'location': Source
 }
-export type Possibly_Circular_Result<T> = () => T
+export type Possibly_Circular_Result<T> = pt.Computed_Value<T>
 export type Non_Circular_Result<T> =
     | ['error', ['circular', pt.Array<string>]]
     | ['resolved', T]
@@ -300,11 +300,13 @@ export const resolve_ordered_dictionary = <Source, TUnresolved, TResolved>(
                                 all_siblings_subscribed_entries[key] = { 'entry': null }
                             }
                             const subscr = all_siblings_subscribed_entries[key]
-                            return () => {
-                                if (subscr.entry === null) {
-                                    pa.panic(`entry not set: ${key}`)
+                            return {
+                                'compute': () => {
+                                    if (subscr.entry === null) {
+                                        pa.panic(`entry not set: ${key}`)
+                                    }
+                                    return subscr.entry
                                 }
-                                return subscr.entry
                             }
 
                         })
