@@ -25,7 +25,7 @@ export const Value: _i_signatures._T_s_Value = ($, $p) => ['state', _pa.cc($, ($
         case 'boolean': return _pa.ss($, ($) => ({
             'state': "boolean",
             'value': ['text', ({
-                'delimiter': ['quote', null],
+                'delimiter': ['backtick', null],
                 'value': $p['value serializers']['boolean'](
                     $,
                     null
