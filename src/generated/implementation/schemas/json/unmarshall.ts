@@ -6,11 +6,13 @@ import * as _i_out from "../../../interface/schemas/json/data_types/unconstraine
 import * as _i_signatures from "../../../interface/schemas/json/unmarshall"
 
 
-export const Document: _i_signatures._T_Document = ($) => Value(
+export const Document: _i_signatures._T_Document = ($, $p) => Value(
     $,
-    null
+    {
+        'value deserializers': $p['value deserializers'],
+    }
 )
-export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_group(
+export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_state_group(
     $,
     {
         'states': _pa.dictionary_literal({
@@ -20,7 +22,9 @@ export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_gro
                     {
                         'value': ($) => Value(
                             $,
-                            null
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
                         ),
                     }
                 )],
@@ -29,7 +33,9 @@ export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_gro
             'boolean': ($): _i_out._T_Value => _i_generic.wrap_unconstrained_state_group(
                 ['boolean', _i_generic.process_boolean(
                     $,
-                    null
+                    {
+                        'deserializer': $p['value deserializers']['boolean'],
+                    }
                 )],
                 null
             ),
@@ -48,14 +54,18 @@ export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_gro
                             'float': ($): _i_out._T_Value.SG._number => _i_generic.wrap_unconstrained_state_group(
                                 ['float', _i_generic.process_number(
                                     $,
-                                    null
+                                    {
+                                        'deserializer': $p['value deserializers']['default number'],
+                                    }
                                 )],
                                 null
                             ),
                             'integer': ($): _i_out._T_Value.SG._number => _i_generic.wrap_unconstrained_state_group(
                                 ['integer', _i_generic.process_number(
                                     $,
-                                    null
+                                    {
+                                        'deserializer': $p['value deserializers']['default number'],
+                                    }
                                 )],
                                 null
                             ),
@@ -75,7 +85,9 @@ export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_gro
                                     {
                                         'value': ($) => Value(
                                             $,
-                                            null
+                                            {
+                                                'value deserializers': $p['value deserializers'],
+                                            }
                                         ),
                                     }
                                 )],
@@ -105,7 +117,9 @@ export const Value: _i_signatures._T_Value = ($) => _i_generic.process_state_gro
                                                         }
                                                     ), ($) => Value(
                                                         $,
-                                                        null
+                                                        {
+                                                            'value deserializers': $p['value deserializers'],
+                                                        }
                                                     )),
                                                 }),
                                             }
