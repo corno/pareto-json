@@ -1,6 +1,6 @@
 import * as _ea from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/json/unconstrained"
+import * as s_in from "../../generated/interface/schemas/json/data_types/unconstrained"
 import * as s_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unconstrained"
 
 import {

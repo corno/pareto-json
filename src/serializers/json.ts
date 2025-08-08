@@ -1,7 +1,7 @@
 import * as pa from 'exupery-core-alg'
 
 
-import * as s_in from "../generated/interface/schemas/json/unconstrained"
+import * as s_in from "../generated/interface/schemas/json/data_types/unconstrained"
 
 import * as t_fountain_pen from "../transformations/json/fountain_pen_block"
 

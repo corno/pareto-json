@@ -44,14 +44,14 @@ export const Value: _i_signatures._T_s_Value = ($, $p) => ['state', _pa.cc($, ($
                         'state': "float",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME NUMBER",
+                            'value': _pd.implement_me(),
                         })],
                     }))
                     case 'integer': return _pa.ss($, ($) => ({
                         'state': "integer",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME NUMBER",
+                            'value': _pd.implement_me(),
                         })],
                     }))
                     default: return _pa.au($[0])
