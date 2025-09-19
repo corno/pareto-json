@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "exupery-core-alg": "^0.1.4",
-    "exupery-core-data": "^0.1.9",
-    "pareto-fountain-pen": "^0.1.12",
-    "pareto-standard-operations": "^0.1.1"
+    "exupery-core-data": "^0.1.10",
+    "pareto-fountain-pen": "^0.1.13",
+    "pareto-standard-operations": "^0.1.3"
   }
 }
