@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import * as _out from "../generated/interface/schemas/json/data_types/unconstrained"
+import * as _out from "../generated/interface/schemas/json/data_types/target"
 
 import {
     Raw_Or_Normal_Dictionary,
