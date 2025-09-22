@@ -4,7 +4,8 @@ import * as _out from "../generated/interface/schemas/json/data_types/target"
 
 import {
     Raw_Or_Normal_Dictionary,
-    Raw_Dictionary,
+    Raw_Or_Normal_Array,
+    wrap_list,
     wrap_dictionary,
     wrap_state_group,
 } from 'exupery-core-data/dist/shorthands/unconstrained'
@@ -19,11 +20,11 @@ export namespace v {
     ): _out.Value => ['null', null]
 
     export const object = (
-        members: Raw_Dictionary<_out.Value.SG._object.SG.dictionary.D>
-    ): _out.Value => ['object', ['dictionary', pd.d(members)]]
+        members: Raw_Or_Normal_Dictionary<_out.Value.SG._object.SG.dictionary.D>
+    ): _out.Value => ['object', ['dictionary', wrap_dictionary(members)]]
 
     export const array = (
-        elements: _out.Value.SG.array.L[]
-    ): _out.Value => ['array', pd.a(elements)]
+        elements: Raw_Or_Normal_Array<_out.Value.SG.array.L>
+    ): _out.Value => ['array', wrap_list(elements)]
 
 }
