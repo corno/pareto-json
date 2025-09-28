@@ -7,19 +7,14 @@ import {
     b, l, block
 } from "pareto-fountain-pen/dist/shorthands/block"
 
-
-import { impure } from "pareto-standard-operations"
-
-const op = {
-    'enrich list elements with position information': impure.list['enrich with position information'],
-    'serialize with quote delimiter': impure.text['serialize with quote delimiter'],
-    'dictionary to list': impure.dictionary['to list, sorted by code point']
-}
+import { $$ as op_enrich_list_elements_with_position_information } from "pareto-standard-operations/dist/impure/list/enrich_with_position_information"
+import { $$ as op_serialize_with_quote_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_with_quote_delimiter"
+import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 
 const String = (
     $: string //FIX should have been a schema type
-): s_out.Line_Part => l.snippet(op['serialize with quote delimiter']($))
+): s_out.Line_Part => l.snippet(op_serialize_with_quote_delimiter($))
 
 
 export const Value = ($: s_in.Value): s_out.Line_Part => {
@@ -30,13 +25,13 @@ export const Value = ($: s_in.Value): s_out.Line_Part => {
                 l.indent([
                     _ea.cc($, ($): s_out.Block_Part => {
                         switch ($[0]) {
-                            case 'dictionary': return _ea.ss($, ($) => b.sub_decorated(op['enrich list elements with position information'](op['dictionary to list']($)).map(($) => b.nested_line([
+                            case 'dictionary': return _ea.ss($, ($) => b.sub_decorated(op_enrich_list_elements_with_position_information(op_dictionary_to_list($)).map(($) => b.nested_line([
                                 String($.value.key),
                                 l.snippet(": "),
                                 Value($.value.value),
                                 $['is last'] ? l.nothing() : l.snippet(","),
                             ]))))
-                            case 'key value array': return _ea.ss($, ($) => b.sub_decorated(op['enrich list elements with position information']($).map(($) => b.nested_line([
+                            case 'key value array': return _ea.ss($, ($) => b.sub_decorated(op_enrich_list_elements_with_position_information($).map(($) => b.nested_line([
                                 String($.value.key),
                                 l.snippet(": "),
                                 Value($.value.value),
@@ -50,7 +45,7 @@ export const Value = ($: s_in.Value): s_out.Line_Part => {
             ]))
             case 'array': return _ea.ss($, ($) => _ea.cc($, ($) => l.sub([
                 l.snippet("["),
-                l.sub_decorated(op['enrich list elements with position information']($).map(($) => l.sub([
+                l.sub_decorated(op_enrich_list_elements_with_position_information($).map(($) => l.sub([
                     Value($.value),
                     $['is last'] ? l.nothing() : l.snippet(", "),
                 ]))),
