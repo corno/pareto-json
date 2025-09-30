@@ -37,6 +37,6 @@
     "exupery-core-alg": "^0.1.8",
     "exupery-core-data": "^0.1.10",
     "pareto-fountain-pen": "^0.1.25",
-    "pareto-standard-operations": "^0.1.5"
+    "pareto-standard-operations": "^0.1.6"
   }
 }
