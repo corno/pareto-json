@@ -24,13 +24,13 @@ export const Value = ($: d_in.Value): d_out.Line_Part => {
                 l.indent([
                     _ea.cc($, ($): d_out.Block_Part => {
                         switch ($[0]) {
-                            case 'dictionary': return _ea.ss($, ($) => b.sub_decorated(op_enrich_list_elements_with_position_information(op_dictionary_to_list($)).map(($) => b.nested_line([
+                            case 'dictionary': return _ea.ss($, ($) => b.sub(op_enrich_list_elements_with_position_information(op_dictionary_to_list($)).map(($) => b.nested_line([
                                 String($.value.key),
                                 l.snippet(": "),
                                 Value($.value.value),
                                 $['is last'] ? l.nothing() : l.snippet(","),
                             ]))))
-                            case 'key value array': return _ea.ss($, ($) => b.sub_decorated(op_enrich_list_elements_with_position_information($).map(($) => b.nested_line([
+                            case 'key value array': return _ea.ss($, ($) => b.sub(op_enrich_list_elements_with_position_information($).map(($) => b.nested_line([
                                 String($.value.key),
                                 l.snippet(": "),
                                 Value($.value.value),
@@ -44,7 +44,7 @@ export const Value = ($: d_in.Value): d_out.Line_Part => {
             ]))
             case 'array': return _ea.ss($, ($) => _ea.cc($, ($) => l.sub([
                 l.snippet("["),
-                l.sub_decorated(op_enrich_list_elements_with_position_information($).map(($) => l.sub([
+                l.sub(op_enrich_list_elements_with_position_information($).map(($) => l.sub([
                     Value($.value),
                     $['is last'] ? l.nothing() : l.snippet(", "),
                 ]))),
