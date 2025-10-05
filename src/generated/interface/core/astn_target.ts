@@ -5,7 +5,6 @@ import * as _et from 'exupery-core-types'
 export type _T_Document = _T_Value
 
 export type _T_Value = 
-    | readonly ['concise group', _et.Array<_T_Value>]
     | readonly ['dictionary', _et.Dictionary<_T_Value>]
     | readonly ['list', _et.Array<_T_Value>]
     | readonly ['nothing', null]

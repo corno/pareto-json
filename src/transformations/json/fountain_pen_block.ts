@@ -1,7 +1,7 @@
 import * as _ea from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/json/data_types/source"
-import * as s_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
+import * as d_in from "../../generated/interface/schemas/json/data_types/source"
+import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 import {
     b, l, block
@@ -14,16 +14,16 @@ import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/imp
 
 const String = (
     $: string //FIX should have been a schema type
-): s_out.Line_Part => l.snippet(op_serialize_with_quote_delimiter($))
+): d_out.Line_Part => l.snippet(op_serialize_with_quote_delimiter($))
 
 
-export const Value = ($: s_in.Value): s_out.Line_Part => {
+export const Value = ($: d_in.Value): d_out.Line_Part => {
     return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'object': return _ea.ss($, ($) => l.sub([
                 l.snippet("{"),
                 l.indent([
-                    _ea.cc($, ($): s_out.Block_Part => {
+                    _ea.cc($, ($): d_out.Block_Part => {
                         switch ($[0]) {
                             case 'dictionary': return _ea.ss($, ($) => b.sub_decorated(op_enrich_list_elements_with_position_information(op_dictionary_to_list($)).map(($) => b.nested_line([
                                 String($.value.key),
@@ -67,6 +67,6 @@ export const Value = ($: s_in.Value): s_out.Line_Part => {
     })
 }
 
-export const Document = ($: s_in.Document): s_out.Block => block([b.nested_line([
+export const Document = ($: d_in.Document): d_out.Block => block([b.nested_line([
     Value($),
 ])])
