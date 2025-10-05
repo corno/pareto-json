@@ -8,17 +8,13 @@ import {
 } from "pareto-fountain-pen/dist/shorthands/block"
 
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-standard-operations/dist/impure/list/enrich_with_position_information"
-import { $$ as op_serialize_with_quote_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_quoted_string"
+import { $$ as op_serialize_with_quote_delimiter } from "../../operations/impure/serialize_string"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 
 const String = (
     $: string //FIX should have been a schema type
-): d_out.Line_Part => l.snippet(op_serialize_with_quote_delimiter({
-    'value': $,
-    'add delimiters': true,
-}))
-
+): d_out.Line_Part => l.snippet(op_serialize_with_quote_delimiter($))
 
 export const Value = ($: d_in.Value): d_out.Line_Part => {
     return _ea.cc($, ($) => {
