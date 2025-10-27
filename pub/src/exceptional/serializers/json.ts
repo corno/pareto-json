@@ -14,7 +14,7 @@ export const Document = (
         'newline': string
     }
 ): string => {
-    return s_fp.Block(
+    return s_fp.Group(
         t_fountain_pen.Document(
             $,
         ),
