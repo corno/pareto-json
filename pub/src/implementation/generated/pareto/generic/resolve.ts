@@ -1,10 +1,10 @@
 import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 
-import * as unresolved$ from "../../interface/core/unresolved"
-import * as resolved$ from "../../interface/core/resolved"
+import * as unresolved$ from "../../../../interface/generated/pareto/core/unresolved"
+import * as resolved$ from "../../../../interface/generated/pareto/core/resolved"
 
-import * as i from "../../interface/core/resolve"
+import * as i from "../../../../interface/generated/pareto/core/resolve"
 
 export type Acyclic_Entry_Reference<T_Dictionary_Entry> = {
     readonly 'entry': T_Dictionary_Entry
