@@ -1,13 +1,13 @@
 import * as _ea from 'exupery-core-alg'
 
 import * as d_in from "../../../interface/generated/pareto/schemas/json/data_types/source"
-import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_enrich_list_elements_with_position_information } from "pareto-standard-operations/dist/operations/impure/list/enrich_with_position_information"
+import { $$ as op_enrich_list_elements_with_position_information } from "pareto-standard-operations/dist/implementation/operations/impure/list/enrich_with_position_information"
 import { $$ as op_serialize_with_quote_delimiter } from "../../operations/impure/text/serialize_string"
-import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/operations/impure/dictionary/to_list_sorted_by_code_point"
+import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_code_point"
 
 
 const String = (
