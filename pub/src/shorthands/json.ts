@@ -1,4 +1,3 @@
-import * as pd from 'exupery-core-data'
 
 import * as _out from "../interface/generated/pareto/schemas/json/data_types/target"
 
