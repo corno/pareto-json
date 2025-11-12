@@ -1,16 +1,10 @@
 import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
-import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/json/marshall"
+import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 
 
-export const Document: _i_signatures._T_Document = ($, $p) => Value(
-    $,
-    {
-        'value serializers': $p['value serializers'],
-    }
-)
 export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'array': return _pa.ss($, ($) => ({
@@ -22,61 +16,10 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
                 }
             ))],
         }))
-        case 'boolean': return _pa.ss($, ($) => ({
-            'state': "boolean",
-            'value': ['text', ({
-                'delimiter': ['backtick', null],
-                'value': $p['value serializers']['boolean'](
-                    $,
-                    null
-                ),
-            })],
-        }))
-        case 'null': return _pa.ss($, ($) => ({
-            'state': "null",
-            'value': ['nothing', null],
-        }))
-        case 'number': return _pa.ss($, ($) => ({
-            'state': "number",
-            'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
-                switch ($[0]) {
-                    case 'float': return _pa.ss($, ($) => ({
-                        'state': "float",
-                        'value': ['text', ({
-                            'delimiter': ['backtick', null],
-                            'value': $p['value serializers']['default number'](
-                                $,
-                                null
-                            ),
-                        })],
-                    }))
-                    case 'integer': return _pa.ss($, ($) => ({
-                        'state': "integer",
-                        'value': ['text', ({
-                            'delimiter': ['backtick', null],
-                            'value': $p['value serializers']['default number'](
-                                $,
-                                null
-                            ),
-                        })],
-                    }))
-                    default: return _pa.au($[0])
-                }
-            })],
-        }))
         case 'object': return _pa.ss($, ($) => ({
             'state': "object",
             'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
                 switch ($[0]) {
-                    case 'dictionary': return _pa.ss($, ($) => ({
-                        'state': "dictionary",
-                        'value': ['dictionary', $.map(($) => Value(
-                            $,
-                            {
-                                'value serializers': $p['value serializers'],
-                            }
-                        ))],
-                    }))
                     case 'key value array': return _pa.ss($, ($) => ({
                         'state': "key value array",
                         'value': ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
@@ -92,6 +35,43 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
                             )),
                         })])],
                     }))
+                    case 'dictionary': return _pa.ss($, ($) => ({
+                        'state': "dictionary",
+                        'value': ['dictionary', $.map(($) => Value(
+                            $,
+                            {
+                                'value serializers': $p['value serializers'],
+                            }
+                        ))],
+                    }))
+                    default: return _pa.au($[0])
+                }
+            })],
+        }))
+        case 'number': return _pa.ss($, ($) => ({
+            'state': "number",
+            'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                switch ($[0]) {
+                    case 'integer': return _pa.ss($, ($) => ({
+                        'state': "integer",
+                        'value': ['text', ({
+                            'delimiter': ['backtick', null],
+                            'value': $p['value serializers']['default number'](
+                                $,
+                                null
+                            ),
+                        })],
+                    }))
+                    case 'float': return _pa.ss($, ($) => ({
+                        'state': "float",
+                        'value': ['text', ({
+                            'delimiter': ['backtick', null],
+                            'value': $p['value serializers']['default number'](
+                                $,
+                                null
+                            ),
+                        })],
+                    }))
                     default: return _pa.au($[0])
                 }
             })],
@@ -103,6 +83,26 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
                 'value': $,
             })],
         }))
+        case 'boolean': return _pa.ss($, ($) => ({
+            'state': "boolean",
+            'value': ['text', ({
+                'delimiter': ['backtick', null],
+                'value': $p['value serializers']['boolean'](
+                    $,
+                    null
+                ),
+            })],
+        }))
+        case 'null': return _pa.ss($, ($) => ({
+            'state': "null",
+            'value': ['nothing', null],
+        }))
         default: return _pa.au($[0])
     }
 })]
+export const Document: _i_signatures._T_Document = ($, $p) => Value(
+    $,
+    {
+        'value serializers': $p['value serializers'],
+    }
+)

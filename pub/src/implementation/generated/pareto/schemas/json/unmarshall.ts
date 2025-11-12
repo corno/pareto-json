@@ -2,17 +2,11 @@ import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
+import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/json/unmarshall"
 import * as _i_in from "../../../../../interface/generated/pareto/core/astn_source"
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/json/data_types/target"
-import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/json/unmarshall"
 
 
-export const Document: _i_signatures._T_Document = ($, $p) => Value(
-    $,
-    {
-        'value deserializers': $p['value deserializers'],
-    }
-)
 export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
@@ -28,50 +22,10 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
                     ),
                 }
             )],
-            'boolean': ($): _i_out._T_Value.SG => ['boolean', _i_generic.process_boolean(
-                $,
-                {
-                    'deserializer': $p['value deserializers']['boolean'],
-                }
-            )],
-            'null': ($): _i_out._T_Value.SG => ['null', _i_generic.process_nothing(
-                $,
-                null
-            )],
-            'number': ($): _i_out._T_Value.SG => ['number', _i_generic.process_unconstrained_state_group(
-                $,
-                {
-                    'states': _pa.dictionary_literal({
-                        'float': ($): _i_out._T_Value.SG._number.SG => ['float', _i_generic.process_number(
-                            $,
-                            {
-                                'deserializer': $p['value deserializers']['default number'],
-                            }
-                        )],
-                        'integer': ($): _i_out._T_Value.SG._number.SG => ['integer', _i_generic.process_number(
-                            $,
-                            {
-                                'deserializer': $p['value deserializers']['default number'],
-                            }
-                        )],
-                    }),
-                }
-            )],
             'object': ($): _i_out._T_Value.SG => ['object', _i_generic.process_unconstrained_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'dictionary': ($): _i_out._T_Value.SG._object.SG => ['dictionary', _i_generic.process_unconstrained_dictionary(
-                            $,
-                            {
-                                'value': ($) => Value(
-                                    $,
-                                    {
-                                        'value deserializers': $p['value deserializers'],
-                                    }
-                                ),
-                            }
-                        )],
                         'key value array': ($): _i_out._T_Value.SG._object.SG => ['key value array', _i_generic.process_unconstrained_list(
                             $,
                             {
@@ -104,6 +58,36 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
                                 ),
                             }
                         )],
+                        'dictionary': ($): _i_out._T_Value.SG._object.SG => ['dictionary', _i_generic.process_unconstrained_dictionary(
+                            $,
+                            {
+                                'value': ($) => Value(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                ),
+                            }
+                        )],
+                    }),
+                }
+            )],
+            'number': ($): _i_out._T_Value.SG => ['number', _i_generic.process_unconstrained_state_group(
+                $,
+                {
+                    'states': _pa.dictionary_literal({
+                        'integer': ($): _i_out._T_Value.SG._number.SG => ['integer', _i_generic.process_number(
+                            $,
+                            {
+                                'deserializer': $p['value deserializers']['default number'],
+                            }
+                        )],
+                        'float': ($): _i_out._T_Value.SG._number.SG => ['float', _i_generic.process_number(
+                            $,
+                            {
+                                'deserializer': $p['value deserializers']['default number'],
+                            }
+                        )],
                     }),
                 }
             )],
@@ -111,6 +95,22 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
                 $,
                 null
             )],
+            'boolean': ($): _i_out._T_Value.SG => ['boolean', _i_generic.process_boolean(
+                $,
+                {
+                    'deserializer': $p['value deserializers']['boolean'],
+                }
+            )],
+            'null': ($): _i_out._T_Value.SG => ['null', _i_generic.process_nothing(
+                $,
+                null
+            )],
         }),
+    }
+)
+export const Document: _i_signatures._T_Document = ($, $p) => Value(
+    $,
+    {
+        'value deserializers': $p['value deserializers'],
     }
 )
