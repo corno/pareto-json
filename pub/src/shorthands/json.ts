@@ -3,7 +3,7 @@ import * as _out from "../interface/generated/pareto/schemas/json/data_types/tar
 
 import {
     Raw_Or_Normal_Dictionary,
-    Raw_Or_Normal_Array,
+    Raw_Or_Normal_List,
     wrap_list,
     wrap_dictionary,
     wrap_state_group,
@@ -23,7 +23,7 @@ export namespace v {
     ): _out.Value => ['object', ['dictionary', wrap_dictionary(members)]]
 
     export const array = (
-        elements: Raw_Or_Normal_Array<_out.Value.SG.array.L>
+        elements: Raw_Or_Normal_List<_out.Value.SG.array.L>
     ): _out.Value => ['array', wrap_list(elements)]
 
 }
