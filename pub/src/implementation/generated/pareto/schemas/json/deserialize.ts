@@ -5,5 +5,5 @@ import * as _i_signatures from "../../../../../interface/generated/pareto/schema
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/json/data_types/target"
 
 
-export const Value: _i_signatures._T_Value = ($, $p) => _pd.implement_me()
-export const Document: _i_signatures._T_Document = ($, $p) => _pd.implement_me()
+export const Value: _i_signatures._T_Value = ($, $p) => _pd.implement_me("yy")
+export const Document: _i_signatures._T_Document = ($, $p) => _pd.implement_me("yy")
