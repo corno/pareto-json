@@ -1,6 +1,6 @@
 {
   "name": "pareto-json",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A TypeScript library for building JSON values in Pareto-style which can then be serialized",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     "exupery-core-alg": "^0.5.15",
     "exupery-core-bin": "^0.3.41",
     "exupery-core-data": "^0.3.3",
-    "pareto-fountain-pen": "^0.3.13",
+    "pareto-fountain-pen": "^0.3.14",
     "pareto-standard-operations": "^0.3.16"
   }
 }
