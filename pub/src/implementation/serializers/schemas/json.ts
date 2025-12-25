@@ -3,7 +3,7 @@ import * as d_in from "../../../interface/generated/pareto/schemas/json/data_typ
 
 import * as t_fountain_pen from "../../transformers/schemas/json/fountain_pen_block"
 
-import * as s_fp from "pareto-fountain-pen/dist/implementation/serializers/block"
+import * as s_fp from "pareto-fountain-pen/dist/implementation/serializers/schemas/block"
 
 export const Document = (
     $: d_in.Document,
