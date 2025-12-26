@@ -6,13 +6,13 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/sche
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
-import { $$ as op_serialize_with_quote_delimiter } from "../../../serializers/primitives/text/quoted"
+import { $$ as s_quoted } from "../../../serializers/primitives/text/quoted"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_insertion"
 
 
 const String = (
     $: string //FIX should have been a schema type
-): d_out.Block_Part => sh.b.snippet(op_serialize_with_quote_delimiter($))
+): d_out.Block_Part => sh.b.snippet(s_quoted($))
 
 export const Value = ($: d_in.Value): d_out.Block_Part => {
     return _ea.cc($, ($) => {
