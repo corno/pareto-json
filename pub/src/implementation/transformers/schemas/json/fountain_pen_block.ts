@@ -7,7 +7,6 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_quoted } from "../../../serializers/primitives/text/quoted"
-import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_insertion"
 
 
 const String = (
@@ -22,7 +21,7 @@ export const Value = ($: d_in.Value): d_out.Block_Part => {
                 sh.b.indent([
                     _ea.cc($, ($): d_out.Group_Part => {
                         switch ($[0]) {
-                            case 'dictionary': return _ea.ss($, ($) => sh.g.sub(op_enrich_list_elements_with_position_information(op_dictionary_to_list($)).map(($) => sh.g.nested_block([
+                            case 'dictionary': return _ea.ss($, ($) => sh.g.sub(op_enrich_list_elements_with_position_information($.to_list(($, key) => ({ 'key': key, 'value': $ }))).map(($) => sh.g.nested_block([
                                 String($.value.key),
                                 sh.b.snippet(": "),
                                 Value($.value.value),
