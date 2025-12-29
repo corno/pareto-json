@@ -7,7 +7,7 @@ import {
     wrap_list,
     wrap_dictionary,
     wrap_state_group,
-} from 'exupery-core-data/dist/shorthands/unconstrained'
+} from 'pareto-core-shorthands/dist/unconstrained'
 
 export namespace v {
 
