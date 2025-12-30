@@ -1,7 +1,7 @@
 
-import * as d_in from "../../../interface/generated/pareto/schemas/json/data_types/source"
+import * as d_in from "../../../../interface/generated/pareto/schemas/json/data_types/source"
 
-import * as t_fountain_pen from "../../transformers/schemas/json/fountain_pen_block"
+import * as t_fountain_pen from "./transformers/fountain_pen_block"
 
 import * as s_fp from "pareto-fountain-pen/dist/implementation/serializers/schemas/block"
 
