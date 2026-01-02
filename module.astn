@@ -1,0 +1,107 @@
+(
+    'operations': {
+    }
+    'schema tree': | 'set' {
+        `json`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                    `Position`: (
+                        'precision': | 'exact' (
+                            'decimal separator offset': ~
+                            'type': | 'natural' ~
+                        )
+                    )
+                }
+                'text types': {
+                    `Text Value`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Value`: (
+                    'node': | 'state group' {
+                        `array`: (
+                            'description': ~
+                            'node': | 'list' (
+                                'node': | 'component' | 'internal cyclic' `Value`
+                            )
+                        )
+                        `object`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `key value array`: (
+                                    'description': ~
+                                    'node': | 'list' (
+                                        'node': | 'group' {
+                                            `key`: (
+                                                'description': ~
+                                                'node': | 'text' | 'global' `Text Value`
+                                            )
+                                            `value`: (
+                                                'description': ~
+                                                'node': | 'component' | 'internal cyclic' `Value`
+                                            )
+                                        }
+                                    )
+                                )
+                                `dictionary`: (
+                                    'description': ~
+                                    'node': | 'dictionary' (
+                                        'node': | 'component' | 'internal cyclic' `Value`
+                                        'ordered': `false`
+                                    )
+                                )
+                            }
+                        )
+                        `number`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `integer`: (
+                                    'description': ~
+                                    'node': | 'number' | 'local' (
+                                        'precision': | 'exact' (
+                                            'decimal separator offset': ~
+                                            'type': | 'integer' ~
+                                        )
+                                    )
+                                )
+                                `float`: (
+                                    'description': ~
+                                    'node': | 'number' | 'local' (
+                                        'precision': | 'approximation' (
+                                            'significant digits': `FIXME NUMBER`
+                                        )
+                                    )
+                                )
+                            }
+                        )
+                        `string`: (
+                            'description': ~
+                            'node': | 'text' | 'global' `Text Value`
+                        )
+                        `boolean`: (
+                            'description': ~
+                            'node': | 'boolean' ~
+                        )
+                        `null`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                    }
+                    'type parameters': {
+                    }
+                )
+                `Document`: (
+                    'node': | 'component' | 'internal' `Value`
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+    }
+)
