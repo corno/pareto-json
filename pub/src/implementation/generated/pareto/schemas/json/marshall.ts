@@ -22,7 +22,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
                 switch ($[0]) {
                     case 'key value array': return _pa.ss($, ($) => ({
                         'state': "key value array",
-                        'value': ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+                        'value': ['list', $.map(($) => ['verbose group', _pa.dictionary.literal({
                             'key': _pa.cc($['key'], ($) => ['text', ({
                                 'delimiter': ['quote', null],
                                 'value': $,

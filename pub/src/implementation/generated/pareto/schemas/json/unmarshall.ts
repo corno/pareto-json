@@ -10,7 +10,7 @@ import * as _i_out from "../../../../../interface/generated/pareto/schemas/json/
 export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'array': ($): _i_out._T_Value.SG => ['array', _i_generic.process_unconstrained_list(
                 $,
                 {
@@ -25,7 +25,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
             'object': ($): _i_out._T_Value.SG => ['object', _i_generic.process_unconstrained_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'key value array': ($): _i_out._T_Value.SG._object.SG => ['key value array', _i_generic.process_unconstrained_list(
                             $,
                             {
@@ -75,7 +75,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
             'number': ($): _i_out._T_Value.SG => ['number', _i_generic.process_unconstrained_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'integer': ($): _i_out._T_Value.SG._number.SG => ['integer', _i_generic.process_number(
                             $,
                             {
