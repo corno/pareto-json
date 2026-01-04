@@ -11,15 +11,12 @@ export const Document = (
         'indentation': string
         'newline': string
     }
-): string => {
-    return s_fp.Group(
-        t_fountain_pen.Document(
-            $,
-        ),
-        {
-            'indentation': $p.indentation,
-            'newline': $p['newline'],
-        }
-    )
-
-}
+): string => s_fp.Group(
+    t_fountain_pen.Document(
+        $,
+    ),
+    {
+        'indentation': $p.indentation,
+        'newline': $p['newline'],
+    }
+)
