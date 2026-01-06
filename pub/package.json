@@ -27,8 +27,8 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "pareto-core-shorthands": "^0.1.6",
-    "pareto-fountain-pen": "^0.3.24",
-    "pareto-standard-operations": "^0.3.35"
+    "pareto-core-shorthands": "^0.1.11",
+    "pareto-fountain-pen": "^0.3.28",
+    "pareto-standard-operations": "^0.3.36"
   }
 }

@@ -5,7 +5,7 @@ import * as _i_signatures from "../../../../../interface/generated/pareto/schema
 import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 
 
-export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'array': return _pa.ss($, ($) => ({
             'state': "array",
@@ -18,16 +18,16 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
         }))
         case 'object': return _pa.ss($, ($) => ({
             'state': "object",
-            'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+            'value': ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                 switch ($[0]) {
                     case 'key value array': return _pa.ss($, ($) => ({
                         'state': "key value array",
                         'value': ['list', $.map(($) => ['verbose group', _pa.dictionary.literal({
-                            'key': _pa.cc($['key'], ($) => ['text', ({
+                            'key': _pa.deprecated_cc($['key'], ($) => ['text', ({
                                 'delimiter': ['quote', null],
                                 'value': $,
                             })]),
-                            'value': _pa.cc($['value'], ($) => Value(
+                            'value': _pa.deprecated_cc($['value'], ($) => Value(
                                 $,
                                 {
                                     'value serializers': $p['value serializers'],
@@ -50,7 +50,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _pa.cc($, ($):
         }))
         case 'number': return _pa.ss($, ($) => ({
             'state': "number",
-            'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+            'value': ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                 switch ($[0]) {
                     case 'integer': return _pa.ss($, ($) => ({
                         'state': "integer",
