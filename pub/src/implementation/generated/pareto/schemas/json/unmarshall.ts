@@ -1,5 +1,5 @@
-import * as _pa from 'pareto-core-refiner'
-import * as _pd from 'pareto-core-dev'
+import * as _p from 'pareto-core-refiner'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/json/unmarshall"
@@ -10,7 +10,7 @@ import * as _i_out from "../../../../../interface/generated/pareto/schemas/json/
 export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
-        'states': _pa.dictionary.literal({
+        'states': _p.dictionary.literal({
             'array': ($): _i_out._T_Value.SG => ['array', _i_generic.process_unconstrained_list(
                 $,
                 {
@@ -25,7 +25,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
             'object': ($): _i_out._T_Value.SG => ['object', _i_generic.process_unconstrained_state_group(
                 $,
                 {
-                    'states': _pa.dictionary.literal({
+                    'states': _p.dictionary.literal({
                         'key value array': ($): _i_out._T_Value.SG._object.SG => ['key value array', _i_generic.process_unconstrained_list(
                             $,
                             {
@@ -33,7 +33,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
                                     $,
                                     {
                                         'properties': ($) => ({
-                                            'key': _pa.deprecated_cc(_i_generic.get_entry(
+                                            'key': _p.deprecated_cc(_i_generic.get_entry(
                                                 $,
                                                 {
                                                     'key': "key",
@@ -42,7 +42,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
                                                 $,
                                                 null
                                             )),
-                                            'value': _pa.deprecated_cc(_i_generic.get_entry(
+                                            'value': _p.deprecated_cc(_i_generic.get_entry(
                                                 $,
                                                 {
                                                     'key': "value",
@@ -75,7 +75,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => _i_generic.process_uncon
             'number': ($): _i_out._T_Value.SG => ['number', _i_generic.process_unconstrained_state_group(
                 $,
                 {
-                    'states': _pa.dictionary.literal({
+                    'states': _p.dictionary.literal({
                         'integer': ($): _i_out._T_Value.SG._number.SG => ['integer', _i_generic.process_number(
                             $,
                             {
