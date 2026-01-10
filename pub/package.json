@@ -1,6 +1,6 @@
 {
   "name": "pareto-json",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "A TypeScript library for building JSON values in Pareto-style which can then be serialized",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
