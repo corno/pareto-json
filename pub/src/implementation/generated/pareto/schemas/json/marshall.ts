@@ -37,7 +37,7 @@ export const Value: _i_signatures._T_Value = ($, $p) => ['state', _p.deprecated_
                     }))
                     case 'dictionary': return _p.ss($, ($) => ({
                         'state': "dictionary",
-                        'value': ['dictionary', $.map(($) => Value(
+                        'value': ['dictionary', $.__d_map(($) => Value(
                             $,
                             {
                                 'value serializers': $p['value serializers'],
