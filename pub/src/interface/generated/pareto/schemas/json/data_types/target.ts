@@ -7,7 +7,7 @@ export namespace Value_ {
     
     export namespace array {
         
-        export type L = Value_
+        export type L = _pi.Circular_Dependency<Value_>
         
     }
     
@@ -21,7 +21,7 @@ export namespace Value_ {
                 
                 export type key = string
                 
-                export type value = Value_
+                export type value = _pi.Circular_Dependency<Value_>
                 
             }
             
@@ -36,7 +36,7 @@ export namespace Value_ {
         
         export namespace dictionary {
             
-            export type D = Value_
+            export type D = _pi.Circular_Dependency<Value_>
             
         }
         
@@ -77,3 +77,8 @@ export type Value_ =
     | readonly ['null', Value_._null]
 
 export type Document_ = Value_
+
+export { 
+    Value_ as Value, 
+    Document_ as Document, 
+}

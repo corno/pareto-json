@@ -16,3 +16,7 @@ export type Location_ = {
     readonly 'line': Location_.line
     readonly 'column': Location_.column
 }
+
+export { 
+    Location_ as Location, 
+}
