@@ -13,7 +13,7 @@ const String = (
     $: string //FIX should have been a schema type
 ): d_out.Block_Part => sh.b.snippet(s_quoted($))
 
-export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
+export const Value = ($: d_in.Value_): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'object': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("{"),
@@ -61,6 +61,6 @@ export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
     }
 })
 
-export const Document = ($: d_in.Document): d_out.Group => sh.group([sh.g.nested_block([
+export const Document = ($: d_in.Document_): d_out.Group => sh.group([sh.g.nested_block([
     Value($),
 ])])

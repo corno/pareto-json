@@ -6,7 +6,7 @@ import * as t_fountain_pen from "./transformers/fountain_pen_block"
 import * as s_fp from "pareto-fountain-pen/dist/implementation/manual/schemas/block/serializers"
 
 export const Document = (
-    $: d_in.Document,
+    $: d_in.Document_,
     $p: {
         'indentation': string
         'newline': string

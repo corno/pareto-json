@@ -1,229 +1,79 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_location__ from "../../../core/location"
+
+export namespace Value_ {
     
-    import * as _i_core from "../../../core/unconstrained"
-    
-    // **** TYPES
-    
-    export type _T_Value = _i_core._T_State_Group<null, 
-        | readonly ['array', _i_core._T_List<null, _T_Value>]
-        | readonly ['object', _i_core._T_State_Group<null, 
-            | readonly ['key value array', _i_core._T_List<null, {
-                readonly 'key': string
-                readonly 'value': _T_Value
-            }>]
-            | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-        >]
-        | readonly ['number', _i_core._T_State_Group<null, 
-            | readonly ['integer', number]
-            | readonly ['float', number]
-        >]
-        | readonly ['string', string]
-        | readonly ['boolean', boolean]
-        | readonly ['null', null]
-    >
-    
-    export type _T_Document = _T_Value
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Value = _T_Value
-    
-    export type Document = _T_Document
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Value {
+    export namespace array {
         
-        export namespace SG {
-            
-            export namespace array {
-                
-                export namespace L {
-                }
-                export type L = _T_Value
-            }
-            export type array = _i_core._T_List<null, _T_Value>
-            
-            export namespace _object {
-                
-                export namespace SG {
-                    
-                    export namespace key_value_array {
-                        
-                        export namespace L {
-                            export type key = string
-                            
-                            export namespace value {
-                            }
-                            export type value = _T_Value
-                        }
-                        export type L = {
-                            readonly 'key': string
-                            readonly 'value': _T_Value
-                        }
-                    }
-                    export type key_value_array = _i_core._T_List<null, {
-                        readonly 'key': string
-                        readonly 'value': _T_Value
-                    }>
-                    
-                    export namespace dictionary {
-                        
-                        export namespace D {
-                        }
-                        export type D = _T_Value
-                    }
-                    export type dictionary = _i_core._T_Dictionary<null, _T_Value>
-                }
-                export type SG = 
-                    | readonly ['key value array', _i_core._T_List<null, {
-                        readonly 'key': string
-                        readonly 'value': _T_Value
-                    }>]
-                    | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            }
-            export type _object = _i_core._T_State_Group<null, 
-                | readonly ['key value array', _i_core._T_List<null, {
-                    readonly 'key': string
-                    readonly 'value': _T_Value
-                }>]
-                | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            >
-            
-            export namespace _number {
-                
-                export namespace SG {
-                    export type integer = number
-                    export type float = number
-                }
-                export type SG = 
-                    | readonly ['integer', number]
-                    | readonly ['float', number]
-            }
-            export type _number = _i_core._T_State_Group<null, 
-                | readonly ['integer', number]
-                | readonly ['float', number]
-            >
-            export type _string = string
-            export type _boolean = boolean
-            export type _null = null
-        }
-        export type SG = 
-            | readonly ['array', _i_core._T_List<null, _T_Value>]
-            | readonly ['object', _i_core._T_State_Group<null, 
-                | readonly ['key value array', _i_core._T_List<null, {
-                    readonly 'key': string
-                    readonly 'value': _T_Value
-                }>]
-                | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            >]
-            | readonly ['number', _i_core._T_State_Group<null, 
-                | readonly ['integer', number]
-                | readonly ['float', number]
-            >]
-            | readonly ['string', string]
-            | readonly ['boolean', boolean]
-            | readonly ['null', null]
-    }
-    
-    export namespace _T_Document {
-    }
-    
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Value {
+        export type L = Value_
         
-        export namespace SG {
-            
-            export namespace array {
-                
-                export namespace L {
-                }
-                export type L = _T_Value
-            }
-            export type array = _i_core._T_List<null, _T_Value>
-            
-            export namespace _object {
-                
-                export namespace SG {
-                    
-                    export namespace key_value_array {
-                        
-                        export namespace L {
-                            export type key = string
-                            
-                            export namespace value {
-                            }
-                            export type value = _T_Value
-                        }
-                        export type L = {
-                            readonly 'key': string
-                            readonly 'value': _T_Value
-                        }
-                    }
-                    export type key_value_array = _i_core._T_List<null, {
-                        readonly 'key': string
-                        readonly 'value': _T_Value
-                    }>
-                    
-                    export namespace dictionary {
-                        
-                        export namespace D {
-                        }
-                        export type D = _T_Value
-                    }
-                    export type dictionary = _i_core._T_Dictionary<null, _T_Value>
-                }
-                export type SG = 
-                    | readonly ['key value array', _i_core._T_List<null, {
-                        readonly 'key': string
-                        readonly 'value': _T_Value
-                    }>]
-                    | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            }
-            export type _object = _i_core._T_State_Group<null, 
-                | readonly ['key value array', _i_core._T_List<null, {
-                    readonly 'key': string
-                    readonly 'value': _T_Value
-                }>]
-                | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            >
-            
-            export namespace _number {
-                
-                export namespace SG {
-                    export type integer = number
-                    export type float = number
-                }
-                export type SG = 
-                    | readonly ['integer', number]
-                    | readonly ['float', number]
-            }
-            export type _number = _i_core._T_State_Group<null, 
-                | readonly ['integer', number]
-                | readonly ['float', number]
-            >
-            export type _string = string
-            export type _boolean = boolean
-            export type _null = null
-        }
-        export type SG = 
-            | readonly ['array', _i_core._T_List<null, _T_Value>]
-            | readonly ['object', _i_core._T_State_Group<null, 
-                | readonly ['key value array', _i_core._T_List<null, {
-                    readonly 'key': string
-                    readonly 'value': _T_Value
-                }>]
-                | readonly ['dictionary', _i_core._T_Dictionary<null, _T_Value>]
-            >]
-            | readonly ['number', _i_core._T_State_Group<null, 
-                | readonly ['integer', number]
-                | readonly ['float', number]
-            >]
-            | readonly ['string', string]
-            | readonly ['boolean', boolean]
-            | readonly ['null', null]
     }
     
-    export namespace Document {
+    export type array = _pi.List<array.L>
+    
+    export namespace _object {
+        
+        export namespace key_value_array {
+            
+            export namespace L {
+                
+                export type key = string
+                
+                export type value = Value_
+                
+            }
+            
+            export type L = {
+                readonly 'key': L.key
+                readonly 'value': L.value
+            }
+            
+        }
+        
+        export type key_value_array = _pi.List<key_value_array.L>
+        
+        export namespace dictionary {
+            
+            export type D = Value_
+            
+        }
+        
+        export type dictionary = _pi.Dictionary<dictionary.D>
+        
     }
+    
+    export type _object = 
+        | readonly ['key value array', _object.key_value_array]
+        | readonly ['dictionary', _object.dictionary]
+    
+    export namespace _number {
+        
+        export type integer = number
+        
+        export type float = number
+        
+    }
+    
+    export type _number = 
+        | readonly ['integer', _number.integer]
+        | readonly ['float', _number.float]
+    
+    export type _string = string
+    
+    export type _boolean = boolean
+    
+    export type _null = null
+    
+}
+
+export type Value_ = 
+    | readonly ['array', Value_.array]
+    | readonly ['object', Value_._object]
+    | readonly ['number', Value_._number]
+    | readonly ['string', Value_._string]
+    | readonly ['boolean', Value_._boolean]
+    | readonly ['null', Value_._null]
+
+export type Document_ = Value_

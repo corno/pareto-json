@@ -7,16 +7,16 @@ export namespace v {
 
     export const string = (
         value: string
-    ): d_out.Value => ['string', value]
+    ): d_out.Value_ => ['string', value]
 
     export const null_ = (
-    ): d_out.Value => ['null', null]
+    ): d_out.Value_ => ['null', null]
 
     export const object = (
-        members: _p.Raw_Or_Normal_Dictionary<d_out.Value.SG._object.SG.dictionary.D>
-    ): d_out.Value => ['object', ['dictionary', _p.dictionary.literal(members)]]
+        members: _p.Raw_Or_Normal_Dictionary<d_out.Value_._object.dictionary.D>
+    ): d_out.Value_ => ['object', ['dictionary', _p.dictionary.literal(members)]]
 
     export const array = (
-        elements: _p.Raw_Or_Normal_List<d_out.Value.SG.array.L>
-    ): d_out.Value => ['array', _p.list.literal(elements)]
+        elements: _p.Raw_Or_Normal_List<d_out.Value_.array.L>
+    ): d_out.Value_ => ['array', _p.list.literal(elements)]
 }
