@@ -1,13 +1,13 @@
 
 import * as _pi from "pareto-core-interface"
 
-import * as i_location__ from "../../../core/location"
+import * as i__location from "../../core/location"
 
 export namespace Value_ {
     
     export namespace array {
         
-        export type L = _pi.Circular_Dependency<Value_>
+        export type L = Value_
         
     }
     
@@ -21,7 +21,7 @@ export namespace Value_ {
                 
                 export type key = string
                 
-                export type value = _pi.Circular_Dependency<Value_>
+                export type value = Value_
                 
             }
             
@@ -36,7 +36,7 @@ export namespace Value_ {
         
         export namespace dictionary {
             
-            export type D = _pi.Circular_Dependency<Value_>
+            export type D = Value_
             
         }
         

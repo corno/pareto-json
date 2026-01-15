@@ -1,19 +1,23 @@
 import * as _p from 'pareto-core-transformer'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/json/data_types/source"
+//data types
+import * as d_in from "../../../../../interface/generated/pareto/schemas/json/data"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
+//shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
+//dependencies
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted"
-
+import { $$ as s_decimal } from "pareto-standard-operations/dist/implementation/manual/primitives/integer/serializers/decimal"
+import { $$ as s_scientific_notation } from "pareto-standard-operations/dist/implementation/manual/primitives/approximate_number/serializers/scientific_notation"
 
 const String = (
     $: string //FIX should have been a schema type
 ): d_out.Block_Part => sh.b.snippet(s_quoted($))
 
-export const Value = ($: d_in.Value_): d_out.Block_Part => _p.sg($, ($) => {
+export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'object': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("{"),
@@ -51,8 +55,8 @@ export const Value = ($: d_in.Value_): d_out.Block_Part => _p.sg($, ($) => {
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
         case 'number': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.b.snippet("FIXME INTEGER"))
-                case 'float': return _p.ss($, ($) => sh.b.snippet("FIXME FLOAT"))
+                case 'integer': return _p.ss($, ($) => sh.b.snippet(s_decimal($)))
+                case 'float': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 15 })))
                 default: return _p.au($[0])
             }
         }))
