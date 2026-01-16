@@ -29,7 +29,7 @@
   "dependencies": {
     "astn-core": "^0.1.1",
     "pareto-core-shorthands": "^0.2.0",
-    "pareto-fountain-pen": "^0.3.34",
+    "pareto-fountain-pen": "^0.4.0",
     "pareto-standard-operations": "^0.4.0"
   }
 }
