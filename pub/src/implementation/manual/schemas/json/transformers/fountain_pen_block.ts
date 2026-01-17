@@ -10,8 +10,8 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 //dependencies
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted"
-import { $$ as s_decimal } from "pareto-standard-operations/dist/implementation/manual/primitives/integer/serializers/decimal"
-import { $$ as s_scientific_notation } from "pareto-standard-operations/dist/implementation/manual/primitives/approximate_number/serializers/scientific_notation"
+import { $$ as s_decimal } from "../../../primitives/integer/serializers/fractional_decimal"
+import { $$ as s_scientific_notation } from "../../../primitives/approximate_number/serializers/scientific_notation"
 
 const String = (
     $: string //FIX should have been a schema type
@@ -55,7 +55,7 @@ export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
         case 'number': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.b.snippet(s_decimal($)))
+                case 'integer': return _p.ss($, ($) => sh.b.snippet(s_decimal($, { 'number of fractional digits': 0 })))
                 case 'float': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 15 })))
                 default: return _p.au($[0])
             }
