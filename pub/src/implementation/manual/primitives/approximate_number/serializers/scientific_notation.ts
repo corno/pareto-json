@@ -1,9 +1,10 @@
-import * as _p from 'pareto-core-serializer'
+import * as _p from 'pareto-core-refiner'
+import * as _ps from 'pareto-core-serializer'
 
 import * as signatures from "../../../../../interface/signatures"
 
 export const $$: signatures.serializers.primitives.approximate_number.scientific_notation = ($, $p) => {
-    return _p.text.deprecated_build(($i) => {
+    return _ps.text.deprecated_build(($i) => {
         // Handle special case for zero in scientific notation
         if ($ === 0) {
             $i['add character'](48) // '0'

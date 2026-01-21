@@ -1,11 +1,13 @@
-import * as _p from 'pareto-core-serializer'
+import * as _p from 'pareto-core-refiner'
+import * as _ps from 'pareto-core-serializer'
+import * as _pd from 'pareto-core-deserializer'
 
 import * as signatures from "../../../../../interface/signatures"
 
 export const $$: signatures.serializers.primitives.integer.fractional_decimal = ($, $p) => {
     const fractionalDigits = $p['number of fractional digits']
 
-    return _p.text.from_list(
+    return _ps.text.from_list(
         _p.list.deprecated_build<number>(($i) => {
             let value = $
 
