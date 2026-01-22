@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "pareto-core-deserializer": "^0.3.2",
-    "pareto-core-shorthands": "^0.2.3",
+    "pareto-core-shorthands": "^0.2.4",
     "pareto-fountain-pen": "^0.4.2"
   }
 }
