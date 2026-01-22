@@ -1,5 +1,5 @@
 
-import * as d_in from "../../../../interface/generated/pareto/schemas/json/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/json/data"
 
 import * as t_fountain_pen from "./transformers/fountain_pen_block"
 

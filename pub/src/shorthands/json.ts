@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 
-import * as d_out from "../interface/generated/pareto/schemas/json/data"
+import * as d_out from "../interface/generated/liana/schemas/json/data"
 
 
 export namespace v {
