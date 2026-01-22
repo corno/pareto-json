@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core-transformer'
+import * as _p from 'pareto-core/dist/transformer'
 
 //data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/json/data"
