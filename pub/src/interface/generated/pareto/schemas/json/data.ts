@@ -13,7 +13,7 @@ export namespace Value_ {
     
     export type array = _pi.List<array.L>
     
-    export namespace _object {
+    export namespace object_ {
         
         export namespace key_value_array {
             
@@ -44,11 +44,11 @@ export namespace Value_ {
         
     }
     
-    export type _object = 
-        | readonly ['key value array', _object.key_value_array]
-        | readonly ['dictionary', _object.dictionary]
+    export type object_ = 
+        | readonly ['key value array', object_.key_value_array]
+        | readonly ['dictionary', object_.dictionary]
     
-    export namespace _number {
+    export namespace number_ {
         
         export type integer = number
         
@@ -56,25 +56,25 @@ export namespace Value_ {
         
     }
     
-    export type _number = 
-        | readonly ['integer', _number.integer]
-        | readonly ['float', _number.float]
+    export type number_ = 
+        | readonly ['integer', number_.integer]
+        | readonly ['float', number_.float]
     
-    export type _string = string
+    export type string_ = string
     
-    export type _boolean = boolean
+    export type boolean_ = boolean
     
-    export type _null = null
+    export type null_ = null
     
 }
 
 export type Value_ = 
     | readonly ['array', Value_.array]
-    | readonly ['object', Value_._object]
-    | readonly ['number', Value_._number]
-    | readonly ['string', Value_._string]
-    | readonly ['boolean', Value_._boolean]
-    | readonly ['null', Value_._null]
+    | readonly ['object', Value_.object_]
+    | readonly ['number', Value_.number_]
+    | readonly ['string', Value_.string_]
+    | readonly ['boolean', Value_.boolean_]
+    | readonly ['null', Value_.null_]
 
 export type Document_ = Value_
 
