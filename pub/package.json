@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "astn-core": "^0.5.5",
-    "pareto-core-shorthands": "^0.2.5",
+    "pareto-core-shorthands": "^0.2.6",
     "pareto-fountain-pen": "^0.4.5"
   }
 }

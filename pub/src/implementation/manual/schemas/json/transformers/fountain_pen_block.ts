@@ -17,12 +17,12 @@ const String = (
     $: string //FIX should have been a schema type
 ): d_out.Block_Part => sh.b.snippet(s_quoted($))
 
-export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
+export const Value = ($: d_in.Value): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'object': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("{"),
             sh.b.indent([
-                _p.sg($, ($): d_out.Group_Part => {
+                _p.decide.state($, ($): d_out.Group_Part => {
                     switch ($[0]) {
                         case 'dictionary': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, key) => ({ 'key': key, 'value': $ }))).__l_map(($) => sh.g.nested_block([
                             String($.value.key),
@@ -53,7 +53,7 @@ export const Value = ($: d_in.Value): d_out.Block_Part => _p.sg($, ($) => {
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
         case 'boolean': return _p.ss($, ($) => sh.b.snippet($ ? "true" : "false"))
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
-        case 'number': return _p.ss($, ($) => _p.sg($, ($) => {
+        case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'integer': return _p.ss($, ($) => sh.b.snippet(s_decimal($, { 'number of fractional digits': 0 })))
                 case 'float': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 15 })))
