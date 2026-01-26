@@ -50,7 +50,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
                             return _p.ss($, ($,) => ({
                                 'option': "integer",
                                 'value': ['text', ({
-                                    'delimiter': ['backtick', null],
+                                    'delimiter': ['none', null],
                                     'value': v_serialize_number.serialize($),
                                 })],
                             }))
@@ -58,7 +58,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
                             return _p.ss($, ($,) => ({
                                 'option': "float",
                                 'value': ['text', ({
-                                    'delimiter': ['backtick', null],
+                                    'delimiter': ['none', null],
                                     'value': v_serialize_number.serialize($),
                                 })],
                             }))
@@ -79,7 +79,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
             return _p.ss($, ($,) => ({
                 'option': "boolean",
                 'value': ['text', ({
-                    'delimiter': ['backtick', null],
+                    'delimiter': ['none', null],
                     'value': v_serialize_boolean.serialize($),
                 })],
             }))
