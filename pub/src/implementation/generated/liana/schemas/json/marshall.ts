@@ -4,6 +4,10 @@
 // import * as t_signatures from "../../../../../interface/generated/liana/schemas/json/marshall"
 
 // import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_target/data"
+
+// import * as v_serialize_number from "liana-core/dist/implementation/manual/primitives/integer/serializers/decimal"
+
+// import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
 // export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
 //     switch ($[0]) {
 //         case 'array':
@@ -47,7 +51,7 @@
 //                                 'option': "integer",
 //                                 'value': ['text', ({
 //                                     'delimiter': ['backtick', null],
-//                                     'value': pdev.implement_me("number"),
+//                                     'value': v_serialize_number.$$_$$_($),
 //                                 })],
 //                             }))
 //                         case 'float':
@@ -55,7 +59,7 @@
 //                                 'option': "float",
 //                                 'value': ['text', ({
 //                                     'delimiter': ['backtick', null],
-//                                     'value': pdev.implement_me("number"),
+//                                     'value': v_serialize_number.$$_$$_($),
 //                                 })],
 //                             }))
 //                         default:
@@ -76,7 +80,7 @@
 //                 'option': "boolean",
 //                 'value': ['text', ({
 //                     'delimiter': ['backtick', null],
-//                     'value': pdev.implement_me("boolean"),
+//                     'value': v_serialize_boolean.$$_$$_($),
 //                 })],
 //             }))
 //         case 'null':
