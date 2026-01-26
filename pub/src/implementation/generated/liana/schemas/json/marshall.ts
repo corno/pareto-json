@@ -12,17 +12,17 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
     switch ($[0]) {
         case 'array':
             return _p.ss($, ($,) => ({
-                'option': "array",
+                'option': 'array',
                 'value': ['list', $.__l_map(($,) => Value($))],
             }))
         case 'object':
             return _p.ss($, ($,) => ({
-                'option': "object",
+                'option': 'object',
                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                     switch ($[0]) {
                         case 'key value array':
                             return _p.ss($, ($,) => ({
-                                'option': "key value array",
+                                'option': 'key value array',
                                 'value': ['list', $.__l_map(($,) => ['group', ['verbose', _p.dictionary.literal(({
                                     'key': _p.deprecated_cc($['key'], ($,) => ['text', ({
                                         'delimiter': ['quote', null],
@@ -33,7 +33,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
                             }))
                         case 'dictionary':
                             return _p.ss($, ($,) => ({
-                                'option': "dictionary",
+                                'option': 'dictionary',
                                 'value': ['dictionary', $.__d_map(($,key,) => Value($))],
                             }))
                         default:
@@ -43,12 +43,12 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
             }))
         case 'number':
             return _p.ss($, ($,) => ({
-                'option': "number",
+                'option': 'number',
                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                     switch ($[0]) {
                         case 'integer':
                             return _p.ss($, ($,) => ({
-                                'option': "integer",
+                                'option': 'integer',
                                 'value': ['text', ({
                                     'delimiter': ['none', null],
                                     'value': v_serialize_number.serialize($),
@@ -56,7 +56,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
                             }))
                         case 'float':
                             return _p.ss($, ($,) => ({
-                                'option': "float",
+                                'option': 'float',
                                 'value': ['text', ({
                                     'delimiter': ['none', null],
                                     'value': v_serialize_number.serialize($),
@@ -69,7 +69,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
             }))
         case 'string':
             return _p.ss($, ($,) => ({
-                'option': "string",
+                'option': 'string',
                 'value': ['text', ({
                     'delimiter': ['quote', null],
                     'value': $,
@@ -77,7 +77,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
             }))
         case 'boolean':
             return _p.ss($, ($,) => ({
-                'option': "boolean",
+                'option': 'boolean',
                 'value': ['text', ({
                     'delimiter': ['none', null],
                     'value': v_serialize_boolean.serialize($),
@@ -85,7 +85,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
             }))
         case 'null':
             return _p.ss($, ($,) => ({
-                'option': "null",
+                'option': 'null',
                 'value': ['nothing', null],
             }))
         default:
