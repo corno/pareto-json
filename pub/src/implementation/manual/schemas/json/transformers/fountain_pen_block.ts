@@ -24,7 +24,7 @@ export const Value = ($: d_in.Value): d_out.Block_Part => _p.decide.state($, ($)
             sh.b.indent([
                 _p.decide.state($, ($): d_out.Group_Part => {
                     switch ($[0]) {
-                        case 'dictionary': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, key) => ({ 'key': key, 'value': $ }))).__l_map(($) => sh.g.nested_block([
+                        case 'dictionary': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.g.nested_block([
                             String($.value.key),
                             sh.b.snippet(": "),
                             Value($.value.value),
