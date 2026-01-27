@@ -17,7 +17,7 @@ export const Value: t_signatures.Value = ($,) => _p.decide.state($, ($,): t_out.
                             'value': _p.deprecated_cc($['value'], ($,) => Value($)),
                         }))])
                     case 'dictionary':
-                        return _p.ss($, ($,) => ['dictionary', $.__d_map(($,key,) => Value($))])
+                        return _p.ss($, ($,) => ['dictionary', $.__d_map(($,id,) => Value($))])
                     default:
                         return _p.au($[0])
                 }

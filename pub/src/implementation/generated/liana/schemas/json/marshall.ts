@@ -34,7 +34,7 @@ export const Value: t_signatures.Value = ($,) => ['state', _p.decide.state($, ($
                         case 'dictionary':
                             return _p.ss($, ($,) => ({
                                 'option': 'dictionary',
-                                'value': ['dictionary', $.__d_map(($,key,) => Value($))],
+                                'value': ['dictionary', $.__d_map(($,id,) => Value($))],
                             }))
                         default:
                             return _p.au($[0])
