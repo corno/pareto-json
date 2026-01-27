@@ -9,7 +9,6 @@ export const Value: t_signatures.Value = ($,) => _p.decide.state($, ($,): t_out.
         case 'array':
             return _p.ss($, ($,) => ['array', $.__l_map(($,) => Value($))])
         case 'object':
-            
             return _p.ss($, ($,) => ['object', _p.decide.state($, ($,): t_out.Value.object_ => {
                 switch ($[0]) {
                     case 'key value array':
