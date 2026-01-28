@@ -7,10 +7,10 @@ import * as v_deserialize from "astn-core/dist/implementation/manual/schemas/par
 
 import * as v_unmarshall from "./unmarshall"
 export const Value: t_signatures.Value = ($, abort) => v_unmarshall.Value(v_deserialize.Document($, () => abort(['tbd', null]), {
-    'uri': "FIXME URI",
+    'document resource identifier': "FIXME URI",
     'tab size': 4,
 }).content, abort)
 export const Document: t_signatures.Document = ($, abort) => v_unmarshall.Document(v_deserialize.Document($, () => abort(['tbd', null]), {
-    'uri': "FIXME URI",
+    'document resource identifier': "FIXME URI",
     'tab size': 4,
 }).content, abort)
