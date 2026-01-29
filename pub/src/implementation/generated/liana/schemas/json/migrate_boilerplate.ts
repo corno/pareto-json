@@ -1,24 +1,25 @@
 
 import * as _p from "pareto-core/dist/transformer"
 
-import { 
-    _p_unreachable_code_path, 
+import {
+    _p_unreachable_code_path,
 } from "pareto-core/dist/unreachable_code_path"
 
-import { 
-    _p_cc, 
+import {
+    _p_cc,
 } from "pareto-core/dist/change_context"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/json/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/json/data"
+
 export const Value: t_signatures.Value = ($) => _p.decide.state(
-    $, 
+    $,
     ($): t_out.Value => {
         switch ($[0]) {
             case 'array':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['array', $.__l_map(
                         ($) => Value(
                             $
@@ -27,22 +28,22 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                 )
             case 'object':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['object', _p.decide.state(
-                        $, 
+                        $,
                         ($): t_out.Value.object_ => {
                             switch ($[0]) {
                                 case 'key value array':
                                     return _p.ss(
-                                        $, 
+                                        $,
                                         ($) => ['key value array', $.__l_map(
                                             ($) => ({
                                                 'key': _p_cc(
-                                                    $['key'], 
+                                                    $['key'],
                                                     ($) => $
                                                 ),
                                                 'value': _p_cc(
-                                                    $['value'], 
+                                                    $['value'],
                                                     ($) => Value(
                                                         $
                                                     )
@@ -52,9 +53,9 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                                     )
                                 case 'dictionary':
                                     return _p.ss(
-                                        $, 
+                                        $,
                                         ($) => ['dictionary', $.__d_map(
-                                            ($,id) => Value(
+                                            ($, id) => Value(
                                                 $
                                             )
                                         )]
@@ -69,19 +70,19 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                 )
             case 'number':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['number', _p.decide.state(
-                        $, 
+                        $,
                         ($): t_out.Value.number_ => {
                             switch ($[0]) {
                                 case 'integer':
                                     return _p.ss(
-                                        $, 
+                                        $,
                                         ($) => ['integer', $]
                                     )
                                 case 'float':
                                     return _p.ss(
-                                        $, 
+                                        $,
                                         ($) => ['float', $]
                                     )
                                 default:
@@ -94,17 +95,17 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                 )
             case 'string':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['string', $]
                 )
             case 'boolean':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['boolean', $]
                 )
             case 'null':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['null', null]
                 )
             default:
@@ -114,6 +115,7 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
         }
     }
 )
+
 export const Document: t_signatures.Document = ($) => Value(
     $
 )
