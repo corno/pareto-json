@@ -45,13 +45,13 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                                 'option': 'key value array',
                                                 'value': ['list', $.__l_map(
                                                     ($) => ['group', ['verbose', _p.dictionary.literal(
-                                                        ({
+                                                        {
                                                             'key': _p_cc(
                                                                 $['key'],
-                                                                ($) => ['text', ({
+                                                                ($) => ['text', {
                                                                     'delimiter': ['quote', null],
                                                                     'value': $,
-                                                                })]
+                                                                }]
                                                             ),
                                                             'value': _p_cc(
                                                                 $['value'],
@@ -59,7 +59,7 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                                                     $
                                                                 )
                                                             ),
-                                                        })
+                                                        }
                                                     )]]
                                                 )],
                                             })
@@ -99,12 +99,12 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'integer',
-                                                'value': ['text', ({
+                                                'value': ['text', {
                                                     'delimiter': ['none', null],
                                                     'value': v_serialize_number.serialize(
                                                         $
                                                     ),
-                                                })],
+                                                }],
                                             })
                                         )
                                     case 'float':
@@ -112,12 +112,12 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'float',
-                                                'value': ['text', ({
+                                                'value': ['text', {
                                                     'delimiter': ['none', null],
                                                     'value': v_serialize_number.serialize(
                                                         $
                                                     ),
-                                                })],
+                                                }],
                                             })
                                         )
                                     default:
@@ -134,10 +134,10 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'string',
-                        'value': ['text', ({
+                        'value': ['text', {
                             'delimiter': ['quote', null],
                             'value': $,
-                        })],
+                        }],
                     })
                 )
             case 'boolean':
@@ -145,12 +145,12 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'boolean',
-                        'value': ['text', ({
+                        'value': ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })],
+                        }],
                     })
                 )
             case 'null':
