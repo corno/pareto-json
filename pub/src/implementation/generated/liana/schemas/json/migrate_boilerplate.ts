@@ -1,6 +1,14 @@
 
 import * as _p from "pareto-core/dist/transformer"
 
+import { 
+    _p_unreachable_code_path, 
+} from "pareto-core/dist/unreachable_code_path"
+
+import { 
+    _p_cc, 
+} from "pareto-core/dist/change_context"
+
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/json/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/json/data"
@@ -29,11 +37,11 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                                         $, 
                                         ($) => ['key value array', $.__l_map(
                                             ($) => ({
-                                                'key': _p.deprecated_cc(
+                                                'key': _p_cc(
                                                     $['key'], 
                                                     ($) => $
                                                 ),
-                                                'value': _p.deprecated_cc(
+                                                'value': _p_cc(
                                                     $['value'], 
                                                     ($) => Value(
                                                         $
