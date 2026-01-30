@@ -22,7 +22,8 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'array',
-                        'value': ['list', $.__l_map(
+                        'value': ['list', _p.list.map(
+                            $,
                             ($) => Value(
                                 $
                             )
@@ -43,7 +44,8 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'key value array',
-                                                'value': ['list', $.__l_map(
+                                                'value': ['list', _p.list.map(
+                                                    $,
                                                     ($) => ['group', ['verbose', _p.dictionary.literal(
                                                         {
                                                             'key': _p_cc(
@@ -69,7 +71,8 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'dictionary',
-                                                'value': ['dictionary', $.__d_map(
+                                                'value': ['dictionary', _p.dictionary.map(
+                                                    $,
                                                     ($, id) => Value(
                                                         $
                                                     )

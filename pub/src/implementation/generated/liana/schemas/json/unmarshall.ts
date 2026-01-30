@@ -31,12 +31,13 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                 case 'array':
                     return _p_cc(
                         $['value'],
-                        ($) => ['array', v_unmarshalled_from_parse_tree.List(
-                            $,
-                            ($) => abort(
-                                ['expected a list', null]
-                            )
-                        ).__l_map(
+                        ($) => ['array', _p.list.map(
+                            v_unmarshalled_from_parse_tree.List(
+                                $,
+                                ($) => abort(
+                                    ['expected a list', null]
+                                )
+                            ),
                             ($) => Value(
                                 $,
                                 ($) => abort(
@@ -62,12 +63,13 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                                         case 'key value array':
                                             return _p_cc(
                                                 $['value'],
-                                                ($) => ['key value array', v_unmarshalled_from_parse_tree.List(
-                                                    $,
-                                                    ($) => abort(
-                                                        ['expected a list', null]
-                                                    )
-                                                ).__l_map(
+                                                ($) => ['key value array', _p.list.map(
+                                                    v_unmarshalled_from_parse_tree.List(
+                                                        $,
+                                                        ($) => abort(
+                                                            ['expected a list', null]
+                                                        )
+                                                    ),
                                                     ($) => _p_cc(
                                                         v_unmarshalled_from_parse_tree.Group(
                                                             $,
@@ -111,12 +113,13 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                                         case 'dictionary':
                                             return _p_cc(
                                                 $['value'],
-                                                ($) => ['dictionary', v_unmarshalled_from_parse_tree.Dictionary(
-                                                    $,
-                                                    ($) => abort(
-                                                        ['expected a dictionary', null]
-                                                    )
-                                                ).__d_map(
+                                                ($) => ['dictionary', _p.dictionary.map(
+                                                    v_unmarshalled_from_parse_tree.Dictionary(
+                                                        $,
+                                                        ($) => abort(
+                                                            ['expected a dictionary', null]
+                                                        )
+                                                    ),
                                                     ($, id) => Value(
                                                         $,
                                                         ($) => abort(
