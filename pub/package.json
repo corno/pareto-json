@@ -29,7 +29,7 @@
   "dependencies": {
     "astn-core": "^0.5.14",
     "liana-core": "^0.0.3",
-    "pareto-core-shorthands": "^0.2.11",
+    "pareto-core-shorthands": "^0.2.13",
     "pareto-fountain-pen": "^0.4.9"
   }
 }
