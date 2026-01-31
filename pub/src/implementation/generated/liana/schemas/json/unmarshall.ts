@@ -17,6 +17,13 @@ import * as v_unmarshalled_from_parse_tree from "astn-core/dist/implementation/m
 
 import * as v_parse_tree_to_location from "astn-core/dist/implementation/manual/schemas/parse_tree/transformers/location"
 
+export const Document: t_signatures.Document = ($, abort) => Value(
+    $,
+    ($) => abort(
+        $
+    )
+)
+
 export const Value: t_signatures.Value = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.State(
         $,
@@ -231,12 +238,5 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                     )
             }
         }
-    )
-)
-
-export const Document: t_signatures.Document = ($, abort) => Value(
-    $,
-    ($) => abort(
-        $
     )
 )

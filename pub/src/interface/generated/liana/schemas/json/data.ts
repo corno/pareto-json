@@ -1,6 +1,8 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
+export type Document_ = Value_
+
 export namespace Value_ {
     
     export namespace array {
@@ -74,9 +76,7 @@ export type Value_ =
     | readonly ['boolean', Value_.boolean_]
     | readonly ['null', Value_.null_]
 
-export type Document_ = Value_
-
 export { 
-    Value_ as Value, 
     Document_ as Document, 
+    Value_ as Value, 
 }
