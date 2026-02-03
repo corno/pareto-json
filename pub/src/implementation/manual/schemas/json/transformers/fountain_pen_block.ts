@@ -1,4 +1,5 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 //data types
 import * as d_in from "../../../../../interface/generated/liana/schemas/json/data"
@@ -10,53 +11,53 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 //dependencies
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted"
-import { $$ as s_decimal } from "../../../primitives/integer/serializers/fractional_decimal"
-import { $$ as s_scientific_notation } from "../../../primitives/approximate_number/serializers/scientific_notation"
+import { serialize as s_decimal } from "../../../primitives/integer/fractional_decimal"
+import { serialize as s_scientific_notation } from "../../../primitives/approximate_number/scientific_notation"
 
 const String = (
     $: string //FIX should have been a schema type
-): d_out.Block_Part => sh.b.snippet(s_quoted($))
+): d_out.Block_Part => sh.b.text(s_quoted($))
 
 export const Value = ($: d_in.Value): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'object': return _p.ss($, ($) => sh.b.sub([
-            sh.b.snippet("{"),
+            sh.b.literal("{"),
             sh.b.indent([
                 _p.decide.state($, ($): d_out.Group_Part => {
                     switch ($[0]) {
                         case 'dictionary': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.g.nested_block([
                             String($.value.key),
-                            sh.b.snippet(": "),
+                            sh.b.literal(": "),
                             Value($.value.value),
-                            $['is last'] ? sh.b.nothing() : sh.b.snippet(","),
+                            $['is last'] ? sh.b.nothing() : sh.b.literal(","),
                         ]))))
                         case 'key value array': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.g.nested_block([
                             String($.value.key),
-                            sh.b.snippet(": "),
+                            sh.b.literal(": "),
                             Value($.value.value),
-                            $['is last'] ? sh.b.nothing() : sh.b.snippet(", "),
+                            $['is last'] ? sh.b.nothing() : sh.b.literal(", "),
                         ]))))
                         default: return _p.au($[0])
                     }
                 }),
             ]),
-            sh.b.snippet("}"),
+            sh.b.literal("}"),
         ]))
         case 'array': return _p.ss($, ($) => sh.b.sub([
-            sh.b.snippet("["),
+            sh.b.literal("["),
             sh.b.list(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.b.sub([
                 Value($.value),
-                $['is last'] ? sh.b.nothing() : sh.b.snippet(", "),
+                $['is last'] ? sh.b.nothing() : sh.b.literal(", "),
             ]))),
-            sh.b.snippet("]"),
+            sh.b.literal("]"),
         ]))
-        case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
-        case 'boolean': return _p.ss($, ($) => sh.b.snippet($ ? "true" : "false"))
-        case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
+        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
+        case 'boolean': return _p.ss($, ($) => sh.b.literal($ ? "true" : "false"))
+        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
         case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.b.snippet(s_decimal($, { 'number of fractional digits': 0 })))
-                case 'float': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 15 })))
+                case 'integer': return _p.ss($, ($) => sh.b.text(s_decimal($, { 'number of fractional digits': 0 })))
+                case 'float': return _p.ss($, ($) => sh.b.text(s_scientific_notation($, { 'digits': 15 })))
                 default: return _p.au($[0])
             }
         }))
