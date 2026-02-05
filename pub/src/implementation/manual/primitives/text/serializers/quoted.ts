@@ -4,12 +4,12 @@ import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 //data types
-import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/list_of_characters"
 
 
 export const $$ = (
     $: string,
-): d_out.Text => _p.list.nested_literal_old([
+): d_out.List_of_Characters => _p.list.nested_literal_old([
     [
         0x22, // "
     ],

@@ -16,48 +16,48 @@ import { serialize as s_scientific_notation } from "../../../primitives/approxim
 
 const String = (
     $: string //FIX should have been a schema type
-): d_out.Block_Part => sh.b.text(s_quoted($))
+): d_out.Phrase => sh.ph.serialize(s_quoted($))
 
-export const Value = ($: d_in.Value): d_out.Block_Part => _p.decide.state($, ($) => {
+export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
-        case 'object': return _p.ss($, ($) => sh.b.sub([
-            sh.b.literal("{"),
-            sh.b.indent([
-                _p.decide.state($, ($): d_out.Group_Part => {
+        case 'object': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.literal("{"),
+            sh.ph.indent(
+                _p.decide.state($, ($): d_out.Paragraph => {
                     switch ($[0]) {
-                        case 'dictionary': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.g.nested_block([
+                        case 'dictionary': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.ph.composed([
                             String($.value.key),
-                            sh.b.literal(": "),
+                            sh.ph.literal(": "),
                             Value($.value.value),
-                            $['is last'] ? sh.b.nothing() : sh.b.literal(","),
+                            $['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
                         ]))))
-                        case 'key value array': return _p.ss($, ($) => sh.g.list(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.g.nested_block([
+                        case 'key value array': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
                             String($.value.key),
-                            sh.b.literal(": "),
+                            sh.ph.literal(": "),
                             Value($.value.value),
-                            $['is last'] ? sh.b.nothing() : sh.b.literal(", "),
+                            $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
                         ]))))
                         default: return _p.au($[0])
                     }
                 }),
-            ]),
-            sh.b.literal("}"),
+            ),
+            sh.ph.literal("}"),
         ]))
-        case 'array': return _p.ss($, ($) => sh.b.sub([
-            sh.b.literal("["),
-            sh.b.list(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.b.sub([
+        case 'array': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.literal("["),
+            sh.ph.composed(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
                 Value($.value),
-                $['is last'] ? sh.b.nothing() : sh.b.literal(", "),
+                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
             ]))),
-            sh.b.literal("]"),
+            sh.ph.literal("]"),
         ]))
-        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
-        case 'boolean': return _p.ss($, ($) => sh.b.literal($ ? "true" : "false"))
-        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
+        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
+        case 'boolean': return _p.ss($, ($) => sh.ph.literal($ ? "true" : "false"))
+        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
         case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.b.text(s_decimal($, { 'number of fractional digits': 0 })))
-                case 'float': return _p.ss($, ($) => sh.b.text(s_scientific_notation($, { 'digits': 15 })))
+                case 'integer': return _p.ss($, ($) => sh.ph.serialize(s_decimal($, { 'number of fractional digits': 0 })))
+                case 'float': return _p.ss($, ($) => sh.ph.serialize(s_scientific_notation($, { 'digits': 15 })))
                 default: return _p.au($[0])
             }
         }))
@@ -66,6 +66,6 @@ export const Value = ($: d_in.Value): d_out.Block_Part => _p.decide.state($, ($)
     }
 })
 
-export const Document = ($: d_in.Document_): d_out.Group => sh.group([sh.g.nested_block([
+export const Document = ($: d_in.Document_): d_out.Paragraph => sh.pg.sentences([
     Value($),
-])])
+])
