@@ -22,40 +22,30 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
         case 'object': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("{"),
             sh.ph.indent(
-                sh.pg.sentences([
-                    sh.ph.literal("IMPLEMENT OBJECT PROPERTIES HERE")
-                ])
-                // _p.decide.state($, ($): d_out.Paragraph => {
-                //     switch ($[0]) {
-                //         case 'dictionary': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.ph.composed([
-                //             String($.value.key),
-                //             sh.ph.literal(": "),
-                //             Value($.value.value),
-                //             $['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
-                //         ]))))
-                //         case 'key value array':  return _p.ss($, ($) => sh.pg.rich(
-                //             $.__l_map(($) => sh.ph.composed([
-                //                 String($.value.key),
-                //                 sh.ph.literal(": "),
-                //                 Value($.value.value),
-                //                     $.['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
-                //             ])),
-                //             sh.pg.nothing(),
-                //             true,
-                //             sh.ph.nothing(),
-                //             sh.ph.nothing(","),
-                //             sh.ph.nothing(),
-                //         ))
+                sh.pg.rich(
+                    _p.decide.state($, ($) => {
+                        switch ($[0]) {
+                            case 'dictionary': return _p.ss($, ($) => $.__to_list(($, id) => sh.ph.composed([
+                                String(id),
+                                sh.ph.literal(": "),
+                                Value($)
+                            ])))
+                            case 'key value array': return _p.ss($, ($) => $.__l_map(($) => sh.ph.composed([
+                                String($.key),
+                                sh.ph.literal(": "),
+                                Value($.value)
+                            ])))
 
-                //         // case 'key value array': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
-                //         //     String($.value.key),
-                //         //     sh.ph.literal(": "),
-                //         //     Value($.value.value),
-                //         //     $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
-                //         // ]))))
-                //         default: return _p.au($[0])
-                //     }
-                // }),
+                            default: return _p.au($[0])
+                        }
+                    }),
+                    sh.ph.nothing(),
+                    true,
+                    sh.ph.nothing(),
+                    sh.ph.literal(","),
+                    sh.ph.nothing(),
+                ),
+
             ),
             sh.ph.literal("}"),
         ]))
