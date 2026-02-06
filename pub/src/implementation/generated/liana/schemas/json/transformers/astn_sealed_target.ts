@@ -1,9 +1,9 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
-    import _p_change_context from "pareto-core/dist/_p_change_context"
+    import _p_change_context from 'pareto-core/dist/_p_change_context'
     
-    import _p_text_from_list from "pareto-core/dist/_p_text_from_list"
+    import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
     
     import * as t_signatures from "../../../../../../interface/generated/liana/schemas/json/marshall"
     
@@ -52,14 +52,14 @@
                                                         $,
                                                         ($) => ['group', ['verbose', _p.dictionary.literal(
                                                             {
-                                                                'key': _p_change_context(
+                                                                "key": _p_change_context(
                                                                     $['key'],
                                                                     ($) => ['text', {
                                                                         'delimiter': ['quote', null],
                                                                         'value': $,
                                                                     }],
                                                                 ),
-                                                                'value': _p_change_context(
+                                                                "value": _p_change_context(
                                                                     $['value'],
                                                                     ($) => Value(
                                                                         $,

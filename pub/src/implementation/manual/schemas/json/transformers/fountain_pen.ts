@@ -9,7 +9,6 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schem
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 //dependencies
-import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted"
 import { serialize as s_decimal } from "../../../primitives/integer/fractional_decimal"
 import { serialize as s_scientific_notation } from "../../../primitives/approximate_number/scientific_notation"
@@ -23,32 +22,52 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
         case 'object': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("{"),
             sh.ph.indent(
-                _p.decide.state($, ($): d_out.Paragraph => {
-                    switch ($[0]) {
-                        case 'dictionary': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.ph.composed([
-                            String($.value.key),
-                            sh.ph.literal(": "),
-                            Value($.value.value),
-                            $['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
-                        ]))))
-                        case 'key value array': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
-                            String($.value.key),
-                            sh.ph.literal(": "),
-                            Value($.value.value),
-                            $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
-                        ]))))
-                        default: return _p.au($[0])
-                    }
-                }),
+                sh.pg.sentences([
+                    sh.ph.literal("IMPLEMENT OBJECT PROPERTIES HERE")
+                ])
+                // _p.decide.state($, ($): d_out.Paragraph => {
+                //     switch ($[0]) {
+                //         case 'dictionary': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information(_p.list.from_dictionary($, ($, id) => ({ 'key': id, 'value': $ }))).__l_map(($) => sh.ph.composed([
+                //             String($.value.key),
+                //             sh.ph.literal(": "),
+                //             Value($.value.value),
+                //             $['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
+                //         ]))))
+                //         case 'key value array':  return _p.ss($, ($) => sh.pg.rich(
+                //             $.__l_map(($) => sh.ph.composed([
+                //                 String($.value.key),
+                //                 sh.ph.literal(": "),
+                //                 Value($.value.value),
+                //                     $.['is last'] ? sh.ph.nothing() : sh.ph.literal(","),
+                //             ])),
+                //             sh.pg.nothing(),
+                //             true,
+                //             sh.ph.nothing(),
+                //             sh.ph.nothing(","),
+                //             sh.ph.nothing(),
+                //         ))
+
+                //         // case 'key value array': return _p.ss($, ($) => sh.pg.sentences(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
+                //         //     String($.value.key),
+                //         //     sh.ph.literal(": "),
+                //         //     Value($.value.value),
+                //         //     $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
+                //         // ]))))
+                //         default: return _p.au($[0])
+                //     }
+                // }),
             ),
             sh.ph.literal("}"),
         ]))
         case 'array': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
-            sh.ph.composed(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.ph.composed([
-                Value($.value),
-                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
-            ]))),
+            sh.ph.rich(
+                $.__l_map(($) => Value($)),
+                sh.ph.nothing(),
+                sh.ph.nothing(),
+                sh.ph.literal(", "),
+                sh.ph.nothing(),
+            ),
             sh.ph.literal("]"),
         ]))
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
