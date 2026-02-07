@@ -1,7 +1,6 @@
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 import * as _p from 'pareto-core/dist/assign'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
 import * as signatures from "../../../../interface/signatures"
