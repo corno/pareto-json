@@ -38,11 +38,11 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
                             default: return _p.au($[0])
                         }
                     }),
-                    sh.sentence([]),
-                    true,
-                    sh.ph.nothing(),
+                    null,
+                    false,
+                    null,
                     sh.ph.literal(","),
-                    sh.ph.nothing(),
+                    null,
                 ),
 
             ),
