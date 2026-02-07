@@ -1,5 +1,5 @@
 
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 
 import _p_change_context from 'pareto-core/dist/_p_change_context'
 
@@ -18,8 +18,9 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
             case 'array':
                 return _p.ss(
                     $,
-                    ($) => ['array', _p.list.map(
+                    ($) => ['array', _p.list.from.list(
                         $,
+                    ).map(
                         ($) => Value(
                             $,
                         ),
@@ -35,8 +36,9 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                                 case 'key value array':
                                     return _p.ss(
                                         $,
-                                        ($) => ['key value array', _p.list.map(
+                                        ($) => ['key value array', _p.list.from.list(
                                             $,
+                                        ).map(
                                             ($) => ({
                                                 'key': _p_change_context(
                                                     $['key'],
@@ -54,8 +56,9 @@ export const Value: t_signatures.Value = ($) => _p.decide.state(
                                 case 'dictionary':
                                     return _p.ss(
                                         $,
-                                        ($) => ['dictionary', _p.dictionary.map(
+                                        ($) => ['dictionary', _p.dictionary.from.dictionary(
                                             $,
+                                        ).map(
                                             ($, id) => Value(
                                                 $,
                                             ),

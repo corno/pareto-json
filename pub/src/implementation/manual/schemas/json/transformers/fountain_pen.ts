@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 //data types

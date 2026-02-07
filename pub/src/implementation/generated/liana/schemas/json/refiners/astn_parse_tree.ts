@@ -1,5 +1,5 @@
 
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 
 import _p_change_context from 'pareto-core/dist/_p_change_context'
 
@@ -38,13 +38,14 @@ export const Value: t_signatures.Value = ($, abort) => _p_change_context(
                 case 'array':
                     return _p_change_context(
                         $['value'],
-                        ($) => ['array', _p.list.map(
+                        ($) => ['array', _p.list.from.list(
                             v_unmarshalled_from_parse_tree.List(
                                 $,
                                 ($) => abort(
                                     ['expected a list', null],
                                 ),
                             ),
+                        ).map(
                             ($) => Value(
                                 $,
                                 ($) => abort(
@@ -70,13 +71,14 @@ export const Value: t_signatures.Value = ($, abort) => _p_change_context(
                                         case 'key value array':
                                             return _p_change_context(
                                                 $['value'],
-                                                ($) => ['key value array', _p.list.map(
+                                                ($) => ['key value array', _p.list.from.list(
                                                     v_unmarshalled_from_parse_tree.List(
                                                         $,
                                                         ($) => abort(
                                                             ['expected a list', null],
                                                         ),
                                                     ),
+                                                ).map(
                                                     ($) => _p_change_context(
                                                         v_unmarshalled_from_parse_tree.Group(
                                                             $,
@@ -120,13 +122,14 @@ export const Value: t_signatures.Value = ($, abort) => _p_change_context(
                                         case 'dictionary':
                                             return _p_change_context(
                                                 $['value'],
-                                                ($) => ['dictionary', _p.dictionary.map(
+                                                ($) => ['dictionary', _p.dictionary.from.dictionary(
                                                     v_unmarshalled_from_parse_tree.Dictionary(
                                                         $,
                                                         ($) => abort(
                                                             ['expected a dictionary', null],
                                                         ),
                                                     ),
+                                                ).map(
                                                     ($, id) => Value(
                                                         $,
                                                         ($) => abort(

@@ -1,5 +1,5 @@
 
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 
 import _p_change_context from 'pareto-core/dist/_p_change_context'
 
@@ -26,8 +26,9 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'array',
-                        'value': ['list', _p.list.map(
+                        'value': ['list', _p.list.from.list(
                             $,
+                        ).map(
                             ($) => Value(
                                 $,
                             ),
@@ -48,8 +49,9 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'key value array',
-                                                'value': ['list', _p.list.map(
+                                                'value': ['list', _p.list.from.list(
                                                     $,
+                                                ).map(
                                                     ($) => ['group', ['verbose', _p.dictionary.literal(
                                                         {
                                                             "key": _p_change_context(
@@ -75,8 +77,9 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'dictionary',
-                                                'value': ['dictionary', _p.dictionary.map(
+                                                'value': ['dictionary', _p.dictionary.from.dictionary(
                                                     $,
+                                                ).map(
                                                     ($, id) => Value(
                                                         $,
                                                     ),

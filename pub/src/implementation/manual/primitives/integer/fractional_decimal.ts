@@ -1,5 +1,5 @@
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
@@ -14,13 +14,13 @@ export const deserialize: signatures.deserializers.primitives.integer.fractional
     
     // Check for empty string
     if (characters.__get_number_of_items() === 0) {
-        abort(`Empty string is not a valid fractional decimal number`)
+        abort("Empty string is not a valid fractional decimal number")
     }
     
     const get_character_at = (index: number): number => {
         return characters.__deprecated_get_possible_item_at(index).__decide(
             ($) => $,
-            () => abort(`index out of bounds`)
+            () => abort("index out of bounds")
         )
     }
     
@@ -36,22 +36,22 @@ export const deserialize: signatures.deserializers.primitives.integer.fractional
         
         if (charCode === 46) { // '.'
             if (decimalPointIndex !== -1) {
-                abort(`Multiple decimal points found`)
+                abort("Multiple decimal points found")
             }
             decimalPointIndex = i
         } else if (!(charCode >= 48 && charCode <= 57)) {
-            abort(`Invalid character in fractional decimal string`)
+            abort("Invalid character in fractional decimal string")
         }
     }
     
     // Must have a decimal point
     if (decimalPointIndex === -1) {
-        abort(`No decimal point found in fractional decimal string`)
+        abort("No decimal point found in fractional decimal string")
     }
     
     // Check that we have digits before decimal point
     if (decimalPointIndex === startIndex) {
-        abort(`No digits before decimal point`)
+        abort("No digits before decimal point")
     }
     
     // Calculate number of fractional digits in input
@@ -99,7 +99,7 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
         }
 
         // Split into integer and fractional parts
-        const integerPart = _p.integer.divide(value, divisor, () => _p_unreachable_code_path())
+        const integerPart = _p.number.integer.divide(value, divisor, () => _p_unreachable_code_path("the divisor is starting at 1 and is multiplied by 10 in each iteration, so it cannot be zero"))
         const fractionalPart = value % divisor
 
         // Generate integer part digits
@@ -111,7 +111,7 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = _p.integer.divide(temp, 10, () => _p_unreachable_code_path())
+                    temp = _p.number.integer.divide(temp, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
                 }
             }
         })
@@ -120,7 +120,7 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
         for (let j = integerDigits.__get_number_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + integerDigits.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path() // index cannot be out of bounds
+                () => _p_unreachable_code_path("index cannot be out of bounds")
             ))
         }
 
@@ -133,7 +133,7 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.integer.divide(temp, 10, () => _p_unreachable_code_path())
+                temp = _p.number.integer.divide(temp, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
             }
         })
 
@@ -141,7 +141,7 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
         for (let j = fractionalDigits_list.__get_number_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + fractionalDigits_list.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path() // index cannot be out of bounds
+                () => _p_unreachable_code_path("index cannot be out of bounds")
             ))
         }
     })
