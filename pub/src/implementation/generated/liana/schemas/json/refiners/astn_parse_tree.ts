@@ -86,7 +86,7 @@ export const Value: t_signatures.Value = ($, abort) => _p_change_context(
                                                         ),
                                                         ($) => ({
                                                             'key': _p_change_context(
-                                                                $.__get_entry(
+                                                                $.__get_entry_deprecated(
                                                                     'key',
                                                                     ($) => abort(
                                                                         ['no such entry', "key"],
@@ -100,7 +100,7 @@ export const Value: t_signatures.Value = ($, abort) => _p_change_context(
                                                                 ),
                                                             ),
                                                             'value': _p_change_context(
-                                                                $.__get_entry(
+                                                                $.__get_entry_deprecated(
                                                                     'value',
                                                                     ($) => abort(
                                                                         ['no such entry', "value"],

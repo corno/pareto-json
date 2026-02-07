@@ -8,12 +8,12 @@ export namespace deserializers {
 
         export namespace approximate_number {
 
-            export type scientific_notation = _pi.Refiner_With_Parameters<number, string, d_out.List_of_Characters, { 'digits': number }>
+            export type scientific_notation = _pi.Refiner_With_Parameter<number, string, d_out.List_of_Characters, { 'digits': number }>
 
         }
 
         export namespace integer {
-            export type fractional_decimal = _pi.Refiner_With_Parameters<number, string, d_out.List_of_Characters, { 'number of fractional digits': number }>
+            export type fractional_decimal = _pi.Refiner_With_Parameter<number, string, d_out.List_of_Characters, { 'number of fractional digits': number }>
 
         }
 
@@ -32,13 +32,13 @@ export namespace serializers {
 
         export namespace approximate_number {
 
-            export type scientific_notation = _pi.Transformer_With_Parameters<number, d_out.List_of_Characters, { 'digits': number }>
+            export type scientific_notation = _pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'digits': number }>
 
         }
 
         export namespace integer {
 
-            export type fractional_decimal = _pi.Transformer_With_Parameters<number, d_out.List_of_Characters, { 'number of fractional digits': number }>
+            export type fractional_decimal = _pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'number of fractional digits': number }>
         }
 
         export namespace boolean {
