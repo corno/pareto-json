@@ -24,12 +24,12 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
                 sh.pg.rich(
                     _p.decide.state($, ($) => {
                         switch ($[0]) {
-                            case 'dictionary': return _p.ss($, ($) => $.__to_list(($, id) => sh.ph.composed([
+                            case 'dictionary': return _p.ss($, ($) => $.__to_list(($, id) => sh.sentence([
                                 String(id),
                                 sh.ph.literal(": "),
                                 Value($)
                             ])))
-                            case 'key value array': return _p.ss($, ($) => $.__l_map(($) => sh.ph.composed([
+                            case 'key value array': return _p.ss($, ($) => $.__l_map(($) => sh.sentence([
                                 String($.key),
                                 sh.ph.literal(": "),
                                 Value($.value)
@@ -38,7 +38,7 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
                             default: return _p.au($[0])
                         }
                     }),
-                    sh.ph.nothing(),
+                    sh.sentence([]),
                     true,
                     sh.ph.nothing(),
                     sh.ph.literal(","),
@@ -75,5 +75,7 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
 })
 
 export const Document = ($: d_in.Document_): d_out.Paragraph => sh.pg.sentences([
-    Value($),
+    sh.sentence([
+        Value($)
+    ])
 ])
