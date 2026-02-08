@@ -10,29 +10,29 @@ export const deserialize: signatures.deserializers.primitives.integer.fractional
     let isNegative = false
     let startIndex = 0
     let decimalPointIndex = -1
-    
+
     // Check for empty string
     if (characters.__get_number_of_items() === 0) {
         abort("Empty string is not a valid fractional decimal number")
     }
-    
+
     const get_character_at = (index: number): number => {
         return characters.__deprecated_get_possible_item_at(index).__decide(
             ($) => $,
             () => abort("index out of bounds")
         )
     }
-    
+
     // Check for negative sign
     if (characters.__get_number_of_items() > 0 && get_character_at(0) === 45) { // '-'
         isNegative = true
         startIndex = 1
     }
-    
+
     // Find decimal point and validate characters
     for (let i = startIndex; i < characters.__get_number_of_items(); i++) {
         const charCode = get_character_at(i)
-        
+
         if (charCode === 46) { // '.'
             if (decimalPointIndex !== -1) {
                 abort("Multiple decimal points found")
@@ -42,26 +42,26 @@ export const deserialize: signatures.deserializers.primitives.integer.fractional
             abort("Invalid character in fractional decimal string")
         }
     }
-    
+
     // Must have a decimal point
     if (decimalPointIndex === -1) {
         abort("No decimal point found in fractional decimal string")
     }
-    
+
     // Check that we have digits before decimal point
     if (decimalPointIndex === startIndex) {
         abort("No digits before decimal point")
     }
-    
+
     // Calculate number of fractional digits in input
     const inputFractionalDigits = characters.__get_number_of_items() - decimalPointIndex - 1
     const expectedFractionalDigits = $p['number of fractional digits']
-    
+
     // Check that the number of fractional digits matches expected
     if (inputFractionalDigits !== expectedFractionalDigits) {
         abort(`Expected ${expectedFractionalDigits} fractional digits, but found ${inputFractionalDigits}`)
     }
-    
+
     // Parse integer part
     let result = 0
     for (let i = startIndex; i < decimalPointIndex; i++) {
@@ -69,14 +69,14 @@ export const deserialize: signatures.deserializers.primitives.integer.fractional
         const digit = charCode - 48
         result = result * 10 + digit
     }
-    
+
     // Parse fractional part
     for (let i = decimalPointIndex + 1; i < characters.__get_number_of_items(); i++) {
         const charCode = get_character_at(i)
         const digit = charCode - 48
         result = result * 10 + digit
     }
-    
+
     return isNegative ? -result : result
 }
 
@@ -98,7 +98,13 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
         }
 
         // Split into integer and fractional parts
-        const integerPart = _p.number.integer.divide(value, divisor, () => _p_unreachable_code_path("the divisor is starting at 1 and is multiplied by 10 in each iteration, so it cannot be zero"))
+        const integerPart = _p.number.integer.divide(
+            value,
+            divisor,
+            {
+                divided_by_zero: () => _p_unreachable_code_path("the divisor is starting at 1 and is multiplied by 10 in each iteration, so it cannot be zero")
+            }
+        )
         const fractionalPart = value % divisor
 
         // Generate integer part digits
@@ -110,7 +116,13 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = _p.number.integer.divide(temp, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
+                    temp = _p.number.integer.divide(
+                        temp,
+                        10,
+                        {
+                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        }
+                    )
                 }
             }
         })
@@ -132,7 +144,13 @@ export const serialize: signatures.serializers.primitives.integer.fractional_dec
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.number.integer.divide(temp, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
+                temp = _p.number.integer.divide(
+                    temp,
+                    10,
+                    {
+                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                    }
+                )
             }
         })
 

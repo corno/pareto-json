@@ -143,7 +143,13 @@ export const serialize: signatures.serializers.primitives.approximate_number.sci
         }
 
         // Simple rounding using integer operations
-        const mantissa_scaled = _p.number.integer.divide(mantissa * scale_factor + 0.5, 1, () => _p_unreachable_code_path("the divisor is hardcoded to 1"))
+        const mantissa_scaled = _p.number.integer.divide(
+            mantissa * scale_factor + 0.5,
+            1,
+            {
+                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1")
+            }
+        )
 
         // Convert mantissa to string
         const digits = _p_list_build_deprecated<number>(($i) => {
@@ -153,7 +159,13 @@ export const serialize: signatures.serializers.primitives.approximate_number.sci
             do {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.number.integer.divide(temp, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
+                temp = _p.number.integer.divide(
+                    temp,
+                    10,
+                    {
+                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                    }
+                )
             } while (temp > 0)
         })
 
@@ -195,7 +207,13 @@ export const serialize: signatures.serializers.primitives.approximate_number.sci
                 do {
                     const digit = exponent % 10
                     $i['add item'](digit)
-                    exponent = _p.number.integer.divide(exponent, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
+                    exponent = _p.number.integer.divide(
+                        exponent,
+                        10,
+                        {
+                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        }
+                    )
                 } while (exponent > 0)
             }
         })
