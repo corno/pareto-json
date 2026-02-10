@@ -27,9 +27,9 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "astn-core": "^0.5.36",
+    "astn-core": "^0.5.37",
     "liana-core": "^0.0.21",
     "pareto-core-shorthands": "^0.2.20",
-    "pareto-fountain-pen": "^0.4.43"
+    "pareto-fountain-pen": "^0.4.44"
   }
 }
