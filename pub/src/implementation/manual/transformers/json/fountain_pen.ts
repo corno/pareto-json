@@ -1,16 +1,16 @@
 import * as _p from 'pareto-core/dist/assign'
 
 //data types
-import * as d_in from "../../../../../interface/generated/liana/schemas/json/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/json/data"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 //dependencies
-import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted"
-import { serialize as s_decimal } from "../../../primitives/integer/fractional_decimal"
-import { serialize as s_scientific_notation } from "../../../primitives/approximate_number/scientific_notation"
+import { $$ as s_quoted } from "../../primitives/text/serializers/quoted"
+import { serialize as s_decimal } from "../../primitives/integer/fractional_decimal"
+import { serialize as s_scientific_notation } from "../../primitives/approximate_number/scientific_notation"
 
 const String = (
     $: string //FIX should have been a schema type
