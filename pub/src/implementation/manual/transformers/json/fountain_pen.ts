@@ -8,13 +8,11 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schem
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 //dependencies
-import { $$ as s_quoted } from "../../primitives/text/serializers/quoted"
-import { serialize as s_decimal } from "../../primitives/integer/fractional_decimal"
-import { serialize as s_scientific_notation } from "../../primitives/approximate_number/scientific_notation"
+import * as t_primitives_to_loc from "../primitives/list_of_characters"
 
 const String = (
     $: string //FIX should have been a schema type
-): d_out.Phrase => sh.ph.serialize(s_quoted($))
+): d_out.Phrase => sh.ph.serialize(t_primitives_to_loc.String($))
 
 export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
@@ -64,8 +62,8 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
         case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.ph.serialize(s_decimal($, { 'number of fractional digits': 0 })))
-                case 'float': return _p.ss($, ($) => sh.ph.serialize(s_scientific_notation($, { 'digits': 15 })))
+                case 'integer': return _p.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
+                case 'float': return _p.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
                 default: return _p.au($[0])
             }
         }))

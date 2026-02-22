@@ -1,6 +1,6 @@
 {
   "name": "pareto-json",
-  "version": "0.3.30",
+  "version": "0.3.31",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for building JSON values in Pareto-style which can then be serialized",
@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "astn-core": "^0.5.51",
-    "liana-core": "^0.0.24",
     "pareto-core-shorthands": "^0.2.20",
     "pareto-fountain-pen": "^0.4.46"
   }
