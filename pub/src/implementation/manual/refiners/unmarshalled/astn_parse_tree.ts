@@ -35,11 +35,11 @@ export const Boolean = (
                 switch ($[0]) {
                     case 'text': return _p.ss($, ($) => {
                         const text_value = $
-                        return _p.decide.state($.type, ($) => {
+                        return _p.decide.state($.token.type, ($) => {
                             switch ($[0]) {
-                                case 'undelimited': return _p.ss($, ($) => text_value.value === "true"
+                                case 'undelimited': return _p.ss($, ($) => text_value.token.value === "true"
                                     ? true
-                                    : text_value.value === "false"
+                                    : text_value.token.value === "false"
                                         ? false
                                         : abort(['json', {
                                             'type': ['not a boolean', null],
@@ -78,9 +78,9 @@ export const Null = (
                 switch ($[0]) {
                     case 'text': return _p.ss($, ($) => {
                         const text_value = $
-                        return _p.decide.state($.type, ($) => {
+                        return _p.decide.state($.token.type, ($) => {
                             switch ($[0]) {
-                                case 'undelimited': return _p.ss($, ($) => text_value.value === "null"
+                                case 'undelimited': return _p.ss($, ($) => text_value.token.value === "null"
                                     ? null
                                     : abort(['json', {
                                         'type': ['not a null', null],
@@ -119,11 +119,11 @@ export const Number = (
                 switch ($[0]) {
                     case 'text': return _p.ss($, ($) => {
                         const text_value = $
-                        return _p.decide.state($.type, ($) => {
+                        return _p.decide.state($.token.type, ($) => {
                             switch ($[0]) {
                                 case 'undelimited': return _p.ss($, ($) => r_primitives_from_loc.Float(
                                     _p_list_from_text(
-                                        text_value.value,
+                                        text_value.token.value,
                                         ($) => $,
                                     ),
                                     () => abort(['json', {
@@ -212,9 +212,9 @@ export const Optional_Null = (
                 switch ($[0]) {
                     case 'text': return _p.ss($, ($) => {
                         const text_value = $
-                        return _p.decide.state($.type, ($) => {
+                        return _p.decide.state($.token.type, ($) => {
                             switch ($[0]) {
-                                case 'undelimited': return _p.ss($, ($) => text_value.value === "null"
+                                case 'undelimited': return _p.ss($, ($) => text_value.token.value === "null"
                                     ? _p.optional.literal.not_set()
                                     : _p.optional.literal.set(value)
                                 )
@@ -263,12 +263,12 @@ export const String = (
         $,
         ($) => abort(['astn', $]),
     )
-    if (xxx.type[0] !== 'quoted') {
+    if (xxx.token.type[0] !== 'quoted') {
         return abort(['json', {
             'type': ['not a string', null],
             'range': t_astn_parse_tree_to_location.Value($),
         }])
     }
-    return xxx.value
+    return xxx.token.value
 }
 
