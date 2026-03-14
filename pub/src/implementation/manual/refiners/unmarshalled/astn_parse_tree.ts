@@ -236,7 +236,7 @@ export const Property = (
     $p: {
         'id': string
     }
-) => {
+): d_in.Value => {
     const dict = $
     return $.entries.__get_entry_deprecated(
         $p.id,
@@ -246,8 +246,15 @@ export const Property = (
                 'range': t_astn_parse_tree_to_location.Value(dict.value),
             }])
         }
-    ).value.__decide(
-        ($) => $.value,
+    ).assignment.__decide(
+        ($) => $.value.__decide(
+            ($) => $,
+            () => abort(['json', {
+                'type': ['missing property', $p.id],
+                'range': t_astn_parse_tree_to_location.Value(dict.value),
+            }])
+
+        ),
         () => abort(['json', {
             'type': ['missing property', $p.id],
             'range': t_astn_parse_tree_to_location.Value(dict.value),
