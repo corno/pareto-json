@@ -11,11 +11,16 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {
-                    'Position': (
+                `simple types`: {
+                    'Integer': (
                         `precision`: | `exact` (
                             `decimal separator offset`: _
-                            `type`: | `natural` ~
+                            `type`: | `integer` ~
+                        )
+                    )
+                    'Approximation': (
+                        `precision`: | `approximation` (
+                            `significant digits`: 16
                         )
                     )
                 }
@@ -88,21 +93,12 @@
                                         'integer': (
                                             `constraints`: _
                                             `description`: _
-                                            `value`: | `number` | `local` (
-                                                `precision`: | `exact` (
-                                                    `decimal separator offset`: _
-                                                    `type`: | `integer` ~
-                                                )
-                                            )
+                                            `value`: | `number` | `global` 'Integer'
                                         )
                                         'float': (
                                             `constraints`: _
                                             `description`: _
-                                            `value`: | `number` | `local` (
-                                                `precision`: | `approximation` (
-                                                    `significant digits`: 16
-                                                )
-                                            )
+                                            `value`: | `number` | `global` 'Approximation'
                                         )
                                     }
                                     `results`: _
