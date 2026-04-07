@@ -13,15 +13,22 @@
                 }
                 `simple types`: {
                     'Integer': (
-                        `precision`: | `exact` (
-                            `decimal separator offset`: _
-                            `type`: | `integer` ~
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
                         )
                     )
                     'Approximation': (
-                        `precision`: | `approximation` (
-                            `significant digits`: 16
+                        `type`: | `number` (
+                            `precision`: | `approximation` (
+                                `significant digits`: 16
+                            )
                         )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
                     )
                 }
             )
@@ -93,12 +100,12 @@
                                         'integer': (
                                             `constraints`: _
                                             `description`: _
-                                            `value`: | `number` | `global` 'Integer'
+                                            `value`: | `simple` | `global` 'Integer'
                                         )
                                         'float': (
                                             `constraints`: _
                                             `description`: _
-                                            `value`: | `number` | `global` 'Approximation'
+                                            `value`: | `simple` | `global` 'Approximation'
                                         )
                                     }
                                     `results`: _
@@ -112,7 +119,7 @@
                             'boolean': (
                                 `constraints`: _
                                 `description`: _
-                                `value`: | `boolean` ~
+                                `value`: | `simple` | `global` 'boolean'
                             )
                             'null': (
                                 `constraints`: _
