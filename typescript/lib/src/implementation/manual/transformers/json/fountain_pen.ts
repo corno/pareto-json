@@ -49,13 +49,16 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
         case 'array': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
             sh.ph.rich(
-                $.__l_map(($) => Value($)),
+                $.__l_map(($) => sh.ph.composed([
+                    sh.ph.literal(" "),
+                    Value($),
+                ])),
                 sh.ph.nothing(),
                 sh.ph.nothing(),
-                sh.ph.literal(", "),
+                sh.ph.literal(","),
                 sh.ph.nothing(),
             ),
-            sh.ph.literal("]"),
+            sh.ph.literal(" ]"),
         ]))
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
         case 'boolean': return _p.ss($, ($) => sh.ph.literal($ ? "true" : "false"))
