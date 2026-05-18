@@ -188,7 +188,7 @@ export const Object_Static = (
                 () => _p.optional.literal.set($.id.range)
             )
         )
-    ).filter(
+    ).map_optionally(
         ($) => $
     )
 
