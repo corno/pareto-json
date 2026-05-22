@@ -59,7 +59,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         }
 
         // Simple rounding using integer operations
-        const mantissa_scaled = _p.number.integer.divide(
+        const mantissa_scaled = _p.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
             {
@@ -75,7 +75,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
             do {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.number.integer.divide(
+                temp = _p.number.from.number.divide(
                     temp,
                     10,
                     {
@@ -123,7 +123,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
                 do {
                     const digit = exponent % 10
                     $i['add item'](digit)
-                    exponent = _p.number.integer.divide(
+                    exponent = _p.number.from.number.divide(
                         exponent,
                         10,
                         {
@@ -163,7 +163,7 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
         }
 
         // Split into integer and fractional parts
-        const integerPart = _p.number.integer.divide(
+        const integerPart = _p.number.from.number.divide(
             value,
             divisor,
             {
@@ -181,7 +181,7 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = _p.number.integer.divide(
+                    temp = _p.number.from.number.divide(
                         temp,
                         10,
                         {
@@ -209,7 +209,7 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.number.integer.divide(
+                temp = _p.number.from.number.divide(
                     temp,
                     10,
                     {
