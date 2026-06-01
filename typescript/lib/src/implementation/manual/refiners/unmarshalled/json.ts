@@ -122,7 +122,8 @@ export const Object_Static: _pi.Refiner<
     )
 
     return {
-        'properties': found_properties
+        'properties': found_properties,
+        'range': value.range
     }
 }
 
@@ -131,7 +132,7 @@ export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
     d_function.Error,
     d_in.Value,
     {
-        'expected properties': _pi.Dictionary<d_in_location.Range>
+        'expected properties': _pi.Dictionary<null>
     }
 > = ($, abort, $p) => {
 
@@ -184,16 +185,16 @@ export const Property: _pi.Refiner_With_Parameter<
     d_function.Error,
     d_in.Object_Static,
     {
-        'range': d_in_location.Range
         'key': string
     }
 > = ($, abort, $p) => {
+    const range = $.range
     return $.properties.__get_entry_deprecated(
         $p.key,
         {
             'no_such_entry': () => abort({
                 'type': ['missing property', $p.key],
-                'range': $p.range,
+                'range': range,
             })
         }
     )

@@ -34,10 +34,12 @@ export type Key_Value_Pair = {
 }
 
 export type Object = {
+    'dictionary': d_parse_tree.Value.type_.concrete.dictionary
     'entries': _pi.List<Key_Value_Pair>
 }
 
 export type Object_Static = {
+    'range': d_location.Range
     'properties': _pi.Dictionary<Key_Value_Pair>
 }
 

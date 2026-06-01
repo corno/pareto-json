@@ -23,6 +23,7 @@ export const Value: _pi.Refiner<
             case 'concrete': return _p.ss($, ($) => _p.decide.state($, ($): d_out.Value_Type => {
                 switch ($[0]) {
                     case 'dictionary': return _p.ss($, ($) => ['object', {
+                        'dictionary': $,
                         'entries': $.entries.__l_map(($) => ({
                             'key': $.id,
                             'value': $.assignment.__decide(
