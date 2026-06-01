@@ -199,3 +199,15 @@ export const Property: _pi.Refiner_With_Parameter<
         }
     )
 }
+
+export const Nullable_Value = (
+    $: d_in.Value,
+): _pi.Optional_Value<d_out.Value> => {
+    const value = $
+    return _p.decide.state($.type, ($) => {
+        switch ($[0]) {
+            case 'null': return _p.optional.literal.not_set()
+            default: return _p.optional.literal.set(value)
+        }
+    })
+}
