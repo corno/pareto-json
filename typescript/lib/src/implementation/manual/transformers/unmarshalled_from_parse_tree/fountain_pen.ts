@@ -12,7 +12,7 @@ import * as t_json_from_parse_tree_to_fountain_pen from "../json_from_parse_tree
 import * as t_unmarshalled_from_json_to_fountain_pen from "../unmarshalled_from_json/fountain_pen"
 
 
-export const Value = ($: d_in.Error): d_out.Phrase => _p.decide.state($, ($) => {
+export const Error = ($: d_in.Error): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'json': return _p.ss($, ($) => t_json_from_parse_tree_to_fountain_pen.Error($))
         case 'unmarshall':return _p.ss($, ($) => t_unmarshalled_from_json_to_fountain_pen.Error($))

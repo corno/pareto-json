@@ -1,5 +1,11 @@
+import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
+
 export type Error = {
-    'unexpected astn concept':
+    'range': d_location.Range
+    'type': Error_Type
+}
+
+export type Error_Type =
     | ['missing property', null]
     | ['apostrophed text', null]
     | ['backticked text', null]
@@ -10,4 +16,3 @@ export type Error = {
     | ['nothing', null]
     | ['optional', null]
     | ['state', null]
-}

@@ -10,7 +10,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 //dependencies
 
 
-export const Error = ($: d_in.Error): d_out.Phrase => _p.decide.state($['unexpected astn concept'], ($) => {
+export const Error = ($: d_in.Error): d_out.Phrase => _p.decide.state($.type, ($) => {
     switch ($[0]) {
         case 'missing property': return _p.ss($, ($) => sh.ph.literal("missing property"))
         case 'apostrophed text': return _p.ss($, ($) => sh.ph.literal("apostrophed text"))
