@@ -11,10 +11,13 @@ export type Error =
 export type JSON_Unmarshall_Error = {
     'type':
     | ['unexpected properties', _pi.Dictionary<d_astn_location.Range>]
+    | ['multiple properties with this key', string]
     | ['missing property', string]
+    | ['not an array', null]
     | ['not a string', null]
     | ['not a boolean', null]
     | ['not a null', null]
     | ['not a number', null]
+    | ['not an object', null]
     'range': d_astn_location.Range
 }

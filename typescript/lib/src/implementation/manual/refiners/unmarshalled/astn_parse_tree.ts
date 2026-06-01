@@ -14,7 +14,8 @@ import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/ma
 import * as r_primitives_from_loc from "../primitives/list_of_characters"
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
-export const Array = (
+
+export const Array_Dynamic = (
     $: d_in.Value,
     abort: _pi.Abort<d_function.Error>,
 ) => {
@@ -121,7 +122,7 @@ export const Number = (
                         const text_value = $
                         return _p.decide.state($.token.type, ($) => {
                             switch ($[0]) {
-                                case 'undelimited': return _p.ss($, ($) => r_primitives_from_loc.Float(
+                                case 'undelimited': return _p.ss($, ($) => r_primitives_from_loc.Number(
                                     _p_list_from_text(
                                         text_value.token.value,
                                         ($) => $,
@@ -130,7 +131,6 @@ export const Number = (
                                         'type': ['not a number', null],
                                         'range': t_astn_parse_tree_to_location.Value(value),
                                     }]),
-                                    { 'digits': 10 }
                                 ))
                                 default: return abort(['json', {
                                     'type': ['not a number', null],
@@ -153,17 +153,13 @@ export const Number = (
     })
 }
 
-export const ObjectX = (
+export const Object_Dynamic = (
     $: d_in.Value,
     abort: _pi.Abort<d_function.Error>,
-) => {
-    const properties = r_astn_unmarshalled_from_parse_tree.Dictionary(
-        $,
-        ($) => abort(['astn', $]),
-    )
-
-    return properties
-}
+) => r_astn_unmarshalled_from_parse_tree.Dictionary(
+    $,
+    ($) => abort(['astn', $]),
+)
 
 export const Object_Static = (
     $: d_in.Value,
