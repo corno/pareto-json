@@ -4,7 +4,7 @@ import * as _p from 'pareto-core/dist/assign'
 import * as d_in from "../../../../interface/to_be_generated/json"
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 import * as d_out from "../../../../interface/to_be_generated/json"
-import * as d_function from "../../../../interface/to_be_generated/unmarshall"
+import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 // The functionality in this file is similar to its sibling implementation; astn_parse_tree. I'm not sure yet which one will be preferred.
@@ -13,7 +13,7 @@ import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 export const Array: _pi.Refiner<
     d_out.Array,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -30,7 +30,7 @@ export const Array: _pi.Refiner<
 
 export const Boolean: _pi.Refiner<
     d_out.Boolean,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -47,7 +47,7 @@ export const Boolean: _pi.Refiner<
 
 export const Null: _pi.Refiner<
     d_out.Null,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -64,7 +64,7 @@ export const Null: _pi.Refiner<
 
 export const Number: _pi.Refiner<
     d_out.Number,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -81,7 +81,7 @@ export const Number: _pi.Refiner<
 
 export const Object: _pi.Refiner<
     d_out.Object,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -96,9 +96,75 @@ export const Object: _pi.Refiner<
     })
 }
 
+export const Object_Static: _pi.Refiner<
+    d_out.Object_Static,
+    d_function.Error,
+    d_in.Value
+> = ($, abort) => {
+    const value = $
+    const object = Object($, abort)
+
+    const found_properties = _p.dictionary.from.list(
+        object.entries
+    ).group(
+        ($) => $.key.token.value
+    ).__d_map(
+        ($, id) => _p.decide.list(
+            $
+        ).has_single_item(
+            ($) => $,
+            ($) => abort({
+                'type': ['multiple properties with this key', id],
+                'range': value.range
+            }),
+            () => _p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
+        )
+    )
+
+    return {
+        'properties': found_properties
+    }
+}
+
+export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
+    d_out.Object_No_Unexpected_Properties,
+    d_function.Error,
+    d_in.Value,
+    {
+        'expected properties': _pi.Dictionary<d_in_location.Range>
+    }
+> = ($, abort, $p) => {
+
+
+    const object = Object_Static($, abort)
+
+    const unexpected_properties = _p.dictionary.from.dictionary(
+        _p.dictionary.from.dictionary(
+            object.properties,
+        ).join(
+            $p['expected properties'],
+            ($, other, id): _pi.Optional_Value<d_in_location.Range> => _p.decide.optional(
+                other,
+                () => _p.optional.literal.not_set(),
+                () => _p.optional.literal.set($.key.range)
+            )
+        )
+    ).map_optionally(
+        ($) => $
+    )
+
+    if (unexpected_properties.__get_number_of_entries() > 0) {
+        return abort({
+            'range': $.range,
+            'type': ['unexpected properties', unexpected_properties],
+        })
+    }
+    return object
+}
+
 export const String: _pi.Refiner<
     d_out.String,
-    d_function.JSON_Unmarshall_Error,
+    d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
@@ -115,33 +181,20 @@ export const String: _pi.Refiner<
 
 export const Property: _pi.Refiner_With_Parameter<
     d_out.Property,
-    d_function.JSON_Unmarshall_Error,
-    d_in.Object,
+    d_function.Error,
+    d_in.Object_Static,
     {
         'range': d_in_location.Range
         'key': string
     }
 > = ($, abort, $p) => {
-    return _p.decide.list(
-        _p.dictionary.from.list(
-            $.entries
-        ).group(
-            ($) => $.key
-        ).__get_entry_deprecated(
-            $p.key,
-            {
-                'no_such_entry': () => abort({
-                    'type': ['missing property', $p.key],
-                    'range': $p.range,
-                })
-            }
-        )
-    ).has_single_item(
-        ($) => $.value,
-        () => abort({
-            'type': ['multiple properties with this key', $p.key],
-            'range': $p.range,
-        }),
-        () => _p_unreachable_code_path("the list is the result of a group, it cannot be empty")
+    return $.properties.__get_entry_deprecated(
+        $p.key,
+        {
+            'no_such_entry': () => abort({
+                'type': ['missing property', $p.key],
+                'range': $p.range,
+            })
+        }
     )
 }

@@ -24,7 +24,7 @@ export const Value: _pi.Refiner<
                 switch ($[0]) {
                     case 'dictionary': return _p.ss($, ($) => ['object', {
                         'entries': $.entries.__l_map(($) => ({
-                            'key': $.id.token.value,
+                            'key': $.id,
                             'value': $.assignment.__decide(
                                 ($) => $.value.__decide(
                                     ($) => Value($, abort),
