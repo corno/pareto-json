@@ -21,7 +21,7 @@ export const Array: _pi.Refiner<
         switch ($[0]) {
             case 'array': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not an array', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["array"])}],
                 'range': value.range,
             })
         }
@@ -38,7 +38,7 @@ export const Boolean: _pi.Refiner<
         switch ($[0]) {
             case 'boolean': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not a boolean', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["boolean"])}],
                 'range': value.range,
             })
         }
@@ -55,7 +55,7 @@ export const Null: _pi.Refiner<
         switch ($[0]) {
             case 'null': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not a null', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["null"])}],
                 'range': value.range,
             })
         }
@@ -72,7 +72,7 @@ export const Number: _pi.Refiner<
         switch ($[0]) {
             case 'number': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not a number', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["number"])}],
                 'range': value.range,
             })
         }
@@ -89,7 +89,7 @@ export const Object: _pi.Refiner<
         switch ($[0]) {
             case 'object': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not an object', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["object"])}],
                 'range': value.range,
             })
         }
@@ -98,10 +98,7 @@ export const Object: _pi.Refiner<
 
 export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
-    {
-        'range': d_in_location.Range
-        'unexpected properties': _pi.Dictionary<d_in_location.Range>
-    },
+    d_function.Error,
     d_out.Object_With_Unique_Keys,
     {
         'expected properties': _pi.Dictionary<null>
@@ -128,8 +125,11 @@ export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
 
     if (unexpected_properties.__get_number_of_entries() > 0) {
         return abort({
+            'type': ['unexpected properties', {
+                'expected properties': $p['expected properties'],
+                'unexpected properties': unexpected_properties,
+            }],
             'range': object.range,
-            'unexpected properties': unexpected_properties,
         })
     }
     return object
@@ -145,7 +145,7 @@ export const String: _pi.Refiner<
         switch ($[0]) {
             case 'string': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['not a string', null],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["string"])}],
                 'range': value.range,
             })
         }
