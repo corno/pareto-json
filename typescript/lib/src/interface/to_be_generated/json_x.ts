@@ -23,3 +23,5 @@ export type Null = d_json_with_parse_info.Null
 export type Number = d_json_with_parse_info.Number
 
 export type String = d_json_with_parse_info.String
+
+export type Nullable_Value = _pi.Optional_Value<d_json_with_parse_info.Value>
