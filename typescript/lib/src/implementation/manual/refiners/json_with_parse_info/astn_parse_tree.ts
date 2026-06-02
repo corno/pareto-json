@@ -66,19 +66,19 @@ export const Value: _pi.Refiner<
                             const x = $
                             return _p.decide.state($.token.type, ($): d_out.Value_Type => {
                                 switch ($[0]) {
-                                    case 'quoted': return _p.ss($, ($) => ['string', x.token.value])
+                                    case 'quoted': return _p.ss($, ($) => ['string', x])
                                     case 'apostrophed': return _p.ss($, ($) => abort({
                                         'range': range,
                                         'type': ['apostrophed text', null]
                                     }))
                                     case 'undelimited': return _p.ss($, ($): d_out.Value_Type => {
                                         return x.token.value === "null"
-                                            ? ['null', null]
+                                            ? ['null', x]
                                             : x.token.value === "true"
-                                                ? ['boolean', true]
+                                                ? ['boolean', { 'text': x, 'value': true }]
                                                 : x.token.value === "false"
-                                                    ? ['boolean', false]
-                                                    : ['number', r_primitives_from_loc.Number(
+                                                    ? ['boolean', { 'text': x, 'value': false }]
+                                                    : ['number', { 'text': x, 'value': r_primitives_from_loc.Number(
                                                         _p_list_from_text(
                                                             x.token.value,
                                                             ($) => $,
@@ -87,7 +87,7 @@ export const Value: _pi.Refiner<
                                                             'range': range,
                                                             'type': ['undelimited text', null]
                                                         }),
-                                                    )]
+                                                    )}]
                                     })
                                     case 'backticked': return _p.ss($, ($) => abort({
                                         'range': range,

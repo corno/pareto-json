@@ -16,13 +16,19 @@ export type Value_Type =
     | ['object', Object]
     | ['string', String]
 
-export type Null = null
+export type Null = d_parse_tree.Text
 
-export type String = string
+export type String = d_parse_tree.Text
 
-export type Boolean = boolean
+export type Boolean = {
+    'text': d_parse_tree.Text
+    'value': boolean
+}
 
-export type Number = number
+export type Number = {
+    'text': d_parse_tree.Text
+    'value': number
+}
 
 export type Array = {
     'items': _pi.List<Value>
