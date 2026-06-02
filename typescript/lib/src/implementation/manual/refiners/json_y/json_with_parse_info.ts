@@ -4,7 +4,7 @@ import * as _p from 'pareto-core/dist/assign'
 import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 import * as d_out from "../../../../interface/to_be_generated/json_x"
-import * as d_function from "../../../../interface/to_be_generated/json_y"
+import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 export const Object_With_Unique_Keys: _pi.Refiner<
@@ -24,7 +24,7 @@ export const Object_With_Unique_Keys: _pi.Refiner<
         ).has_single_item(
             ($) => $,
             ($) => abort({
-                'conflicting key': id,
+                'type': ['multiple properties with this key', id],
                 'range': object.dictionary['{'].range,
             }),
             () => _p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
