@@ -119,7 +119,7 @@ export const Object_No_Unexpected_Properties_From_Object: _pi.Refiner_With_Param
 > = ($, abort, $p) => {
 
 
-    const object = r_json_y.Object_With_Unique_Keys($, abort)
+    const object = r_json_y.Object_With_Unique_Keys_From_Object($, abort)
 
     const unexpected_properties = _p.dictionary.from.dictionary(
         _p.dictionary.from.dictionary(

@@ -6,7 +6,9 @@ import * as d_in from "../../../../interface/to_be_generated/json_with_parse_inf
 import * as d_out from "../../../../interface/to_be_generated/json_x"
 import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
 
-export const Object_With_Unique_Keys: _pi.Refiner<
+import * as r_json_x from "../json_x/json_with_parse_info"
+
+export const Object_With_Unique_Keys_From_Object: _pi.Refiner<
     d_out.Object_With_Unique_Keys,
     d_function.Error,
     d_in.Object
@@ -35,3 +37,12 @@ export const Object_With_Unique_Keys: _pi.Refiner<
         'range': object.dictionary['{'].range
     }
 }
+
+export const Object_With_Unique_Keys_From_Value: _pi.Refiner<
+    d_out.Object_With_Unique_Keys,
+    d_function.Error,
+    d_in.Value
+> = ($, abort) => Object_With_Unique_Keys_From_Object(
+    r_json_x.Object($, abort),
+    abort
+)
