@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core/dist/interface'
 
 //data types
-import * as d_out from "../../../../interface/to_be_generated/json"
+import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_function from "../../../../interface/to_be_generated/json_from_list_of_characters"
 import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 import * as d_parse_tree_from_list_of_characters from "astn-core/dist/interface/generated/liana/schemas/deserialize_parse_tree/data"

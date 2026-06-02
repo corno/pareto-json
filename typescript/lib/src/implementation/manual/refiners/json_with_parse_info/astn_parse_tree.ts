@@ -4,7 +4,7 @@ import _p_create_refinement_context from 'pareto-core/dist/__internals/async/cre
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 //data types
-import * as d_out from "../../../../interface/to_be_generated/json"
+import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
 import * as d_function from "../../../../interface/to_be_generated/json_from_parse_tree"
 
