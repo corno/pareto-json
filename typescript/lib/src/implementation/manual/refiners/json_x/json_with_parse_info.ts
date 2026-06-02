@@ -21,7 +21,7 @@ export const Array: _pi.Refiner<
         switch ($[0]) {
             case 'array': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["array"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["array"]) }],
                 'range': value.range,
             })
         }
@@ -38,7 +38,7 @@ export const Boolean: _pi.Refiner<
         switch ($[0]) {
             case 'boolean': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["boolean"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["boolean"]) }],
                 'range': value.range,
             })
         }
@@ -55,7 +55,7 @@ export const Null: _pi.Refiner<
         switch ($[0]) {
             case 'null': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["null"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["null"]) }],
                 'range': value.range,
             })
         }
@@ -72,7 +72,7 @@ export const Number: _pi.Refiner<
         switch ($[0]) {
             case 'number': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["number"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["number"]) }],
                 'range': value.range,
             })
         }
@@ -89,24 +89,37 @@ export const Object: _pi.Refiner<
         switch ($[0]) {
             case 'object': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["object"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["object"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
+export const Object_No_Unexpected_Properties_From_Value: _pi.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
-    d_out.Object_With_Unique_Keys,
+    d_in.Value,
+    {
+        'expected properties': _pi.Dictionary<null>
+    }
+> = ($, abort, $p) => Object_No_Unexpected_Properties_From_Object(
+    Object($, abort),
+    abort,
+    $p
+)
+
+export const Object_No_Unexpected_Properties_From_Object: _pi.Refiner_With_Parameter<
+    d_out.Object_No_Unexpected_Properties,
+    d_function.Error,
+    d_in.Object,
     {
         'expected properties': _pi.Dictionary<null>
     }
 > = ($, abort, $p) => {
 
 
-    const object = $
+    const object = r_json_y.Object_With_Unique_Keys($, abort)
 
     const unexpected_properties = _p.dictionary.from.dictionary(
         _p.dictionary.from.dictionary(
@@ -145,7 +158,7 @@ export const String: _pi.Refiner<
         switch ($[0]) {
             case 'string': return _p.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': _p.list.literal(["string"])}],
+                'type': ['unexpected type', { 'expected': _p.list.literal(["string"]) }],
                 'range': value.range,
             })
         }
