@@ -3,12 +3,12 @@ import * as _p from 'pareto-core/dist/assign'
 
 import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
-import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
+import * as d_out from "../../../../interface/to_be_generated/json_x"
 import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
-// The functionality in this file is similar to its sibling implementation; astn_parse_tree. I'm not sure yet which one will be preferred.
-//this one assumes that a parse tree is first converted into a JSON  value, and then the refiners are applied to it. The other one assumes that the refiners are applied directly to the parse tree, without an intermediate step. The second one is might be more efficient, but the implementation of this one is easier to understand.
+//dependencies
+import * as r_json_y from "../json_y/json_with_parse_info"
 
 
 export const Array: _pi.Refiner<
@@ -96,37 +96,6 @@ export const Object: _pi.Refiner<
     })
 }
 
-export const Object_Static: _pi.Refiner<
-    d_out.Object_Static,
-    d_function.Error,
-    d_in.Value
-> = ($, abort) => {
-    const value = $
-    const object = Object($, abort)
-
-    const found_properties = _p.dictionary.from.list(
-        object.entries
-    ).group(
-        ($) => $.key.token.value
-    ).__d_map(
-        ($, id) => _p.decide.list(
-            $
-        ).has_single_item(
-            ($) => $,
-            ($) => abort({
-                'type': ['multiple properties with this key', id],
-                'range': value.range
-            }),
-            () => _p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
-        )
-    )
-
-    return {
-        'properties': found_properties,
-        'range': value.range
-    }
-}
-
 export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
@@ -137,7 +106,13 @@ export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
 > = ($, abort, $p) => {
 
 
-    const object = Object_Static($, abort)
+    const object = r_json_y.Object_With_Unique_Keys(
+        Object($, abort),
+        ($) => abort({
+            'type': ['multiple properties with this key', $['conflicting key']],
+            'range': $['range'],
+        })
+    )
 
     const unexpected_properties = _p.dictionary.from.dictionary(
         _p.dictionary.from.dictionary(
@@ -183,7 +158,7 @@ export const String: _pi.Refiner<
 export const Property: _pi.Refiner_With_Parameter<
     d_out.Property,
     d_function.Error,
-    d_in.Object_Static,
+    d_out.Object_With_Unique_Keys,
     {
         'key': string
     }
@@ -200,14 +175,14 @@ export const Property: _pi.Refiner_With_Parameter<
     )
 }
 
-export const Nullable_Value = (
-    $: d_in.Value,
-): _pi.Optional_Value<d_out.Value> => {
-    const value = $
-    return _p.decide.state($.type, ($) => {
-        switch ($[0]) {
-            case 'null': return _p.optional.literal.not_set()
-            default: return _p.optional.literal.set(value)
-        }
-    })
-}
+// export const Nullable_Value = (
+//     $: d_in.Value,
+// ): _pi.Optional_Value<d_out.Value> => {
+//     const value = $
+//     return _p.decide.state($.type, ($) => {
+//         switch ($[0]) {
+//             case 'null': return _p.optional.literal.not_set()
+//             default: return _p.optional.literal.set(value)
+//         }
+//     })
+// }
