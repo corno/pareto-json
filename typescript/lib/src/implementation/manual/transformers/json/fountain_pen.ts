@@ -20,22 +20,11 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
             sh.ph.literal("{"),
             sh.ph.indent(
                 sh.pg.rich(
-                    _p.decide.state($, ($) => {
-                        switch ($[0]) {
-                            case 'dictionary': return _p.ss($, ($) => $.__to_list(($, id) => sh.sentence([
-                                String(id),
-                                sh.ph.literal(": "),
-                                Value($)
-                            ])))
-                            case 'key value array': return _p.ss($, ($) => $.__l_map(($) => sh.sentence([
-                                String($.key),
-                                sh.ph.literal(": "),
-                                Value($.value)
-                            ])))
-
-                            default: return _p.au($[0])
-                        }
-                    }),
+                    $.__l_map(($) => sh.sentence([
+                        String($.key),
+                        sh.ph.literal(": "),
+                        Value($.value)
+                    ])),
                     null,
                     false,
                     null,

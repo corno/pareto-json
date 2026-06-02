@@ -13,8 +13,8 @@ export namespace v {
     ): d_out.Value => ['null', null]
 
     export const object = (
-        members: _p.Raw_Or_Normal_Dictionary<d_out.Value.object_.dictionary.D>
-    ): d_out.Value => ['object', ['dictionary', _p.dictionary.literal(members)]]
+        members: _p.Raw_Or_Normal_List<d_out.Value.object_.L>
+    ): d_out.Value => ['object', _p.list.literal(members)]
 
     export const array = (
         elements: _p.Raw_Or_Normal_List<d_out.Value.array.L>

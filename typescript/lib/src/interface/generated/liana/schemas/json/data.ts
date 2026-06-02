@@ -15,38 +15,22 @@ export namespace Value_ {
     
     export namespace object_ {
         
-        export namespace key_value_array {
+        export namespace L {
             
-            export namespace L {
-                
-                export type key = string
-                
-                export type value = Value_
-                
-            }
+            export type key = string
             
-            export type L = {
-                readonly 'key': L.key
-                readonly 'value': L.value
-            }
+            export type value = Value_
             
         }
         
-        export type key_value_array = _pi.List<key_value_array.L>
-        
-        export namespace dictionary {
-            
-            export type D = Value_
-            
+        export type L = {
+            readonly 'key': L.key
+            readonly 'value': L.value
         }
-        
-        export type dictionary = _pi.Dictionary<dictionary.D>
         
     }
     
-    export type object_ = 
-        | readonly ['key value array', object_.key_value_array]
-        | readonly ['dictionary', object_.dictionary]
+    export type object_ = _pi.List<object_.L>
     
     export namespace number_ {
         
