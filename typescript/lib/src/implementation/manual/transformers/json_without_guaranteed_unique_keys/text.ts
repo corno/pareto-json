@@ -2,7 +2,7 @@ import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 
 //data types
-import * as d_in from "../../../../interface/generated/liana/schemas/json/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/json_without_guaranteed_unique_keys/data"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/text/data"
 import * as d_function_fp from "pareto-fountain-pen/dist/interface/to_be_generated/prose_serialize"
 

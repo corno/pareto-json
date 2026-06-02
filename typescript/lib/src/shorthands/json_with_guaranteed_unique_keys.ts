@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 
-import * as d_out from "../interface/generated/liana/schemas/json_with_unique_keys/data"
+import * as d_out from "../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data"
 
 
 export namespace v {
