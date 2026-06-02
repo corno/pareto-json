@@ -98,21 +98,18 @@ export const Object: _pi.Refiner<
 
 export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
-    d_function.Error,
-    d_in.Object,
+    {
+        'range': d_in_location.Range
+        'unexpected properties': _pi.Dictionary<d_in_location.Range>
+    },
+    d_out.Object_With_Unique_Keys,
     {
         'expected properties': _pi.Dictionary<null>
     }
 > = ($, abort, $p) => {
 
 
-    const object = r_json_y.Object_With_Unique_Keys(
-        $,
-        ($) => abort({
-            'type': ['multiple properties with this key', $['conflicting key']],
-            'range': $['range'],
-        })
-    )
+    const object = $
 
     const unexpected_properties = _p.dictionary.from.dictionary(
         _p.dictionary.from.dictionary(
@@ -132,7 +129,7 @@ export const Object_No_Unexpected_Properties: _pi.Refiner_With_Parameter<
     if (unexpected_properties.__get_number_of_entries() > 0) {
         return abort({
             'range': object.range,
-            'type': ['unexpected properties', unexpected_properties],
+            'unexpected properties': unexpected_properties,
         })
     }
     return object
