@@ -1,6 +1,6 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
 import * as pt from 'pareto-core/dist/assign'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
 //data types
 import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
@@ -11,7 +11,7 @@ import * as d_function from "../../../../interface/to_be_generated/json_from_par
 import * as r_primitives_from_loc from "../primitives/list_of_characters"
 import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/full_value_range"
 
-export const Value: pi.Refiner<
+export const Value: p_ri.Refiner<
     d_out.Value,
     d_function.Error,
     d_in.Value

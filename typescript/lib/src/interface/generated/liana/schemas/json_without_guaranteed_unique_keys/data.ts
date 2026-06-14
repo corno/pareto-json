@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 export type Document_ = Value_
 
@@ -11,7 +12,7 @@ export namespace Value_ {
         
     }
     
-    export type array = _pi.List<array.L>
+    export type array = p_di.List<array.L>
     
     export namespace object_ {
         
@@ -30,7 +31,7 @@ export namespace Value_ {
         
     }
     
-    export type object_ = _pi.List<object_.L>
+    export type object_ = p_di.List<object_.L>
     
     export namespace number_ {
         

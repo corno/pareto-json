@@ -1,4 +1,4 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as d_unmarshalled_from_json from "./unmarshalled_from_json"
 import * as d_json_from_parse_tree from "./json_from_parse_tree"

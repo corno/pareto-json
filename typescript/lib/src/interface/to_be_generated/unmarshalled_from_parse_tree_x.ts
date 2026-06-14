@@ -1,4 +1,4 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 import * as d_astn_unmarshall from "astn-core/dist/interface/to_be_generated/unmarshall"
 import * as d_astn_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
@@ -10,7 +10,7 @@ export type Error =
 
 export type JSON_Unmarshall_Error = {
     'type':
-    | ['unexpected properties', pi.Dictionary<d_astn_location.Range>]
+    | ['unexpected properties', p_di.Dictionary<d_astn_location.Range>]
     | ['missing property', string]
     | ['not a boolean', null]
     | ['not a null', null]

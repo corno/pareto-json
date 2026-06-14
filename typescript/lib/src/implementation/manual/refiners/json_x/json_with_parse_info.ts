@@ -1,17 +1,19 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 import * as pt from 'pareto-core/dist/assign'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
+
 
 import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 import * as d_out from "../../../../interface/to_be_generated/json_x"
 import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
-import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
 
 //dependencies
 import * as r_json_y from "../json_y/json_with_parse_info"
 
 
-export const Array: pi.Refiner<
+export const Array: p_ri.Refiner<
     d_out.Array,
     d_function.Error,
     d_in.Value
@@ -28,7 +30,7 @@ export const Array: pi.Refiner<
     })
 }
 
-export const Boolean: pi.Refiner<
+export const Boolean: p_ri.Refiner<
     d_out.Boolean,
     d_function.Error,
     d_in.Value
@@ -45,7 +47,7 @@ export const Boolean: pi.Refiner<
     })
 }
 
-export const Null: pi.Refiner<
+export const Null: p_ri.Refiner<
     d_out.Null,
     d_function.Error,
     d_in.Value
@@ -62,7 +64,7 @@ export const Null: pi.Refiner<
     })
 }
 
-export const Number: pi.Refiner<
+export const Number: p_ri.Refiner<
     d_out.Number,
     d_function.Error,
     d_in.Value
@@ -79,7 +81,7 @@ export const Number: pi.Refiner<
     })
 }
 
-export const Object: pi.Refiner<
+export const Object: p_ri.Refiner<
     d_out.Object,
     d_function.Error,
     d_in.Value
@@ -96,12 +98,12 @@ export const Object: pi.Refiner<
     })
 }
 
-export const Object_No_Unexpected_Properties_From_Value: pi.Refiner_With_Parameter<
+export const Object_No_Unexpected_Properties_From_Value: p_ri.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
     d_in.Value,
     {
-        'expected properties': pi.Dictionary<null>
+        'expected properties': p_di.Dictionary<null>
     }
 > = ($, abort, $p) => Object_No_Unexpected_Properties_From_Object(
     Object($, abort),
@@ -109,12 +111,12 @@ export const Object_No_Unexpected_Properties_From_Value: pi.Refiner_With_Paramet
     $p
 )
 
-export const Object_No_Unexpected_Properties_From_Object: pi.Refiner_With_Parameter<
+export const Object_No_Unexpected_Properties_From_Object: p_ri.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
     d_in.Object,
     {
-        'expected properties': pi.Dictionary<null>
+        'expected properties': p_di.Dictionary<null>
     }
 > = ($, abort, $p) => {
 
@@ -126,7 +128,7 @@ export const Object_No_Unexpected_Properties_From_Object: pi.Refiner_With_Parame
             object.properties,
         ).join(
             $p['expected properties'],
-            ($, other, id): pi.Optional_Value<d_in_location.Range> => pt.decide.optional(
+            ($, other, id): p_di.Optional_Value<d_in_location.Range> => pt.decide.optional(
                 other,
                 () => pt.optional.literal.not_set(),
                 () => pt.optional.literal.set($.key.range)
@@ -148,7 +150,7 @@ export const Object_No_Unexpected_Properties_From_Object: pi.Refiner_With_Parame
     return object
 }
 
-export const String: pi.Refiner<
+export const String: p_ri.Refiner<
     d_out.String,
     d_function.Error,
     d_in.Value
@@ -165,7 +167,7 @@ export const String: pi.Refiner<
     })
 }
 
-export const Property: pi.Refiner_With_Parameter<
+export const Property: p_ri.Refiner_With_Parameter<
     d_out.Property,
     d_function.Error,
     d_out.Object_With_Unique_Keys,

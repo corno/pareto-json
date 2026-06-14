@@ -1,4 +1,4 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as d_astn_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
@@ -8,16 +8,16 @@ export type Error = {
     | ['multiple properties with this key', string]
     | ['missing property', string]
     | ['unexpected type', {
-        'expected': pi.List<string>
+        'expected': p_di.List<string>
     }]
     | ['unexpected enum value', {
-        'expected': pi.List<string>
+        'expected': p_di.List<string>
     }]
     'range': d_astn_location.Range
 }
 
 
 export type Unexpected_Properties = {
-    'expected properties': pi.Dictionary<null>
-    'unexpected properties': pi.Dictionary<d_astn_location.Range>
+    'expected properties': p_di.Dictionary<null>
+    'unexpected properties': p_di.Dictionary<d_astn_location.Range>
 }

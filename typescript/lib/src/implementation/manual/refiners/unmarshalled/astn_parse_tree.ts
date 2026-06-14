@@ -1,4 +1,4 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as pt from 'pareto-core/dist/assign'
 
 // //data types
@@ -12,7 +12,7 @@
 // import * as r_astn_unmarshalled_from_parse_tree from "astn-core/dist/implementation/manual/refiners/unmarshalled/parse_tree"
 // import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/start_token_range"
 // import * as r_primitives_from_loc from "../primitives/list_of_characters"
-// import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+// import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
 
 // export const Array_Dynamic = (
@@ -165,7 +165,7 @@
 //     $: d_in.Value,
 //     abort: pi.Abort<d_function.Error>,
 //     $p: {
-//         'expected properties': pi.Dictionary<null>
+//         'expected properties': p_di.Dictionary<null>
 //     }
 // ) => {
 //     const dictionary = r_astn_unmarshalled_from_parse_tree.Dictionary(
@@ -178,7 +178,7 @@
 //             dictionary.entries,
 //         ).join(
 //             $p['expected properties'],
-//             ($, other, id): pi.Optional_Value<d_location.Range> => pt.decide.optional(
+//             ($, other, id): p_di.Optional_Value<d_location.Range> => pt.decide.optional(
 //                 other,
 //                 () => pt.optional.literal.not_set(),
 //                 () => pt.optional.literal.set($.id.range)
@@ -200,7 +200,7 @@
 
 // export const Optional_Null = (
 //     $: d_in.Value,
-// ): pi.Optional_Value<d_in.Value> => {
+// ): p_di.Optional_Value<d_in.Value> => {
 //     const value = $
 //     return pt.decide.state($.type, ($) => {
 //         switch ($[0]) {

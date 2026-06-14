@@ -1,4 +1,4 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 import * as d_parse_tree from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
@@ -31,7 +31,7 @@ export type Number = {
 }
 
 export type Array = {
-    'items': pi.List<Value>
+    'items': p_di.List<Value>
 }
 
 export type Key_Value_Pair = {
@@ -41,5 +41,5 @@ export type Key_Value_Pair = {
 
 export type Object = {
     'dictionary': d_parse_tree.Value.type_.concrete.dictionary
-    'entries': pi.List<Key_Value_Pair>
+    'entries': p_di.List<Key_Value_Pair>
 }
