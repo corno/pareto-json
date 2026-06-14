@@ -1,5 +1,5 @@
-// import * as _pi from 'pareto-core/dist/interface'
-// import * as _p from 'pareto-core/dist/assign'
+// import * as pi from 'pareto-core/dist/interface'
+// import * as pt from 'pareto-core/dist/assign'
 
 // //data types
 // import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
@@ -12,12 +12,12 @@
 // import * as r_astn_unmarshalled_from_parse_tree from "astn-core/dist/implementation/manual/refiners/unmarshalled/parse_tree"
 // import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/start_token_range"
 // import * as r_primitives_from_loc from "../primitives/list_of_characters"
-// import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+// import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 
 // export const Array_Dynamic = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ) => {
 //     return r_astn_unmarshalled_from_parse_tree.List(
 //         $,
@@ -27,18 +27,18 @@
 
 // export const Boolean = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ): boolean => {
 //     const value = $
-//     return _p.decide.state($.type, ($) => {
+//     return pt.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return _p.ss($, ($): boolean => _p.decide.state($, ($) => {
+//             case 'concrete': return pt.ss($, ($): boolean => pt.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return _p.ss($, ($) => {
+//                     case 'text': return pt.ss($, ($) => {
 //                         const text_value = $
-//                         return _p.decide.state($.token.type, ($) => {
+//                         return pt.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return _p.ss($, ($) => text_value.token.value === "true"
+//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "true"
 //                                     ? true
 //                                     : text_value.token.value === "false"
 //                                         ? false
@@ -70,18 +70,18 @@
 
 // export const Null = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ): null => {
 //     const value = $
-//     return _p.decide.state($.type, ($) => {
+//     return pt.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return _p.ss($, ($): null => _p.decide.state($, ($) => {
+//             case 'concrete': return pt.ss($, ($): null => pt.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return _p.ss($, ($) => {
+//                     case 'text': return pt.ss($, ($) => {
 //                         const text_value = $
-//                         return _p.decide.state($.token.type, ($) => {
+//                         return pt.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return _p.ss($, ($) => text_value.token.value === "null"
+//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "null"
 //                                     ? null
 //                                     : abort(['json', {
 //                                         'type': ['not a null', null],
@@ -111,19 +111,19 @@
 
 // export const Number = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ): number => {
 //     const value = $
-//     return _p.decide.state($.type, ($) => {
+//     return pt.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return _p.ss($, ($) => _p.decide.state($, ($) => {
+//             case 'concrete': return pt.ss($, ($) => pt.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return _p.ss($, ($) => {
+//                     case 'text': return pt.ss($, ($) => {
 //                         const text_value = $
-//                         return _p.decide.state($.token.type, ($) => {
+//                         return pt.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return _p.ss($, ($) => r_primitives_from_loc.Number(
-//                                     _p_list_from_text(
+//                                 case 'undelimited': return pt.ss($, ($) => r_primitives_from_loc.Number(
+//                                     p_list_from_text(
 //                                         text_value.token.value,
 //                                         ($) => $,
 //                                     ),
@@ -155,7 +155,7 @@
 
 // export const Object_Dynamic = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ) => r_astn_unmarshalled_from_parse_tree.Dictionary(
 //     $,
 //     ($) => abort(['astn', $]),
@@ -163,9 +163,9 @@
 
 // export const Object_Static = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 //     $p: {
-//         'expected properties': _pi.Dictionary<null>
+//         'expected properties': pi.Dictionary<null>
 //     }
 // ) => {
 //     const dictionary = r_astn_unmarshalled_from_parse_tree.Dictionary(
@@ -173,15 +173,15 @@
 //         ($) => abort(['astn', $]),
 //     )
 
-//     const unexpected_properties = _p.dictionary.from.dictionary(
-//         _p.dictionary.from.dictionary(
+//     const unexpected_properties = pt.dictionary.from.dictionary(
+//         pt.dictionary.from.dictionary(
 //             dictionary.entries,
 //         ).join(
 //             $p['expected properties'],
-//             ($, other, id): _pi.Optional_Value<d_location.Range> => _p.decide.optional(
+//             ($, other, id): pi.Optional_Value<d_location.Range> => pt.decide.optional(
 //                 other,
-//                 () => _p.optional.literal.not_set(),
-//                 () => _p.optional.literal.set($.id.range)
+//                 () => pt.optional.literal.not_set(),
+//                 () => pt.optional.literal.set($.id.range)
 //             )
 //         )
 //     ).map_optionally(
@@ -200,35 +200,35 @@
 
 // export const Optional_Null = (
 //     $: d_in.Value,
-// ): _pi.Optional_Value<d_in.Value> => {
+// ): pi.Optional_Value<d_in.Value> => {
 //     const value = $
-//     return _p.decide.state($.type, ($) => {
+//     return pt.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return _p.ss($, ($) => _p.decide.state($, ($) => {
+//             case 'concrete': return pt.ss($, ($) => pt.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return _p.ss($, ($) => {
+//                     case 'text': return pt.ss($, ($) => {
 //                         const text_value = $
-//                         return _p.decide.state($.token.type, ($) => {
+//                         return pt.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return _p.ss($, ($) => text_value.token.value === "null"
-//                                     ? _p.optional.literal.not_set()
-//                                     : _p.optional.literal.set(value)
+//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "null"
+//                                     ? pt.optional.literal.not_set()
+//                                     : pt.optional.literal.set(value)
 //                                 )
-//                                 default: return _p.optional.literal.set(value)
+//                                 default: return pt.optional.literal.set(value)
 //                             }
 //                         })
 //                     })
-//                     default: return _p.optional.literal.set(value)
+//                     default: return pt.optional.literal.set(value)
 //                 }
 //             }))
-//             default: return _p.optional.literal.set(value)
+//             default: return pt.optional.literal.set(value)
 //         }
 //     })
 // }
 
 // export const Property = (
 //     $: d_astn_unmarshalled.Dictionary,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 //     $p: {
 //         'id': string
 //     }
@@ -260,7 +260,7 @@
 
 // export const String = (
 //     $: d_in.Value,
-//     abort: _pi.Abort<d_function.Error>,
+//     abort: pi.Abort<d_function.Error>,
 // ) => {
 //     const xxx = r_astn_unmarshalled_from_parse_tree.Text(
 //         $,

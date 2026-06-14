@@ -1,4 +1,4 @@
-import * as _pi from 'pareto-core/dist/interface'
+import * as pi from 'pareto-core/dist/interface'
 
 import * as d_json_with_parse_info from "./json_with_parse_info"
 import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
@@ -7,7 +7,7 @@ export type Object = d_json_with_parse_info.Object
 
 export type Object_With_Unique_Keys = {
     'range': d_location.Range
-    'properties': _pi.Dictionary<d_json_with_parse_info.Key_Value_Pair>
+    'properties': pi.Dictionary<d_json_with_parse_info.Key_Value_Pair>
 }
 
 export type Object_No_Unexpected_Properties = Object_With_Unique_Keys
@@ -24,4 +24,4 @@ export type Number = d_json_with_parse_info.Number
 
 export type String = d_json_with_parse_info.String
 
-export type Nullable_Value = _pi.Optional_Value<d_json_with_parse_info.Value>
+export type Nullable_Value = pi.Optional_Value<d_json_with_parse_info.Value>

@@ -1,4 +1,4 @@
-import * as _pi from 'pareto-core/dist/interface'
+import * as pi from 'pareto-core/dist/interface'
 
 //data types
 import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
@@ -10,7 +10,7 @@ import * as d_parse_tree_from_list_of_characters from "astn-core/dist/interface/
 import * as r_from_parse_tree from "./astn_parse_tree"
 import * as r_astn_parse_tree_from_list_of_characters from "astn-core/dist/implementation/manual/refiners/parse_tree/list_of_characters"
 
-export type Value = _pi.Refiner_With_Parameter<
+export type Value = pi.Refiner_With_Parameter<
     d_out.Value,
     d_function.Error,
     d_in.List_of_Characters,

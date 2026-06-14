@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/assign'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data"
@@ -14,9 +14,9 @@ const String = (
     $: string //FIX should have been a schema type
 ): d_out.Phrase => sh.ph.serialize(t_primitives_to_loc.String($))
 
-export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => {
+export const Value = ($: d_in.Value): d_out.Phrase => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'object': return _p.ss($, ($) => sh.ph.composed([
+        case 'object': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.literal("{"),
             sh.ph.indent(
                 sh.pg.rich(
@@ -35,7 +35,7 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
             ),
             sh.ph.literal("}"),
         ]))
-        case 'array': return _p.ss($, ($) => sh.ph.composed([
+        case 'array': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
             sh.ph.rich(
                 $.__l_map(($) => sh.ph.composed([
@@ -49,18 +49,18 @@ export const Value = ($: d_in.Value): d_out.Phrase => _p.decide.state($, ($) => 
             ),
             sh.ph.literal(" ]"),
         ]))
-        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
-        case 'boolean': return _p.ss($, ($) => sh.ph.literal($ ? "true" : "false"))
-        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
-        case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'null': return pt.ss($, ($) => sh.ph.literal("null"))
+        case 'boolean': return pt.ss($, ($) => sh.ph.literal($ ? "true" : "false"))
+        case 'null': return pt.ss($, ($) => sh.ph.literal("null"))
+        case 'number': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
-                case 'float': return _p.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
-                default: return _p.au($[0])
+                case 'integer': return pt.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
+                case 'float': return pt.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
+                default: return pt.au($[0])
             }
         }))
-        case 'string': return _p.ss($, ($) => String($))
-        default: return _p.au($[0])
+        case 'string': return pt.ss($, ($) => String($))
+        default: return pt.au($[0])
     }
 })
 

@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/assign'
 
 //data types
 import * as d_in from "../../../../interface/to_be_generated/unmarshalled_from_parse_tree"
@@ -12,11 +12,11 @@ import * as t_json_from_parse_tree_to_fountain_pen from "../json_from_parse_tree
 import * as t_unmarshalled_from_json_to_fountain_pen from "../unmarshalled_from_json/fountain_pen"
 
 
-export const Error = ($: d_in.Error): d_out.Phrase => _p.decide.state($, ($) => {
+export const Error = ($: d_in.Error): d_out.Phrase => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'json': return _p.ss($, ($) => t_json_from_parse_tree_to_fountain_pen.Error($))
-        case 'unmarshall':return _p.ss($, ($) => t_unmarshalled_from_json_to_fountain_pen.Error($))
+        case 'json': return pt.ss($, ($) => t_json_from_parse_tree_to_fountain_pen.Error($))
+        case 'unmarshall':return pt.ss($, ($) => t_unmarshalled_from_json_to_fountain_pen.Error($))
         
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })

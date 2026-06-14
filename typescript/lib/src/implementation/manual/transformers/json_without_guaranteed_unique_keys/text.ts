@@ -1,5 +1,5 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/json_without_guaranteed_unique_keys/data"
@@ -12,7 +12,7 @@ import * as t_to_fp from "./fountain_pen"
 import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/text"
 
 
-export const Value: _pi.Transformer_With_Parameter<d_in.Value, d_out.Text, d_function_fp.Parameters> = ($, $p) => t_fp_to_text.Phrase(
+export const Value: pi.Transformer_With_Parameter<d_in.Value, d_out.Text, d_function_fp.Parameters> = ($, $p) => t_fp_to_text.Phrase(
     t_to_fp.Value($),
     $p
 )

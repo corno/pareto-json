@@ -1,6 +1,6 @@
-import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/assign'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as pi from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/assign'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
 import * as d_out from "../../../../interface/to_be_generated/json_x"
@@ -8,19 +8,19 @@ import * as d_function from "../../../../interface/to_be_generated/unmarshalled_
 
 import * as r_json_x from "../json_x/json_with_parse_info"
 
-export const Object_With_Unique_Keys_From_Object: _pi.Refiner<
+export const Object_With_Unique_Keys_From_Object: pi.Refiner<
     d_out.Object_With_Unique_Keys,
     d_function.Error,
     d_in.Object
 > = ($, abort) => {
     const object = $
 
-    const found_properties = _p.dictionary.from.list(
+    const found_properties = pt.dictionary.from.list(
         object.entries
     ).group(
         ($) => $.key.token.value
     ).__d_map(
-        ($, id) => _p.decide.list(
+        ($, id) => pt.decide.list(
             $
         ).has_single_item(
             ($) => $,
@@ -28,7 +28,7 @@ export const Object_With_Unique_Keys_From_Object: _pi.Refiner<
                 'type': ['multiple properties with this key', id],
                 'range': object.dictionary['{'].range,
             }),
-            () => _p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
+            () => p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
         )
     )
 
@@ -38,7 +38,7 @@ export const Object_With_Unique_Keys_From_Object: _pi.Refiner<
     }
 }
 
-export const Object_With_Unique_Keys_From_Value: _pi.Refiner<
+export const Object_With_Unique_Keys_From_Value: pi.Refiner<
     d_out.Object_With_Unique_Keys,
     d_function.Error,
     d_in.Value

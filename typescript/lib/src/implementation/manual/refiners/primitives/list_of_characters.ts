@@ -1,11 +1,11 @@
-import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-import * as _p from 'pareto-core/dist/assign'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import * as _pi from 'pareto-core/dist/interface'
+import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as pt from 'pareto-core/dist/assign'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import * as pi from 'pareto-core/dist/interface'
 
 import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
-export const Number: _pi.Refiner<
+export const Number: pi.Refiner<
     number,
     string,
     d_in.List_of_Characters

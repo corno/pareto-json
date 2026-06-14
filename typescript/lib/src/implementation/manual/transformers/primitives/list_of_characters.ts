@@ -1,13 +1,13 @@
-import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-import * as _p from 'pareto-core/dist/assign'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import * as _pi from 'pareto-core/dist/interface'
+import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as pt from 'pareto-core/dist/assign'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import * as pi from 'pareto-core/dist/interface'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
-export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'digits': number }> = ($, $p) => {
-    return _p_list_build_deprecated(($i) => {
+export const Float: pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'digits': number }> = ($, $p) => {
+    return p_list_build_deprecated(($i) => {
         // Handle special case for zero in scientific notation
         if ($ === 0) {
             $i['add item'](48) // '0'
@@ -59,17 +59,17 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         }
 
         // Simple rounding using integer operations
-        const mantissa_scaled = _p.number.from.number.divide(
+        const mantissa_scaled = pt.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
             ['towards zero', null],
             {
-                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1")
+                divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 1")
             }
         )
 
         // Convert mantissa to string
-        const digits = _p_list_build_deprecated<number>(
+        const digits = p_list_build_deprecated<number>(
             ($i) => {
                 let temp = mantissa_scaled
                 // temp is always > 0 here since mantissa_scaled = integer_division(mantissa * scale_factor + 0.5, 1)
@@ -77,12 +77,12 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
                 do {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = _p.number.from.number.divide(
+                    temp = pt.number.from.number.divide(
                         temp,
                         10,
                         ['towards zero', null],
                         {
-                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                            divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10")
                         }
                     )
                 } while (temp > 0)
@@ -92,7 +92,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         // Add leading digit
         const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
             ($) => $,
-            () => _p_unreachable_code_path("index cannot be out of bounds")
+            () => p_unreachable_code_path("index cannot be out of bounds")
         )
         $i['add item'](48 + first_digit) // First digit
 
@@ -104,7 +104,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
             for (let j = digits.__get_number_of_items() - 2; j >= 0; j--) {
                 const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
-                    () => _p_unreachable_code_path("index cannot be out of bounds")
+                    () => p_unreachable_code_path("index cannot be out of bounds")
                 )
                 $i['add item'](48 + digit)
             }
@@ -120,7 +120,7 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         }
 
         // Convert exponent to string
-        const exp_digits = _p_list_build_deprecated<number>(
+        const exp_digits = p_list_build_deprecated<number>(
             ($i) => {
                 if (exponent === 0) {
                     $i['add item'](0)
@@ -128,12 +128,12 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
                     do {
                         const digit = exponent % 10
                         $i['add item'](digit)
-                        exponent = _p.number.from.number.divide(
+                        exponent = pt.number.from.number.divide(
                             exponent,
                             10,
                             ['towards zero', null],
                             {
-                                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                                divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10")
                             }
                         )
                     } while (exponent > 0)
@@ -145,16 +145,16 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
             const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path("index cannot be out of bounds")
+                () => p_unreachable_code_path("index cannot be out of bounds")
             )
             $i['add item'](48 + digit)
         }
     })
 }
 
-export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'number of fractional digits': number }> = ($, $p) => {
+export const Fractional_Decimal: pi.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'number of fractional digits': number }> = ($, $p) => {
 
-    return _p_list_build_deprecated<number>(($i) => {
+    return p_list_build_deprecated<number>(($i) => {
         let value = $
 
         // Handle negative numbers
@@ -170,18 +170,18 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
         }
 
         // Split into integer and fractional parts
-        const integerPart = _p.number.from.number.divide(
+        const integerPart = pt.number.from.number.divide(
             value,
             divisor,
             ['towards zero', null],
             {
-                divided_by_zero: () => _p_unreachable_code_path("the divisor is starting at 1 and is multiplied by 10 in each iteration, so it cannot be zero")
+                divided_by_zero: () => p_unreachable_code_path("the divisor is starting at 1 and is multiplied by 10 in each iteration, so it cannot be zero")
             }
         )
         const fractionalPart = value % divisor
 
         // Generate integer part digits
-        const integerDigits = _p_list_build_deprecated<number>(($i) => {
+        const integerDigits = p_list_build_deprecated<number>(($i) => {
             let temp = integerPart
             if (temp === 0) {
                 $i['add item'](0)
@@ -189,12 +189,12 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = _p.number.from.number.divide(
+                    temp = pt.number.from.number.divide(
                         temp,
                         10,
                         ['towards zero', null],
                         {
-                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                            divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10")
                         }
                     )
                 }
@@ -205,7 +205,7 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
         for (let j = integerDigits.__get_number_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + integerDigits.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path("index cannot be out of bounds")
+                () => p_unreachable_code_path("index cannot be out of bounds")
             ))
         }
 
@@ -213,17 +213,17 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
         $i['add item'](46) // '.'
 
         // Generate fractional part digits
-        const fractionalDigits_list = _p_list_build_deprecated<number>(($i) => {
+        const fractionalDigits_list = p_list_build_deprecated<number>(($i) => {
             let temp = fractionalPart
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = _p.number.from.number.divide(
+                temp = pt.number.from.number.divide(
                     temp,
                     10,
                     ['towards zero', null],
                     {
-                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10")
                     }
                 )
             }
@@ -233,7 +233,7 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
         for (let j = fractionalDigits_list.__get_number_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + fractionalDigits_list.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path("index cannot be out of bounds")
+                () => p_unreachable_code_path("index cannot be out of bounds")
             ))
         }
     })
@@ -241,62 +241,62 @@ export const Fractional_Decimal: _pi.Transformer_With_Parameter<number, d_out.Li
 
 export const String = (
     $: string,
-): d_out.List_of_Characters => _p.list.nested_literal_old([
+): d_out.List_of_Characters => pt.list.nested_literal_old([
     [
         0x22, // "
     ],
-    _p.list.from.list(
-        _p_list_from_text($, ($) => $),
+    pt.list.from.list(
+        p_list_from_text($, ($) => $),
     ).flatten(
-        ($): _pi.List<number> => {
+        ($): pi.List<number> => {
             switch ($) {
                 case 0x2F: // slash (\/)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5c, // \
                         0x2f, // /
                     ])
                 case 0x22: // " (\")
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x22, // "
                     ])
                 case 0x5C: // \ (\\)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x5C, // \
                     ])
                 case 0x08: // backspace (\b)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x62, // b
                     ])
                 case 0x0C: // form feed (\f)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x66, // f
                     ])
                 case 0x0A: // line feed (\n)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x6E, // n
                     ])
                 case 0x0D: // carriage return (\r)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x72, // r
                     ])
                 case 0x09: // horizontal tab (\t)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x74, // t
                     ])
                 case 0x0B: // vertical tab (\v)
-                    return _p.list.literal([
+                    return pt.list.literal([
                         0x5C, // \
                         0x76, // v
                     ])
                 default: {
-                    return _p.list.literal([
+                    return pt.list.literal([
                         $,
                     ])
                 }
