@@ -26,12 +26,16 @@ export const Error = ($: d_in.Error): d_out.Phrase => _p.decide.state($.type, ($
         case 'unexpected type': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("unexpected type, expected:"),
             sh.ph.indent(
-                sh.pg.sentences($.expected.__l_map(($) => sh.sentence([
-                    sh.ph.literal($),
-                ])))
+                sh.pg.sentences(
+                    $.expected.__l_map(
+                        ($) => sh.sentence([
+                            sh.ph.literal($),
+                        ])
+                    )
+                )
             ),
         ]))
-        case 'unexpected enum value':return _p.ss($, ($) => sh.ph.composed([
+        case 'unexpected enum value': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("unexpected enum value, expected:"),
             sh.ph.indent(
                 sh.pg.sentences($.expected.__l_map(($) => sh.sentence([

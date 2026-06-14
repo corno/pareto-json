@@ -69,23 +69,25 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         )
 
         // Convert mantissa to string
-        const digits = _p_list_build_deprecated<number>(($i) => {
-            let temp = mantissa_scaled
-            // temp is always > 0 here since mantissa_scaled = integer_division(mantissa * scale_factor + 0.5, 1)
-            // where mantissa >= 1.0 (normalized) and scale_factor >= 1, so result >= 1
-            do {
-                const digit = temp % 10
-                $i['add item'](digit)
-                temp = _p.number.from.number.divide(
-                    temp,
-                    10,
-                    ['towards zero', null],
-                    {
-                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
-                    }
-                )
-            } while (temp > 0)
-        })
+        const digits = _p_list_build_deprecated<number>(
+            ($i) => {
+                let temp = mantissa_scaled
+                // temp is always > 0 here since mantissa_scaled = integer_division(mantissa * scale_factor + 0.5, 1)
+                // where mantissa >= 1.0 (normalized) and scale_factor >= 1, so result >= 1
+                do {
+                    const digit = temp % 10
+                    $i['add item'](digit)
+                    temp = _p.number.from.number.divide(
+                        temp,
+                        10,
+                        ['towards zero', null],
+                        {
+                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        }
+                    )
+                } while (temp > 0)
+            }
+        )
 
         // Add leading digit
         const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
@@ -118,24 +120,26 @@ export const Float: _pi.Transformer_With_Parameter<number, d_out.List_of_Charact
         }
 
         // Convert exponent to string
-        const exp_digits = _p_list_build_deprecated<number>(($i) => {
-            if (exponent === 0) {
-                $i['add item'](0)
-            } else {
-                do {
-                    const digit = exponent % 10
-                    $i['add item'](digit)
-                    exponent = _p.number.from.number.divide(
-                        exponent,
-                        10,
-                        ['towards zero', null],
-                        {
-                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
-                        }
-                    )
-                } while (exponent > 0)
+        const exp_digits = _p_list_build_deprecated<number>(
+            ($i) => {
+                if (exponent === 0) {
+                    $i['add item'](0)
+                } else {
+                    do {
+                        const digit = exponent % 10
+                        $i['add item'](digit)
+                        exponent = _p.number.from.number.divide(
+                            exponent,
+                            10,
+                            ['towards zero', null],
+                            {
+                                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                            }
+                        )
+                    } while (exponent > 0)
+                }
             }
-        })
+        )
 
         // Add exponent digits in reverse order
         for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
