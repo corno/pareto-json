@@ -17,7 +17,7 @@
 
 // export const Array_Dynamic = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ) => {
 //     return r_astn_unmarshalled_from_parse_tree.List(
 //         $,
@@ -27,7 +27,7 @@
 
 // export const Boolean = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ): boolean => {
 //     const value = $
 //     return pt.decide.state($.type, ($) => {
@@ -70,7 +70,7 @@
 
 // export const Null = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ): null => {
 //     const value = $
 //     return pt.decide.state($.type, ($) => {
@@ -111,7 +111,7 @@
 
 // export const Number = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ): number => {
 //     const value = $
 //     return pt.decide.state($.type, ($) => {
@@ -155,7 +155,7 @@
 
 // export const Object_Dynamic = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ) => r_astn_unmarshalled_from_parse_tree.Dictionary(
 //     $,
 //     ($) => abort(['astn', $]),
@@ -163,7 +163,7 @@
 
 // export const Object_Static = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 //     $p: {
 //         'expected properties': p_di.Dictionary<null>
 //     }
@@ -228,7 +228,7 @@
 
 // export const Property = (
 //     $: d_astn_unmarshalled.Dictionary,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 //     $p: {
 //         'id': string
 //     }
@@ -260,7 +260,7 @@
 
 // export const String = (
 //     $: d_in.Value,
-//     abort: pi.Abort<d_function.Error>,
+//     abort: p_i.Abort<d_function.Error>,
 // ) => {
 //     const xxx = r_astn_unmarshalled_from_parse_tree.Text(
 //         $,
