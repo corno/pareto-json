@@ -1,6 +1,7 @@
-import * as p_di from 'pareto-core/dist/data/interface'
-import * as pt from 'pareto-core/dist/assign'
-import * as p_ri from 'pareto-core/dist/refiner/interface'
+import * as p_ from 'pareto-core/dist/implementation/refiner'
+import * as p_temp from 'pareto-core/dist/assign'
+import * as p_i from 'pareto-core/dist/interface/refiner'
+import * as p_di from 'pareto-core/dist/interface/data'
 
 
 import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
@@ -12,92 +13,92 @@ import * as d_function from "../../../../interface/to_be_generated/unmarshalled_
 import * as r_json_y from "../json_y/json_with_parse_info"
 
 
-export const Array: p_ri.Refiner<
+export const Array: p_i.Refiner<
     d_out.Array,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'array': return pt.ss($, ($) => $)
+            case 'array': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["array"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["array"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Boolean: p_ri.Refiner<
+export const Boolean: p_i.Refiner<
     d_out.Boolean,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'boolean': return pt.ss($, ($) => $)
+            case 'boolean': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["boolean"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["boolean"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Null: p_ri.Refiner<
+export const Null: p_i.Refiner<
     d_out.Null,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'null': return pt.ss($, ($) => $)
+            case 'null': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["null"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["null"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Number: p_ri.Refiner<
+export const Number: p_i.Refiner<
     d_out.Number,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'number': return pt.ss($, ($) => $)
+            case 'number': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["number"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["number"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Object: p_ri.Refiner<
+export const Object: p_i.Refiner<
     d_out.Object,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'object': return pt.ss($, ($) => $)
+            case 'object': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["object"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["object"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Object_No_Unexpected_Properties_From_Value: p_ri.Refiner_With_Parameter<
+export const Object_No_Unexpected_Properties_From_Value: p_i.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
     d_in.Value,
@@ -110,7 +111,7 @@ export const Object_No_Unexpected_Properties_From_Value: p_ri.Refiner_With_Param
     $p
 )
 
-export const Object_No_Unexpected_Properties_From_Object: p_ri.Refiner_With_Parameter<
+export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Parameter<
     d_out.Object_No_Unexpected_Properties,
     d_function.Error,
     d_in.Object,
@@ -122,15 +123,15 @@ export const Object_No_Unexpected_Properties_From_Object: p_ri.Refiner_With_Para
 
     const object = r_json_y.Object_With_Unique_Keys_From_Object($, abort)
 
-    const unexpected_properties = pt.dictionary.from.dictionary(
-        pt.dictionary.from.dictionary(
+    const unexpected_properties = p_temp.dictionary.from.dictionary(
+        p_temp.dictionary.from.dictionary(
             object.properties,
         ).join(
             $p['expected properties'],
-            ($, other, id): p_di.Optional_Value<d_in_location.Range> => pt.decide.optional(
+            ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_.decide.optional(
                 other,
-                () => pt.literal.not_set(),
-                () => pt.literal.set($.key.range)
+                () => p_.literal.not_set(),
+                () => p_.literal.set($.key.range)
             )
         )
     ).map_optionally(
@@ -149,24 +150,24 @@ export const Object_No_Unexpected_Properties_From_Object: p_ri.Refiner_With_Para
     return object
 }
 
-export const String: p_ri.Refiner<
+export const String: p_i.Refiner<
     d_out.String,
     d_function.Error,
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'string': return pt.ss($, ($) => $)
+            case 'string': return p_.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.literal.list(["string"]) }],
+                'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
                 'range': value.range,
             })
         }
     })
 }
 
-export const Property: p_ri.Refiner_With_Parameter<
+export const Property: p_i.Refiner_With_Parameter<
     d_out.Property,
     d_function.Error,
     d_out.Object_With_Unique_Keys,
@@ -190,10 +191,10 @@ export const Nullable_Value = (
     $: d_in.Value,
 ): d_out.Nullable_Value => {
     const value = $
-    return pt.decide.state($.type, ($) => {
+    return p_.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'null': return pt.literal.not_set()
-            default: return pt.literal.set(value)
+            case 'null': return p_.literal.not_set()
+            default: return p_.literal.set(value)
         }
     })
 }

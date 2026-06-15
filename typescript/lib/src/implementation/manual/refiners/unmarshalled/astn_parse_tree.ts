@@ -1,4 +1,3 @@
-// import * as pt from 'pareto-core/dist/assign'
 
 // //data types
 // import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
@@ -11,7 +10,7 @@
 // import * as r_astn_unmarshalled_from_parse_tree from "astn-core/dist/implementation/manual/refiners/unmarshalled/parse_tree"
 // import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/start_token_range"
 // import * as r_primitives_from_loc from "../primitives/list_of_characters"
-// import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+// import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 
 // export const Array_Dynamic = (

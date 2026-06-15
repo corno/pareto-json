@@ -1,6 +1,6 @@
-import * as p_ri from 'pareto-core/dist/refiner/interface'
-import * as pt from 'pareto-core/dist/assign'
-import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+import * as p_ from 'pareto-core/dist/implementation/refiner'
+import * as p_i from 'pareto-core/dist/interface/refiner'
+import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 //data types
 import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
@@ -11,7 +11,7 @@ import * as d_function from "../../../../interface/to_be_generated/json_from_par
 import * as r_primitives_from_loc from "../primitives/list_of_characters"
 import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/full_value_range"
 
-export const Value: p_ri.Refiner<
+export const Value: p_i.Refiner<
     d_out.Value,
     d_function.Error,
     d_in.Value
@@ -19,11 +19,11 @@ export const Value: p_ri.Refiner<
     const range = t_astn_parse_tree_to_location.Value($)
     return {
         'range': range,
-        'type': pt.decide.state($.type, ($): d_out.Value_Type => {
+        'type': p_.decide.state($.type, ($): d_out.Value_Type => {
             switch ($[0]) {
-                case 'concrete': return pt.ss($, ($) => pt.decide.state($, ($): d_out.Value_Type => {
+                case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($): d_out.Value_Type => {
                     switch ($[0]) {
-                        case 'dictionary': return pt.ss($, ($) => ['object', {
+                        case 'dictionary': return p_.ss($, ($) => ['object', {
                             'dictionary': $,
                             'entries': $.entries.__l_map(($) => ({
                                 'key': $.id,
@@ -42,35 +42,35 @@ export const Value: p_ri.Refiner<
                                 ),
                             }))
                         }])
-                        case 'group': return pt.ss($, ($) => abort({
+                        case 'group': return p_.ss($, ($) => abort({
                             'range': range,
                             'type': ['group', null]
                         }))
-                        case 'list': return pt.ss($, ($) => ['array', {
+                        case 'list': return p_.ss($, ($) => ['array', {
                             'items': $.items.__l_map(($) => Value($.value, abort))
                         }])
-                        case 'nothing': return pt.ss($, ($) => abort({
+                        case 'nothing': return p_.ss($, ($) => abort({
                             'range': range,
                             'type': ['nothing', null]
                         }))
-                        case 'optional': return pt.ss($, ($) => abort({
+                        case 'optional': return p_.ss($, ($) => abort({
                             'range': range,
                             'type': ['optional', null]
                         }))
-                        case 'state': return pt.ss($, ($) => abort({
+                        case 'state': return p_.ss($, ($) => abort({
                             'range': range,
                             'type': ['state', null]
                         }))
-                        case 'text': return pt.ss($, ($): d_out.Value_Type => {
+                        case 'text': return p_.ss($, ($): d_out.Value_Type => {
                             const x = $
-                            return pt.decide.state($.token.type, ($): d_out.Value_Type => {
+                            return p_.decide.state($.token.type, ($): d_out.Value_Type => {
                                 switch ($[0]) {
-                                    case 'quoted': return pt.ss($, ($) => ['string', x])
-                                    case 'apostrophed': return pt.ss($, ($) => abort({
+                                    case 'quoted': return p_.ss($, ($) => ['string', x])
+                                    case 'apostrophed': return p_.ss($, ($) => abort({
                                         'range': range,
                                         'type': ['apostrophed text', null]
                                     }))
-                                    case 'undelimited': return pt.ss($, ($): d_out.Value_Type => {
+                                    case 'undelimited': return p_.ss($, ($): d_out.Value_Type => {
                                         return x.token.value === "null"
                                             ? ['null', x]
                                             : x.token.value === "true"
@@ -88,26 +88,26 @@ export const Value: p_ri.Refiner<
                                                         }),
                                                     )}]
                                     })
-                                    case 'backticked': return pt.ss($, ($) => abort({
+                                    case 'backticked': return p_.ss($, ($) => abort({
                                         'range': range,
                                         'type': ['backticked text', null]
                                     }))
-                                    default: return pt.au($[0])
+                                    default: return p_.au($[0])
                                 }
                             })
                         })
-                        default: return pt.au($[0])
+                        default: return p_.au($[0])
                     }
                 }))
-                case 'include': return pt.ss($, ($) => abort({
+                case 'include': return p_.ss($, ($) => abort({
                     'range': range,
                     'type': ['include', null]
                 }))
-                case 'missing': return pt.ss($, ($) => abort({
+                case 'missing': return p_.ss($, ($) => abort({
                     'range': range,
                     'type': ['missing data', null]
                 }))
-                default: return pt.au($[0])
+                default: return p_.au($[0])
             }
         })
     }

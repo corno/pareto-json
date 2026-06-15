@@ -1,8 +1,8 @@
-import * as p_ri from 'pareto-core/dist/refiner/interface'
+import * as p_i from 'pareto-core/dist/interface/refiner'
 
 import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
-export const Number: p_ri.Refiner<
+export const Number: p_i.Refiner<
     number,
     string,
     d_in.List_of_Characters
