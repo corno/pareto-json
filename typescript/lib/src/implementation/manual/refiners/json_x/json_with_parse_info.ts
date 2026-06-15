@@ -4,10 +4,10 @@ import * as p_i from 'pareto-core/dist/interface/refiner'
 import * as p_di from 'pareto-core/dist/interface/data'
 
 
-import * as d_in from "../../../../interface/to_be_generated/json_with_parse_info"
+import * as d_in from "../../../../interface/data/json_with_parse_info"
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
-import * as d_out from "../../../../interface/to_be_generated/json_x"
-import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
+import * as d_out from "../../../../interface/data/json_x"
+import * as d_function from "../../../../interface/data/unmarshalled_from_json"
 
 //dependencies
 import * as r_json_y from "../json_y/json_with_parse_info"

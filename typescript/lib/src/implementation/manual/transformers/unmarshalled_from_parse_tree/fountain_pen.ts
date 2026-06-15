@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core/dist/implementation/transformer'
 
 //data types
-import * as d_in from "../../../../interface/to_be_generated/unmarshalled_from_parse_tree"
+import * as d_in from "../../../../interface/data/unmarshalled_from_parse_tree"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //shorthands

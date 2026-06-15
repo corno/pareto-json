@@ -3,9 +3,9 @@ import * as p_i from 'pareto-core/dist/interface/refiner'
 import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 //data types
-import * as d_out from "../../../../interface/to_be_generated/json_with_parse_info"
+import * as d_out from "../../../../interface/data/json_with_parse_info"
 import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
-import * as d_function from "../../../../interface/to_be_generated/json_from_parse_tree"
+import * as d_function from "../../../../interface/data/json_from_parse_tree"
 
 //dependencies
 import * as r_primitives_from_loc from "../primitives/list_of_characters"
