@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 
 //data types
 import * as d_in from "../../../../interface/to_be_generated/json_from_list_of_characters"

@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data"
