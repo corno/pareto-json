@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core-shorthands/dist/unconstrained'
+import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
 
 import * as d_out from "../interface/generated/liana/schemas/json_without_guaranteed_unique_keys/data"
 
@@ -13,10 +13,10 @@ export namespace v {
     ): d_out.Value => ['null', null]
 
     export const object = (
-        members: pt.Raw_Or_Normal_List<d_out.Value.object_.L>
-    ): d_out.Value => ['object', pt.list(members)]
+        members: p_.Raw_Or_Normal_List<d_out.Value.object_.L>
+    ): d_out.Value => ['object', p_.list(members)]
 
     export const array = (
-        elements: pt.Raw_Or_Normal_List<d_out.Value.array.L>
-    ): d_out.Value => ['array', pt.list(elements)]
+        elements: p_.Raw_Or_Normal_List<d_out.Value.array.L>
+    ): d_out.Value => ['array', p_.list(elements)]
 }

@@ -1,5 +1,5 @@
 import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
 import * as p_di from 'pareto-core/dist/interface/data'
@@ -60,7 +60,7 @@ export const Float: p_i.Transformer_With_Parameter<number, d_out.List_of_Charact
         }
 
         // Simple rounding using integer operations
-        const mantissa_scaled = pt.number.from.number.divide(
+        const mantissa_scaled = p_.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
             ['towards zero', null],
@@ -78,7 +78,7 @@ export const Float: p_i.Transformer_With_Parameter<number, d_out.List_of_Charact
                 do {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = pt.number.from.number.divide(
+                    temp = p_.number.from.number.divide(
                         temp,
                         10,
                         ['towards zero', null],
@@ -129,7 +129,7 @@ export const Float: p_i.Transformer_With_Parameter<number, d_out.List_of_Charact
                     do {
                         const digit = exponent % 10
                         $i['add item'](digit)
-                        exponent = pt.number.from.number.divide(
+                        exponent = p_.number.from.number.divide(
                             exponent,
                             10,
                             ['towards zero', null],
@@ -171,7 +171,7 @@ export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.Li
         }
 
         // Split into integer and fractional parts
-        const integerPart = pt.number.from.number.divide(
+        const integerPart = p_.number.from.number.divide(
             value,
             divisor,
             ['towards zero', null],
@@ -190,7 +190,7 @@ export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.Li
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = pt.number.from.number.divide(
+                    temp = p_.number.from.number.divide(
                         temp,
                         10,
                         ['towards zero', null],
@@ -219,7 +219,7 @@ export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.Li
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = pt.number.from.number.divide(
+                temp = p_.number.from.number.divide(
                     temp,
                     10,
                     ['towards zero', null],
@@ -242,62 +242,62 @@ export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.Li
 
 export const String = (
     $: string,
-): d_out.List_of_Characters => pt.literal.nested_list([
+): d_out.List_of_Characters => p_.literal.nested_list([
     [
         0x22, // "
     ],
-    pt.list.from.list(
+    p_.list.from.list(
         p_list_from_text($, ($) => $),
     ).flatten(
         ($): p_di.List<number> => {
             switch ($) {
                 case 0x2F: // slash (\/)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5c, // \
                         0x2f, // /
                     ])
                 case 0x22: // " (\")
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x22, // "
                     ])
                 case 0x5C: // \ (\\)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x5C, // \
                     ])
                 case 0x08: // backspace (\b)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x62, // b
                     ])
                 case 0x0C: // form feed (\f)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x66, // f
                     ])
                 case 0x0A: // line feed (\n)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x6E, // n
                     ])
                 case 0x0D: // carriage return (\r)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x72, // r
                     ])
                 case 0x09: // horizontal tab (\t)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x74, // t
                     ])
                 case 0x0B: // vertical tab (\v)
-                    return pt.literal.list([
+                    return p_.literal.list([
                         0x5C, // \
                         0x76, // v
                     ])
                 default: {
-                    return pt.literal.list([
+                    return p_.literal.list([
                         $,
                     ])
                 }

@@ -28,15 +28,15 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): boolean => {
 //     const value = $
-//     return pt.decide.state($.type, ($) => {
+//     return p_.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return pt.ss($, ($): boolean => pt.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($): boolean => p_.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return pt.ss($, ($) => {
+//                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return pt.decide.state($.token.type, ($) => {
+//                         return p_.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "true"
+//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "true"
 //                                     ? true
 //                                     : text_value.token.value === "false"
 //                                         ? false
@@ -71,15 +71,15 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): null => {
 //     const value = $
-//     return pt.decide.state($.type, ($) => {
+//     return p_.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return pt.ss($, ($): null => pt.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($): null => p_.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return pt.ss($, ($) => {
+//                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return pt.decide.state($.token.type, ($) => {
+//                         return p_.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "null"
+//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
 //                                     ? null
 //                                     : abort(['json', {
 //                                         'type': ['not a null', null],
@@ -112,15 +112,15 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): number => {
 //     const value = $
-//     return pt.decide.state($.type, ($) => {
+//     return p_.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return pt.ss($, ($) => pt.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return pt.ss($, ($) => {
+//                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return pt.decide.state($.token.type, ($) => {
+//                         return p_.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return pt.ss($, ($) => r_primitives_from_loc.Number(
+//                                 case 'undelimited': return p_.ss($, ($) => r_primitives_from_loc.Number(
 //                                     p_list_from_text(
 //                                         text_value.token.value,
 //                                         ($) => $,
@@ -171,15 +171,15 @@
 //         ($) => abort(['astn', $]),
 //     )
 
-//     const unexpected_properties = pt.dictionary.from.dictionary(
-//         pt.dictionary.from.dictionary(
+//     const unexpected_properties = p_.dictionary.from.dictionary(
+//         p_.dictionary.from.dictionary(
 //             dictionary.entries,
 //         ).join(
 //             $p['expected properties'],
-//             ($, other, id): p_di.Optional_Value<d_location.Range> => pt.decide.optional(
+//             ($, other, id): p_di.Optional_Value<d_location.Range> => p_.decide.optional(
 //                 other,
-//                 () => pt.literal.not_set(),
-//                 () => pt.literal.set($.id.range)
+//                 () => p_.literal.not_set(),
+//                 () => p_.literal.set($.id.range)
 //             )
 //         )
 //     ).map_optionally(
@@ -200,26 +200,26 @@
 //     $: d_in.Value,
 // ): p_di.Optional_Value<d_in.Value> => {
 //     const value = $
-//     return pt.decide.state($.type, ($) => {
+//     return p_.decide.state($.type, ($) => {
 //         switch ($[0]) {
-//             case 'concrete': return pt.ss($, ($) => pt.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($) => {
 //                 switch ($[0]) {
-//                     case 'text': return pt.ss($, ($) => {
+//                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return pt.decide.state($.token.type, ($) => {
+//                         return p_.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "null"
-//                                     ? pt.literal.not_set()
-//                                     : pt.literal.set(value)
+//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
+//                                     ? p_.literal.not_set()
+//                                     : p_.literal.set(value)
 //                                 )
-//                                 default: return pt.literal.set(value)
+//                                 default: return p_.literal.set(value)
 //                             }
 //                         })
 //                     })
-//                     default: return pt.literal.set(value)
+//                     default: return p_.literal.set(value)
 //                 }
 //             }))
-//             default: return pt.literal.set(value)
+//             default: return p_.literal.set(value)
 //         }
 //     })
 // }
