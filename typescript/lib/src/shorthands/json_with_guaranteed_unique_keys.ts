@@ -14,9 +14,9 @@ export namespace v {
 
     export const object = (
         members: pt.Raw_Or_Normal_Dictionary<d_out.Value.object_.D>
-    ): d_out.Value => ['object', pt.dictionary.literal(members)]
+    ): d_out.Value => ['object', pt.dictionary(members)]
 
     export const array = (
         elements: pt.Raw_Or_Normal_List<d_out.Value.array.L>
-    ): d_out.Value => ['array', pt.list.literal(elements)]
+    ): d_out.Value => ['array', pt.list(elements)]
 }

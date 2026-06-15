@@ -7,7 +7,6 @@ import * as d_in from "../../../../interface/to_be_generated/json_with_parse_inf
 import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 import * as d_out from "../../../../interface/to_be_generated/json_x"
 import * as d_function from "../../../../interface/to_be_generated/unmarshalled_from_json"
-import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
 
 //dependencies
 import * as r_json_y from "../json_y/json_with_parse_info"
@@ -23,7 +22,7 @@ export const Array: p_ri.Refiner<
         switch ($[0]) {
             case 'array': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["array"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["array"]) }],
                 'range': value.range,
             })
         }
@@ -40,7 +39,7 @@ export const Boolean: p_ri.Refiner<
         switch ($[0]) {
             case 'boolean': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["boolean"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["boolean"]) }],
                 'range': value.range,
             })
         }
@@ -57,7 +56,7 @@ export const Null: p_ri.Refiner<
         switch ($[0]) {
             case 'null': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["null"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["null"]) }],
                 'range': value.range,
             })
         }
@@ -74,7 +73,7 @@ export const Number: p_ri.Refiner<
         switch ($[0]) {
             case 'number': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["number"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["number"]) }],
                 'range': value.range,
             })
         }
@@ -91,7 +90,7 @@ export const Object: p_ri.Refiner<
         switch ($[0]) {
             case 'object': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["object"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["object"]) }],
                 'range': value.range,
             })
         }
@@ -130,8 +129,8 @@ export const Object_No_Unexpected_Properties_From_Object: p_ri.Refiner_With_Para
             $p['expected properties'],
             ($, other, id): p_di.Optional_Value<d_in_location.Range> => pt.decide.optional(
                 other,
-                () => pt.optional.literal.not_set(),
-                () => pt.optional.literal.set($.key.range)
+                () => pt.literal.not_set(),
+                () => pt.literal.set($.key.range)
             )
         )
     ).map_optionally(
@@ -160,7 +159,7 @@ export const String: p_ri.Refiner<
         switch ($[0]) {
             case 'string': return pt.ss($, ($) => $)
             default: return abort({
-                'type': ['unexpected type', { 'expected': pt.list.literal(["string"]) }],
+                'type': ['unexpected type', { 'expected': pt.literal.list(["string"]) }],
                 'range': value.range,
             })
         }
@@ -193,8 +192,8 @@ export const Nullable_Value = (
     const value = $
     return pt.decide.state($.type, ($) => {
         switch ($[0]) {
-            case 'null': return pt.optional.literal.not_set()
-            default: return pt.optional.literal.set(value)
+            case 'null': return pt.literal.not_set()
+            default: return pt.literal.set(value)
         }
     })
 }

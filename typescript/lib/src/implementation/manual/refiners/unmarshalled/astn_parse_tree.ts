@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as pt from 'pareto-core/dist/assign'
 
 // //data types
@@ -180,8 +179,8 @@
 //             $p['expected properties'],
 //             ($, other, id): p_di.Optional_Value<d_location.Range> => pt.decide.optional(
 //                 other,
-//                 () => pt.optional.literal.not_set(),
-//                 () => pt.optional.literal.set($.id.range)
+//                 () => pt.literal.not_set(),
+//                 () => pt.literal.set($.id.range)
 //             )
 //         )
 //     ).map_optionally(
@@ -211,17 +210,17 @@
 //                         return pt.decide.state($.token.type, ($) => {
 //                             switch ($[0]) {
 //                                 case 'undelimited': return pt.ss($, ($) => text_value.token.value === "null"
-//                                     ? pt.optional.literal.not_set()
-//                                     : pt.optional.literal.set(value)
+//                                     ? pt.literal.not_set()
+//                                     : pt.literal.set(value)
 //                                 )
-//                                 default: return pt.optional.literal.set(value)
+//                                 default: return pt.literal.set(value)
 //                             }
 //                         })
 //                     })
-//                     default: return pt.optional.literal.set(value)
+//                     default: return pt.literal.set(value)
 //                 }
 //             }))
-//             default: return pt.optional.literal.set(value)
+//             default: return pt.literal.set(value)
 //         }
 //     })
 // }
