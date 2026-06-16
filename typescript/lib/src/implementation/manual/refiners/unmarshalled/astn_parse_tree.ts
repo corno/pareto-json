@@ -4,7 +4,7 @@
 // import * as d_function from "../../../../interface/data/unmarshalled_from_parse_tree_x"
 // import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
-// import * as d_astn_unmarshalled from "astn-core/dist/interface/to_be_generated/unmarshalled"
+// import * as d_astn_unmarshalled from "astn-core/dist/interface/data/unmarshalled"
 
 // //dependencies
 // import * as r_astn_unmarshalled_from_parse_tree from "astn-core/dist/implementation/manual/refiners/unmarshalled/parse_tree"

@@ -1,5 +1,5 @@
 import * as p_di from 'pareto-core/dist/interface/data'
-import * as d_astn_unmarshall from "astn-core/dist/interface/to_be_generated/unmarshall"
+import * as d_astn_unmarshall from "astn-core/dist/interface/data/unmarshall"
 import * as d_astn_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
 
