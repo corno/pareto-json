@@ -16,7 +16,8 @@ export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
 > = ($, abort) => {
     const object = $
 
-    const found_properties = p_temp.dictionary.from.list(
+    return {
+        'properties': p_temp.dictionary.from.list(
         object.entries
     ).group(
         ($) => $.key.token.value
@@ -32,9 +33,7 @@ export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
             () => p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
         )
     )
-
-    return {
-        'properties': found_properties,
+,
         'range': object.dictionary['{'].range
     }
 }
