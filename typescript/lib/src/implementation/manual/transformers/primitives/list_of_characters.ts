@@ -1,13 +1,39 @@
-import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 import * as p_ from 'pareto-core/dist/implementation/transformer'
+import * as p_i from 'pareto-core/dist/interface/transformer'
+import * as p_di from 'pareto-core/dist/interface/data'
+import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
-import * as p_di from 'pareto-core/dist/interface/data'
-import * as p_i from 'pareto-core/dist/interface/transformer'
 
+//data types
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
-export const Float: p_i.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'digits': number }> = ($, $p) => {
+namespace interface_ {
+
+    export type Float = p_i.Transformer_With_Parameter<
+        number,
+        d_out.List_of_Characters,
+        {
+            'digits': number
+        }
+    >
+
+    export type Fractional_Decimal = p_i.Transformer_With_Parameter<
+        number,
+        d_out.List_of_Characters,
+        {
+            'number of fractional digits': number
+        }
+    >
+
+    export type String = p_i.Transformer<
+        string,
+        d_out.List_of_Characters
+    >
+
+}
+
+export const Float: interface_.Float = ($, $p) => {
     return p_list_build_deprecated(($i) => {
         // Handle special case for zero in scientific notation
         if ($ === 0) {
@@ -153,7 +179,7 @@ export const Float: p_i.Transformer_With_Parameter<number, d_out.List_of_Charact
     })
 }
 
-export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.List_of_Characters, { 'number of fractional digits': number }> = ($, $p) => {
+export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
 
     return p_list_build_deprecated<number>(($i) => {
         let value = $
@@ -240,9 +266,7 @@ export const Fractional_Decimal: p_i.Transformer_With_Parameter<number, d_out.Li
     })
 }
 
-export const String = (
-    $: string,
-): d_out.List_of_Characters => p_.literal.nested_list([
+export const String: interface_.String = ($) => p_.literal.nested_list([
     [
         0x22, // "
     ],
