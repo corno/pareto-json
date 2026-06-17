@@ -18,23 +18,23 @@ export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
 
     return {
         'properties': p_temp.dictionary.from.list(
-        object.entries
-    ).group(
-        ($) => $.key.token.value
-    ).__d_map(
-        ($, id) => p_.decide.list(
-            $
-        ).has_single_item(
-            ($) => $,
-            ($) => abort({
-                'type': ['multiple properties with this key', id],
-                'range': object.dictionary['{'].range,
-            }),
-            () => p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
+            object.entries
+        ).group(
+            ($) => $.key.token.value
+        ).__d_map(
+            ($, id) => p_.decide.list(
+                $
+            ).has_single_item(
+                ($) => $,
+                ($) => abort({
+                    'type': ['multiple properties with this key', id],
+                    'range': object.dictionary['{'].range,
+                }),
+                () => p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
+            )
         )
-    )
-,
-        'range': object.dictionary['{'].range
+        ,
+        'range': $.dictionary['{'].range
     }
 }
 
