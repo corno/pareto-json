@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core/dist/implementation/refiner'
-import * as p_temp from 'pareto-core/dist/assign'
+import * as p_t from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/refiner'
 import * as p_di from 'pareto-core/dist/interface/data'
 
@@ -19,7 +19,7 @@ export const Array: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'array': return p_.ss($, ($) => $)
             default: return abort({
@@ -36,7 +36,7 @@ export const Boolean: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'boolean': return p_.ss($, ($) => $)
             default: return abort({
@@ -53,7 +53,7 @@ export const Null: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'null': return p_.ss($, ($) => $)
             default: return abort({
@@ -70,7 +70,7 @@ export const Number: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'number': return p_.ss($, ($) => $)
             default: return abort({
@@ -87,7 +87,7 @@ export const Object: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'object': return p_.ss($, ($) => $)
             default: return abort({
@@ -124,13 +124,14 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
     const object = r_json_y.Object_With_Unique_Keys_From_Object($, abort)
 
     //fixme: use p_assert
-    const unexpected_properties = p_temp.dictionary.from.dictionary(
-        p_temp.dictionary.from.dictionary(
+    const unexpected_properties = p_t.from.dictionary(
+        p_t.from.dictionary(
             object.properties,
         ).join(
             $p['expected properties'],
-            ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_.decide.optional(
+            ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_t.from.optional(
                 other,
+            ).decide(
                 () => p_.literal.not_set(),
                 () => p_.literal.set($.key.range)
             )
@@ -139,16 +140,16 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
         ($) => $
     )
 
-    if (unexpected_properties.__get_number_of_entries() > 0) {
-        return abort({
+    return p_t.from.dictionary(unexpected_properties).on_has_entries(
+        ($) => abort({
             'type': ['unexpected properties', {
                 'expected properties': $p['expected properties'],
                 'unexpected properties': unexpected_properties,
             }],
             'range': object.range,
-        })
-    }
-    return object
+        }),
+        () => object
+    )
 }
 
 export const String: p_i.Refiner<
@@ -157,7 +158,7 @@ export const String: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'string': return p_.ss($, ($) => $)
             default: return abort({
@@ -192,7 +193,7 @@ export const Nullable_Value = (
     $: d_in.Value,
 ): d_out.Nullable_Value => {
     const value = $
-    return p_.decide.state($.type, ($) => {
+    return p_.from.state($.type).decide(($) => {
         switch ($[0]) {
             case 'null': return p_.literal.not_set()
             default: return p_.literal.set(value)

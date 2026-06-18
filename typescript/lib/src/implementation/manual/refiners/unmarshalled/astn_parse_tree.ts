@@ -28,13 +28,13 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): boolean => {
 //     const value = $
-//     return p_.decide.state($.type, ($) => {
+//     return p_.from.state($.type).decide(($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($): boolean => p_.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($): boolean => p_.from.state($).decide(($) => {
 //                 switch ($[0]) {
 //                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return p_.decide.state($.token.type, ($) => {
+//                         return p_.from.state($.token.type).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "true"
 //                                     ? true
@@ -71,13 +71,13 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): null => {
 //     const value = $
-//     return p_.decide.state($.type, ($) => {
+//     return p_.from.state($.type).decide(($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($): null => p_.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($): null => p_.from.state($).decide(($) => {
 //                 switch ($[0]) {
 //                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return p_.decide.state($.token.type, ($) => {
+//                         return p_.from.state($.token.type).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
 //                                     ? null
@@ -112,13 +112,13 @@
 //     abort: p_i.Abort<d_function.Error>,
 // ): number => {
 //     const value = $
-//     return p_.decide.state($.type, ($) => {
+//     return p_.from.state($.type).decide(($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                 switch ($[0]) {
 //                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return p_.decide.state($.token.type, ($) => {
+//                         return p_.from.state($.token.type).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'undelimited': return p_.ss($, ($) => r_primitives_from_loc.Number(
 //                                     p_list_from_text(
@@ -171,8 +171,8 @@
 //         ($) => abort(['astn', $]),
 //     )
 
-//     const unexpected_properties = p_.dictionary.from.dictionary(
-//         p_.dictionary.from.dictionary(
+//     const unexpected_properties = p_.from.dictionary(
+//         p_.from.dictionary(
 //             dictionary.entries,
 //         ).join(
 //             $p['expected properties'],
@@ -200,13 +200,13 @@
 //     $: d_in.Value,
 // ): p_di.Optional_Value<d_in.Value> => {
 //     const value = $
-//     return p_.decide.state($.type, ($) => {
+//     return p_.from.state($.type).decide(($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//             case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                 switch ($[0]) {
 //                     case 'text': return p_.ss($, ($) => {
 //                         const text_value = $
-//                         return p_.decide.state($.token.type, ($) => {
+//                         return p_.from.state($.token.type).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
 //                                     ? p_.literal.not_set()

@@ -86,8 +86,7 @@ export const Float: interface_.Float = ($, $p) => {
         }
 
         // Simple rounding using integer operations
-        const mantissa_scaled = p_.number.from.number.divide(
-            mantissa * scale_factor + 0.5,
+        const mantissa_scaled = p_.from.number(mantissa * scale_factor + 0.5).divide(
             1,
             ['towards zero', null],
             {
@@ -104,8 +103,9 @@ export const Float: interface_.Float = ($, $p) => {
                 do {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = p_.number.from.number.divide(
+                    temp = p_.from.number(
                         temp,
+                    ).divide(
                         10,
                         ['towards zero', null],
                         {
@@ -117,18 +117,18 @@ export const Float: interface_.Float = ($, $p) => {
         )
 
         // Add leading digit
-        const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
+        const first_digit = digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1).__decide(
             ($) => $,
             () => p_unreachable_code_path("index cannot be out of bounds")
         )
         $i['add item'](48 + first_digit) // First digit
 
         // Add decimal point if we have more digits
-        if ($p.digits > 1 && digits.__get_number_of_items() > 1) {
+        if ($p.digits > 1 && p_.from.list(digits).amount_of_items() > 1) {
             $i['add item'](46) // '.'
 
             // Add remaining digits in reverse order
-            for (let j = digits.__get_number_of_items() - 2; j >= 0; j--) {
+            for (let j =  p_.from.list(digits).amount_of_items() - 2; j >= 0; j--) {
                 const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
                     () => p_unreachable_code_path("index cannot be out of bounds")
@@ -155,8 +155,7 @@ export const Float: interface_.Float = ($, $p) => {
                     do {
                         const digit = exponent % 10
                         $i['add item'](digit)
-                        exponent = p_.number.from.number.divide(
-                            exponent,
+                        exponent = p_.from.number(exponent).divide(
                             10,
                             ['towards zero', null],
                             {
@@ -169,7 +168,7 @@ export const Float: interface_.Float = ($, $p) => {
         )
 
         // Add exponent digits in reverse order
-        for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
+        for (let j = p_.from.list(exp_digits).amount_of_items() - 1; j >= 0; j--) {
             const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
@@ -197,8 +196,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
         }
 
         // Split into integer and fractional parts
-        const integerPart = p_.number.from.number.divide(
-            value,
+        const integerPart = p_.from.number(value).divide(
             divisor,
             ['towards zero', null],
             {
@@ -216,8 +214,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
                 while (temp > 0) {
                     const digit = temp % 10
                     $i['add item'](digit)
-                    temp = p_.number.from.number.divide(
-                        temp,
+                    temp = p_.from.number(temp).divide(
                         10,
                         ['towards zero', null],
                         {
@@ -229,7 +226,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
         })
 
         // Add integer part (reverse order)
-        for (let j = integerDigits.__get_number_of_items() - 1; j >= 0; j--) {
+        for (let j = p_.from.list(integerDigits).amount_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + integerDigits.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
@@ -245,8 +242,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
             for (let i = 0; i < $p['number of fractional digits']; i++) {
                 const digit = temp % 10
                 $i['add item'](digit)
-                temp = p_.number.from.number.divide(
-                    temp,
+                temp = p_.from.number(temp).divide(
                     10,
                     ['towards zero', null],
                     {
@@ -257,7 +253,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
         })
 
         // Add fractional part (reverse order)
-        for (let j = fractionalDigits_list.__get_number_of_items() - 1; j >= 0; j--) {
+        for (let j = p_.from.list(fractionalDigits_list).amount_of_items() - 1; j >= 0; j--) {
             $i['add item'](48 + fractionalDigits_list.__deprecated_get_possible_item_at(j).__decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
@@ -270,7 +266,7 @@ export const String: interface_.String = ($) => p_.literal.nested_list([
     [
         0x22, // "
     ],
-    p_.list.from.list(
+    p_.from.list(
         p_list_from_text(
             $,
             ($) => $

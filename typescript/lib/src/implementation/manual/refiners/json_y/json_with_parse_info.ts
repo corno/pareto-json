@@ -1,6 +1,7 @@
 import * as p_ from 'pareto-core/dist/implementation/refiner'
+
 import * as p_i from 'pareto-core/dist/interface/refiner'
-import * as p_temp from 'pareto-core/dist/assign'
+import * as p_temp from 'pareto-core/dist/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
 import * as d_in from "../../../../interface/data/json_with_parse_info"
@@ -17,14 +18,14 @@ export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
     const object = $
 
     return {
-        'properties': p_temp.dictionary.from.list(
+        'properties': p_temp.from.list(
             object.entries
         ).group(
             ($) => $.key.token.value
-        ).__d_map(
-            ($, id) => p_.decide.list(
+        ).__d_map_deprecated(
+            ($, id) => p_temp.from.list(
                 $
-            ).has_single_item(
+            ).on_has_single_item(
                 ($) => $,
                 ($) => abort({
                     'type': ['multiple properties with this key', id],

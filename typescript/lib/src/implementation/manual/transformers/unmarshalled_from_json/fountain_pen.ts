@@ -18,12 +18,12 @@ export namespace interface_ {
 
 }
 
-export const Error: interface_.Error = ($) => p_.decide.state($.type, ($) => {
+export const Error: interface_.Error = ($) => p_.from.state($.type).decide(($) => {
     switch ($[0]) {
         case 'unexpected properties': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("unexpected properties:"),
             sh.ph.indent(
-                sh.pg.sentences($['unexpected properties'].__to_list(($, key) => sh.sentence([
+                sh.pg.sentences(p_.from.dictionary($['unexpected properties']).convert_to_list(($, key) => sh.sentence([
                     sh.ph.literal(key),
                     // sh.ph.literal(": "),
                     // t_astn_location_to_fountain_pen.Range($, {'character location reporting': }),
@@ -35,7 +35,7 @@ export const Error: interface_.Error = ($) => p_.decide.state($.type, ($) => {
             sh.ph.literal("unexpected type, expected:"),
             sh.ph.indent(
                 sh.pg.sentences(
-                    $.expected.__l_map(
+                    $.expected.__l_map_deprecated(
                         ($) => sh.sentence([
                             sh.ph.literal($),
                         ])
@@ -46,7 +46,7 @@ export const Error: interface_.Error = ($) => p_.decide.state($.type, ($) => {
         case 'unexpected enum value': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("unexpected enum value, expected:"),
             sh.ph.indent(
-                sh.pg.sentences($.expected.__l_map(($) => sh.sentence([
+                sh.pg.sentences($.expected.__l_map_deprecated(($) => sh.sentence([
                     sh.ph.literal($),
                 ])))
             ),

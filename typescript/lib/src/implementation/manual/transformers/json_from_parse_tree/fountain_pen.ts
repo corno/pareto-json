@@ -18,7 +18,7 @@ export namespace interface_ {
 
 }
 
-export const Error: interface_.Error = ($) => p_.decide.state($.type, ($) => {
+export const Error: interface_.Error = ($) => p_.from.state($.type).decide(($) => {
     switch ($[0]) {
         case 'missing property': return p_.ss($, ($) => sh.ph.literal("missing property"))
         case 'apostrophed text': return p_.ss($, ($) => sh.ph.literal("apostrophed text"))

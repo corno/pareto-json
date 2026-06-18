@@ -1,3 +1,4 @@
+import * as p_t from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/refiner'
 
 import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
@@ -24,13 +25,13 @@ export const Number: p_i.Refiner<
     )
 
     // Check for negative sign
-    if (characters.__get_number_of_items() > 0 && get_character_at(0) === 45) { // '-'
+    if ( p_t.from.list(characters).amount_of_items() > 0 && get_character_at(0) === 45) { // '-'
         isNegative = true
         startIndex = 1
     }
 
     // Parse the number
-    for (let i = startIndex; i < characters.__get_number_of_items(); i++) {
+    for (let i = startIndex; i < p_t.from.list(characters).amount_of_items(); i++) {
         const charCode = get_character_at(i)
 
         if (charCode === 46) { // '.'
@@ -44,7 +45,7 @@ export const Number: p_i.Refiner<
             }
             inExponent = true
             // Check for exponent sign
-            if (i + 1 < characters.__get_number_of_items()) {
+            if (i + 1 < p_t.from.list(characters).amount_of_items()) {
                 const nextChar = get_character_at(i + 1)
                 if (nextChar === 45) { // '-'
                     isExponentNegative = true

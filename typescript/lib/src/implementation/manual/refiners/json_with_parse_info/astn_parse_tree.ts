@@ -19,13 +19,13 @@ export const Value: p_i.Refiner<
     const range = t_astn_parse_tree_to_location.Value($)
     return {
         'range': range,
-        'type': p_.decide.state($.type, ($): d_out.Value_Type => {
+        'type': p_.from.state($.type).decide(($): d_out.Value_Type => {
             switch ($[0]) {
-                case 'concrete': return p_.ss($, ($) => p_.decide.state($, ($): d_out.Value_Type => {
+                case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(($): d_out.Value_Type => {
                     switch ($[0]) {
                         case 'dictionary': return p_.ss($, ($) => ['object', {
                             'dictionary': $,
-                            'entries': $.entries.__l_map(($) => ({
+                            'entries': $.entries.__l_map_deprecated(($) => ({
                                 'key': $.id,
                                 'value': $.assignment.__decide(
                                     ($) => $.value.__decide(
@@ -47,7 +47,7 @@ export const Value: p_i.Refiner<
                             'type': ['group', null]
                         }))
                         case 'list': return p_.ss($, ($) => ['array', {
-                            'items': $.items.__l_map(($) => Value($.value, abort))
+                            'items': $.items.__l_map_deprecated(($) => Value($.value, abort))
                         }])
                         case 'nothing': return p_.ss($, ($) => abort({
                             'range': range,
@@ -63,7 +63,7 @@ export const Value: p_i.Refiner<
                         }))
                         case 'text': return p_.ss($, ($): d_out.Value_Type => {
                             const x = $
-                            return p_.decide.state($.token.type, ($): d_out.Value_Type => {
+                            return p_.from.state($.token.type).decide(($): d_out.Value_Type => {
                                 switch ($[0]) {
                                     case 'quoted': return p_.ss($, ($) => ['string', x])
                                     case 'apostrophed': return p_.ss($, ($) => abort({
