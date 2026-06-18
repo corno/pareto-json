@@ -271,7 +271,10 @@ export const String: interface_.String = ($) => p_.literal.nested_list([
         0x22, // "
     ],
     p_.list.from.list(
-        p_list_from_text($, ($) => $),
+        p_list_from_text(
+            $,
+            ($) => $
+        ),
     ).flatten(
         ($): p_di.List<number> => {
             switch ($) {
