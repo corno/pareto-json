@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_di from 'pareto-core/dist/interface/data'
-import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
-import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
-import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
+import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
+import p_unreachable_code_path from 'pareto-core/dist/implementation/transformer/specials/unreachable_code_path'
+import p_list_build_deprecated from 'pareto-core/dist/implementation/refiner/specials/list_build_deprecated'
 
 //data types
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
