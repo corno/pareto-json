@@ -117,7 +117,7 @@ export const Float: interface_.Float = ($, $p) => {
         )
 
         // Add leading digit
-        const first_digit = digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1).__decide(
+        const first_digit = p_.from.optional(digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1)).decide(
             ($) => $,
             () => p_unreachable_code_path("index cannot be out of bounds")
         )
@@ -129,7 +129,7 @@ export const Float: interface_.Float = ($, $p) => {
 
             // Add remaining digits in reverse order
             for (let j =  p_.from.list(digits).amount_of_items() - 2; j >= 0; j--) {
-                const digit = digits.__deprecated_get_possible_item_at(j).__decide(
+                const digit = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
                     ($) => $,
                     () => p_unreachable_code_path("index cannot be out of bounds")
                 )
@@ -169,7 +169,7 @@ export const Float: interface_.Float = ($, $p) => {
 
         // Add exponent digits in reverse order
         for (let j = p_.from.list(exp_digits).amount_of_items() - 1; j >= 0; j--) {
-            const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
+            const digit = p_.from.optional(exp_digits.__deprecated_get_possible_item_at(j)).decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
             )
@@ -227,7 +227,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
 
         // Add integer part (reverse order)
         for (let j = p_.from.list(integerDigits).amount_of_items() - 1; j >= 0; j--) {
-            $i['add item'](48 + integerDigits.__deprecated_get_possible_item_at(j).__decide(
+            $i['add item'](48 + p_.from.optional(integerDigits.__deprecated_get_possible_item_at(j)).decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
             ))
@@ -254,7 +254,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
 
         // Add fractional part (reverse order)
         for (let j = p_.from.list(fractionalDigits_list).amount_of_items() - 1; j >= 0; j--) {
-            $i['add item'](48 + fractionalDigits_list.__deprecated_get_possible_item_at(j).__decide(
+            $i['add item'](48 + p_.from.optional(fractionalDigits_list.__deprecated_get_possible_item_at(j)).decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
             ))

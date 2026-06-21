@@ -35,7 +35,7 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(($) =
             sh.ph.literal("unexpected type, expected:"),
             sh.ph.indent(
                 sh.pg.sentences(
-                    $.expected.__l_map_deprecated(
+                    p_.from.list($.expected).map(
                         ($) => sh.sentence([
                             sh.ph.literal($),
                         ])
@@ -46,7 +46,7 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(($) =
         case 'unexpected enum value': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("unexpected enum value, expected:"),
             sh.ph.indent(
-                sh.pg.sentences($.expected.__l_map_deprecated(($) => sh.sentence([
+                sh.pg.sentences(p_.from.list($.expected).map(($) => sh.sentence([
                     sh.ph.literal($),
                 ])))
             ),

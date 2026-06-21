@@ -56,7 +56,7 @@ export const Value: interface_.Value = ($) => p_.from.state($).decide(($) => {
         case 'array': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
             sh.ph.rich(
-                $.__l_map_deprecated(($) => sh.ph.composed([
+                p_.from.list($).map(($) => sh.ph.composed([
                     sh.ph.literal(" "),
                     Value($),
                 ])),
