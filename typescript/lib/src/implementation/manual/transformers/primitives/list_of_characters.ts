@@ -263,9 +263,9 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
 }
 
 export const String: interface_.String = ($) => p_.literal.nested_list([
-    [
+    p_.literal.list([
         0x22, // "
-    ],
+    ]),
     p_.from.list(
         p_list_from_text(
             $,
@@ -327,7 +327,7 @@ export const String: interface_.String = ($) => p_.literal.nested_list([
             }
         }
     ),
-    [
+    p_.literal.list([
         0x22, // "
-    ]
+    ])
 ])
