@@ -262,7 +262,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
     })
 }
 
-export const String: interface_.String = ($) => p_.literal.nested_list([
+export const String: interface_.String = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x22, // "
     ]),
