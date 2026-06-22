@@ -15,26 +15,20 @@ export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
     d_function.Error,
     d_in.Object
 > = ($, abort) => {
-    const object = $
+    const $v_object = $
 
     return {
-        'properties': p_temp.from.list(
-            object.entries
-        ).group(
-            ($) => $.key.token.value
-        ).__d_map_deprecated(
-            ($, id) => p_temp.from.list(
-                $
-            ).on_has_single_item(
+        'properties': p_temp.from.list($v_object.entries).group(
+            ($) => $.key.token.value,
+            ($, id) => p_temp.from.list($).on_has_single_item(
                 ($) => $,
                 ($) => abort({
                     'type': ['multiple properties with this key', id],
-                    'range': object.dictionary['{'].range,
+                    'range': $v_object.dictionary['{'].range,
                 }),
                 () => p_unreachable_code_path("the list is the result of a 'group' operation, it cannot be empty")
             )
-        )
-        ,
+        ),
         'range': $.dictionary['{'].range
     }
 }

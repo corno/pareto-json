@@ -235,7 +235,7 @@
 //     return $.entries.__ get_entry_deprecated(
 //         $p.id,
 //         {
-//             no_such_entry: ($) => abort(['json', {
+//             no_such_entry: () => abort(['json', {
 //                 'type': ['missing property', $p.id],
 //                 'range': t_astn_parse_tree_to_location.Value(dict.value),
 //             }])
