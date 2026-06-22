@@ -124,7 +124,7 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
     const object = r_json_y.Object_With_Unique_Keys_From_Object($, abort)
 
     //fixme: use p_assert
-    const unexpected_properties = p_t.from.dictionary(
+    const $v_unexpected_properties = p_t.from.dictionary(
         p_t.from.dictionary(
             object.properties,
         ).join(
@@ -140,11 +140,11 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
         ($) => $
     )
 
-    return p_t.from.dictionary(unexpected_properties).on_has_entries(
+    return p_t.from.dictionary($v_unexpected_properties).on_has_entries(
         ($) => abort({
             'type': ['unexpected properties', {
                 'expected properties': $p['expected properties'],
-                'unexpected properties': unexpected_properties,
+                'unexpected properties': $v_unexpected_properties,
             }],
             'range': object.range,
         }),
