@@ -19,15 +19,16 @@ export const Array: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'array': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["array"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'array': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["array"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Boolean: p_i.Refiner<
@@ -36,15 +37,16 @@ export const Boolean: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'boolean': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["boolean"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'boolean': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["boolean"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Null: p_i.Refiner<
@@ -53,15 +55,16 @@ export const Null: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'null': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["null"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'null': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["null"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Number: p_i.Refiner<
@@ -70,15 +73,16 @@ export const Number: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'number': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["number"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'number': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["number"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Object: p_i.Refiner<
@@ -87,15 +91,16 @@ export const Object: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'object': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["object"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'object': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["object"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Object_No_Unexpected_Properties_From_Value: p_i.Refiner_With_Parameter<
@@ -124,18 +129,15 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
     const object = r_json_y.Object_With_Unique_Keys_From_Object($, abort)
 
     //fixme: use p_assert
-    const $v_unexpected_properties = p_t.from.dictionary(
-        p_t.from.dictionary(
-            object.properties,
-        ).join(
-            $p['expected properties'],
-            ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_t.from.optional(
-                other,
-            ).decide(
-                () => p_.literal.not_set(),
-                () => p_.literal.set($.key.range)
-            )
+    const $v_unexpected_properties = p_t.from.dictionary(p_t.from.dictionary(object.properties,
+    ).join(
+        $p['expected properties'],
+        ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_t.from.optional(other,
+        ).decide(
+            () => p_.literal.not_set(),
+            () => p_.literal.set($.key.range)
         )
+    )
     ).map_optionally(
         ($) => $
     )
@@ -158,15 +160,16 @@ export const String: p_i.Refiner<
     d_in.Value
 > = ($, abort) => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'string': return p_.ss($, ($) => $)
-            default: return abort({
-                'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
-                'range': value.range,
-            })
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'string': return p_.ss($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
+                    'range': value.range,
+                })
+            }
+        })
 }
 
 export const Property: p_i.Refiner_With_Parameter<
@@ -193,10 +196,11 @@ export const Nullable_Value = (
     $: d_in.Value,
 ): d_out.Nullable_Value => {
     const value = $
-    return p_.from.state($.type).decide(($) => {
-        switch ($[0]) {
-            case 'null': return p_.literal.not_set()
-            default: return p_.literal.set(value)
-        }
-    })
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'null': return p_.literal.not_set()
+                default: return p_.literal.set(value)
+            }
+        })
 }

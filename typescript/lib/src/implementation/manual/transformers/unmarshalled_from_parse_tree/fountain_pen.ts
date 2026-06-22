@@ -21,11 +21,12 @@ import * as t_unmarshalled_from_json_to_fountain_pen from "../unmarshalled_from_
 
 
 
-export const Error: interface_.Error = ($) => p_.from.state($).decide(($) => {
-    switch ($[0]) {
-        case 'json': return p_.ss($, ($) => t_json_from_parse_tree_to_fountain_pen.Error($))
-        case 'unmarshall':return p_.ss($, ($) => t_unmarshalled_from_json_to_fountain_pen.Error($))
-        
-        default: return p_.au($[0])
-    }
-})
+export const Error: interface_.Error = ($) => p_.from.state($).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'json': return p_.ss($, ($) => t_json_from_parse_tree_to_fountain_pen.Error($))
+            case 'unmarshall': return p_.ss($, ($) => t_unmarshalled_from_json_to_fountain_pen.Error($))
+
+            default: return p_.au($[0])
+        }
+    })

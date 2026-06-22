@@ -18,41 +18,44 @@ export namespace interface_ {
 
 }
 
-export const Error: interface_.Error = ($) => p_.from.state($.type).decide(($) => {
-    switch ($[0]) {
-        case 'unexpected properties': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("unexpected properties:"),
-            sh.ph.indent(
-                sh.pg.sentences(p_.from.dictionary($['unexpected properties']).convert_to_list(($, key) => sh.sentence([
-                    sh.ph.literal(key),
-                    // sh.ph.literal(": "),
-                    // t_astn_location_to_fountain_pen.Range($, {'character location reporting': }),
-                ])))
-            ),
-        ]))
-        case 'missing property': return p_.ss($, ($) => sh.ph.literal("missing property"))
-        case 'unexpected type': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("unexpected type, expected:"),
-            sh.ph.indent(
-                sh.pg.sentences(
-                    p_.from.list($.expected).map(
+export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'unexpected properties': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("unexpected properties:"),
+                sh.ph.indent(
+                    sh.pg.sentences(p_.from.dictionary($['unexpected properties']).convert_to_list(
+                        ($, key) => sh.sentence([
+                            sh.ph.literal(key),
+                            // sh.ph.literal(": "),
+                            // t_astn_location_to_fountain_pen.Range($, {'character location reporting': }),
+                        ])))
+                ),
+            ]))
+            case 'missing property': return p_.ss($, ($) => sh.ph.literal("missing property"))
+            case 'unexpected type': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("unexpected type, expected:"),
+                sh.ph.indent(
+                    sh.pg.sentences(
+                        p_.from.list($.expected).map(
+                            ($) => sh.sentence([
+                                sh.ph.literal($),
+                            ])
+                        )
+                    )
+                ),
+            ]))
+            case 'unexpected enum value': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("unexpected enum value, expected:"),
+                sh.ph.indent(
+                    sh.pg.sentences(p_.from.list($.expected).map(
                         ($) => sh.sentence([
                             sh.ph.literal($),
-                        ])
-                    )
-                )
-            ),
-        ]))
-        case 'unexpected enum value': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("unexpected enum value, expected:"),
-            sh.ph.indent(
-                sh.pg.sentences(p_.from.list($.expected).map(($) => sh.sentence([
-                    sh.ph.literal($),
-                ])))
-            ),
-        ]))
-        case 'multiple properties with this key': return p_.ss($, ($) => sh.ph.literal("multiple properties with this key: " + $))
+                        ])))
+                ),
+            ]))
+            case 'multiple properties with this key': return p_.ss($, ($) => sh.ph.literal("multiple properties with this key: " + $))
 
-        default: return p_.au($[0])
-    }
-})
+            default: return p_.au($[0])
+        }
+    })
