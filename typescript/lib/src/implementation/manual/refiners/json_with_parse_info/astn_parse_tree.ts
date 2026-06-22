@@ -27,8 +27,8 @@ export const Value: p_i.Refiner<
                             'dictionary': $,
                             'entries': p_.from.list($.entries).map(($) => ({
                                 'key': $.id,
-                                'value': $.assignment.__decide(
-                                    ($) => $.value.__decide(
+                                'value': p_.from.optional($.assignment).decide(
+                                    ($) => p_.from.optional($.value).decide(
                                         ($) => Value($, abort),
                                         () => abort({
                                             'range': range,

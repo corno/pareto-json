@@ -240,8 +240,8 @@
 //                 'range': t_astn_parse_tree_to_location.Value(dict.value),
 //             }])
 //         }
-//     ).assignment.__decide(
-//         ($) => $.value.__decide(
+//     ).assignment.__ decide(
+//         ($) => $.value.__ decide(
 //             ($) => $,
 //             () => abort(['json', {
 //                 'type': ['missing property', $p.id],

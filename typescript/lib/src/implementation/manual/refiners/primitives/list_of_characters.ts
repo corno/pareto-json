@@ -19,7 +19,7 @@ export const Number: p_i.Refiner<
     let hasDecimal = false
     let inExponent = false
 
-    const get_character_at = (index: number): number => characters.__deprecated_get_possible_item_at(index).__decide(
+    const get_character_at = (index: number): number => p_t.from.optional(characters.__deprecated_get_possible_item_at(index)).decide(
         ($) => $,
         () => abort("index out of bounds")
     )
