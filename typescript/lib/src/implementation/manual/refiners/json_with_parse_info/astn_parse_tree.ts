@@ -25,7 +25,7 @@ export const Value: p_i.Refiner<
                     switch ($[0]) {
                         case 'dictionary': return p_.ss($, ($) => ['object', {
                             'dictionary': $,
-                            'entries': $.entries.__l_map_deprecated(($) => ({
+                            'entries': p_.from.list($.entries).map(($) => ({
                                 'key': $.id,
                                 'value': $.assignment.__decide(
                                     ($) => $.value.__decide(
@@ -47,7 +47,7 @@ export const Value: p_i.Refiner<
                             'type': ['group', null]
                         }))
                         case 'list': return p_.ss($, ($) => ['array', {
-                            'items': $.items.__l_map_deprecated(($) => Value($.value, abort))
+                            'items': p_.from.list($.items).map(($) => Value($.value, abort))
                         }])
                         case 'nothing': return p_.ss($, ($) => abort({
                             'range': range,

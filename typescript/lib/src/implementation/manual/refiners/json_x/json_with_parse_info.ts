@@ -178,7 +178,7 @@ export const Property: p_i.Refiner_With_Parameter<
     }
 > = ($, abort, $p) => {
     const range = $.range
-    return $.properties.__get_entry_deprecated(
+    return p_.from.dictionary($.properties).get_entry(
         $p.key,
         {
             'no_such_entry': () => abort({

@@ -232,7 +232,7 @@
 //     }
 // ): d_in.Value => {
 //     const dict = $
-//     return $.entries.__get_entry_deprecated(
+//     return $.entries.__ get_entry_deprecated(
 //         $p.id,
 //         {
 //             no_such_entry: ($) => abort(['json', {
