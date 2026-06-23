@@ -25,7 +25,7 @@ namespace interface_ {
 }
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 //dependencies
 import * as t_primitives_to_loc from "../primitives/list_of_characters"

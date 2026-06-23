@@ -6,7 +6,7 @@ import * as d_in from "../../../../interface/data/json_from_parse_tree"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 
 export namespace interface_ {
