@@ -21,16 +21,16 @@ export namespace interface_ {
 export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
     ($) => {
         switch ($[0]) {
-            case 'missing property': return p_.ss($, ($) => sh.ph.literal("missing property"))
-            case 'apostrophed text': return p_.ss($, ($) => sh.ph.literal("apostrophed text"))
-            case 'backticked text': return p_.ss($, ($) => sh.ph.literal("backticked text"))
-            case 'undelimited text': return p_.ss($, ($) => sh.ph.literal("undelimited text"))
-            case 'group': return p_.ss($, ($) => sh.ph.literal("group"))
-            case 'include': return p_.ss($, ($) => sh.ph.literal("include"))
-            case 'missing data': return p_.ss($, ($) => sh.ph.literal("missing data"))
-            case 'nothing': return p_.ss($, ($) => sh.ph.literal("nothing"))
-            case 'optional': return p_.ss($, ($) => sh.ph.literal("optional"))
-            case 'state': return p_.ss($, ($) => sh.ph.literal("state"))
+            case 'missing property': return p_.option($, ($) => sh.ph.literal("missing property"))
+            case 'apostrophed text': return p_.option($, ($) => sh.ph.literal("apostrophed text"))
+            case 'backticked text': return p_.option($, ($) => sh.ph.literal("backticked text"))
+            case 'undelimited text': return p_.option($, ($) => sh.ph.literal("undelimited text"))
+            case 'group': return p_.option($, ($) => sh.ph.literal("group"))
+            case 'include': return p_.option($, ($) => sh.ph.literal("include"))
+            case 'missing data': return p_.option($, ($) => sh.ph.literal("missing data"))
+            case 'nothing': return p_.option($, ($) => sh.ph.literal("nothing"))
+            case 'optional': return p_.option($, ($) => sh.ph.literal("optional"))
+            case 'state': return p_.option($, ($) => sh.ph.literal("state"))
 
             default: return p_.au($[0])
         }

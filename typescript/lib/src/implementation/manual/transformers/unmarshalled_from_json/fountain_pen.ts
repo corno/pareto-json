@@ -21,7 +21,7 @@ export namespace interface_ {
 export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
     ($) => {
         switch ($[0]) {
-            case 'unexpected properties': return p_.ss($, ($) => sh.ph.composed([
+            case 'unexpected properties': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("unexpected properties:"),
                 sh.ph.indent(
                     sh.pg.sentences(p_.from.dictionary($['unexpected properties']).convert_to_list(
@@ -32,8 +32,8 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
                         ])))
                 ),
             ]))
-            case 'missing property': return p_.ss($, ($) => sh.ph.literal("missing property"))
-            case 'unexpected type': return p_.ss($, ($) => sh.ph.composed([
+            case 'missing property': return p_.option($, ($) => sh.ph.literal("missing property"))
+            case 'unexpected type': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("unexpected type, expected:"),
                 sh.ph.indent(
                     sh.pg.sentences(
@@ -45,7 +45,7 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
                     )
                 ),
             ]))
-            case 'unexpected enum value': return p_.ss($, ($) => sh.ph.composed([
+            case 'unexpected enum value': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("unexpected enum value, expected:"),
                 sh.ph.indent(
                     sh.pg.sentences(p_.from.list($.expected).map(
@@ -54,7 +54,7 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
                         ])))
                 ),
             ]))
-            case 'multiple properties with this key': return p_.ss($, ($) => sh.ph.literal("multiple properties with this key: " + $))
+            case 'multiple properties with this key': return p_.option($, ($) => sh.ph.literal("multiple properties with this key: " + $))
 
             default: return p_.au($[0])
         }

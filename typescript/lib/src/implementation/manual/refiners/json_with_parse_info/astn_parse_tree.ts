@@ -22,10 +22,10 @@ export const Value: p_i.Refiner<
         'type': p_.from.state($.type).decide(
             ($): d_out.Value_Type => {
                 switch ($[0]) {
-                    case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(
+                    case 'concrete': return p_.option($, ($) => p_.from.state($).decide(
                         ($): d_out.Value_Type => {
                             switch ($[0]) {
-                                case 'dictionary': return p_.ss($, ($) => ['object', {
+                                case 'dictionary': return p_.option($, ($) => ['object', {
                                     'dictionary': $,
                                     'entries': p_.from.list($.entries).map(
                                         ($) => ({
@@ -45,37 +45,37 @@ export const Value: p_i.Refiner<
                                             ),
                                         }))
                                 }])
-                                case 'group': return p_.ss($, ($) => abort({
+                                case 'group': return p_.option($, ($) => abort({
                                     'range': range,
                                     'type': ['group', null]
                                 }))
-                                case 'list': return p_.ss($, ($) => ['array', {
+                                case 'list': return p_.option($, ($) => ['array', {
                                     'items': p_.from.list($.items).map(
                                         ($) => Value($.value, abort))
                                 }])
-                                case 'nothing': return p_.ss($, ($) => abort({
+                                case 'nothing': return p_.option($, ($) => abort({
                                     'range': range,
                                     'type': ['nothing', null]
                                 }))
-                                case 'optional': return p_.ss($, ($) => abort({
+                                case 'optional': return p_.option($, ($) => abort({
                                     'range': range,
                                     'type': ['optional', null]
                                 }))
-                                case 'state': return p_.ss($, ($) => abort({
+                                case 'state': return p_.option($, ($) => abort({
                                     'range': range,
                                     'type': ['state', null]
                                 }))
-                                case 'text': return p_.ss($, ($): d_out.Value_Type => {
+                                case 'text': return p_.option($, ($): d_out.Value_Type => {
                                     const x = $
                                     return p_.from.state($.token.type).decide(
                                         ($): d_out.Value_Type => {
                                             switch ($[0]) {
-                                                case 'quoted': return p_.ss($, ($) => ['string', x])
-                                                case 'apostrophed': return p_.ss($, ($) => abort({
+                                                case 'quoted': return p_.option($, ($) => ['string', x])
+                                                case 'apostrophed': return p_.option($, ($) => abort({
                                                     'range': range,
                                                     'type': ['apostrophed text', null]
                                                 }))
-                                                case 'undelimited': return p_.ss($, ($): d_out.Value_Type => {
+                                                case 'undelimited': return p_.option($, ($): d_out.Value_Type => {
                                                     return x.token.value === "null"
                                                         ? ['null', x]
                                                         : x.token.value === "true"
@@ -95,7 +95,7 @@ export const Value: p_i.Refiner<
                                                                     )
                                                                 }]
                                                 })
-                                                case 'backticked': return p_.ss($, ($) => abort({
+                                                case 'backticked': return p_.option($, ($) => abort({
                                                     'range': range,
                                                     'type': ['backticked text', null]
                                                 }))
@@ -106,11 +106,11 @@ export const Value: p_i.Refiner<
                                 default: return p_.au($[0])
                             }
                         }))
-                    case 'include': return p_.ss($, ($) => abort({
+                    case 'include': return p_.option($, ($) => abort({
                         'range': range,
                         'type': ['include', null]
                     }))
-                    case 'missing': return p_.ss($, ($) => abort({
+                    case 'missing': return p_.option($, ($) => abort({
                         'range': range,
                         'type': ['missing data', null]
                     }))

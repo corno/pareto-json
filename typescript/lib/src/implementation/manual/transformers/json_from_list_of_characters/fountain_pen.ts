@@ -21,8 +21,8 @@ export namespace interface_ {
 export const Error: interface_.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'deserialize astn parse tree': return p_.ss($, ($) => t_deserialize_parse_tree.Error($))
-            case 'jsonify': return p_.ss($, ($) => t_from_parse_tree.Error($))
+            case 'deserialize astn parse tree': return p_.option($, ($) => t_deserialize_parse_tree.Error($))
+            case 'jsonify': return p_.option($, ($) => t_from_parse_tree.Error($))
             default: return p_.au($[0])
         }
     })

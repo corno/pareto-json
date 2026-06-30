@@ -208,7 +208,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
             const fractionalPart = value % divisor
 
             // Generate integer part digits
-            const integerDigits = p_list_build_deprecated<number>(
+            const $v_integer_digits = p_list_build_deprecated<number>(
                 ($i) => {
                     let temp = integerPart
                     if (temp === 0) {
@@ -229,8 +229,8 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
                 })
 
             // Add integer part (reverse order)
-            for (let j = p_.from.list(integerDigits).amount_of_items() - 1; j >= 0; j--) {
-                $i['add item'](48 + p_.from.optional(integerDigits.__deprecated_get_possible_item_at(j)).decide(
+            for (let j = p_.from.list($v_integer_digits).amount_of_items() - 1; j >= 0; j--) {
+                $i['add item'](48 + p_.from.optional($v_integer_digits.__deprecated_get_possible_item_at(j)).decide(
                     ($) => $,
                     () => p_unreachable_code_path("index cannot be out of bounds")
                 ))

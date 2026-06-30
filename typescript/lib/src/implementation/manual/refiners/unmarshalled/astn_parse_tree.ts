@@ -31,15 +31,15 @@
 //     return p_.from.state($.type).decide(
 //($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($): boolean => p_.from.state($).decide(
+//             case 'concrete': return p_.option($, ($): boolean => p_.from.state($).decide(
 //($) => {
 //                 switch ($[0]) {
-//                     case 'text': return p_.ss($, ($) => {
+//                     case 'text': return p_.option($, ($) => {
 //                         const text_value = $
 //                         return p_.from.state($.token.type).decide(
 //($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "true"
+//                                 case 'undelimited': return p_.option($, ($) => text_value.token.value === "true"
 //                                     ? true
 //                                     : text_value.token.value === "false"
 //                                         ? false
@@ -77,15 +77,15 @@
 //     return p_.from.state($.type).decide(
 //($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($): null => p_.from.state($).decide(
+//             case 'concrete': return p_.option($, ($): null => p_.from.state($).decide(
 //($) => {
 //                 switch ($[0]) {
-//                     case 'text': return p_.ss($, ($) => {
+//                     case 'text': return p_.option($, ($) => {
 //                         const text_value = $
 //                         return p_.from.state($.token.type).decide(
 //($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
+//                                 case 'undelimited': return p_.option($, ($) => text_value.token.value === "null"
 //                                     ? null
 //                                     : abort(['json', {
 //                                         'type': ['not a null', null],
@@ -121,15 +121,15 @@
 //     return p_.from.state($.type).decide(
 //($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(
+//             case 'concrete': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                 switch ($[0]) {
-//                     case 'text': return p_.ss($, ($) => {
+//                     case 'text': return p_.option($, ($) => {
 //                         const text_value = $
 //                         return p_.from.state($.token.type).decide(
 //($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return p_.ss($, ($) => r_primitives_from_loc.Number(
+//                                 case 'undelimited': return p_.option($, ($) => r_primitives_from_loc.Number(
 //                                     p_list_from_text(
 //                                         text_value.token.value,
 //                                         ($) => $,
@@ -210,15 +210,15 @@
 //     return p_.from.state($.type).decide(
 //($) => {
 //         switch ($[0]) {
-//             case 'concrete': return p_.ss($, ($) => p_.from.state($).decide(
+//             case 'concrete': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                 switch ($[0]) {
-//                     case 'text': return p_.ss($, ($) => {
+//                     case 'text': return p_.option($, ($) => {
 //                         const text_value = $
 //                         return p_.from.state($.token.type).decide(
 //($) => {
 //                             switch ($[0]) {
-//                                 case 'undelimited': return p_.ss($, ($) => text_value.token.value === "null"
+//                                 case 'undelimited': return p_.option($, ($) => text_value.token.value === "null"
 //                                     ? p_.literal.not_set()
 //                                     : p_.literal.set(value)
 //                                 )

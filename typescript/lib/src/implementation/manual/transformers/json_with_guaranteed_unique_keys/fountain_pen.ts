@@ -35,7 +35,7 @@ const String: interface_.String = ($) => sh.ph.serialize(t_primitives_to_loc.Str
 export const Value: interface_.Value = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'object': return p_.ss($, ($) => sh.ph.composed([
+            case 'object': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(
                     sh.pg.rich(
@@ -55,7 +55,7 @@ export const Value: interface_.Value = ($) => p_.from.state($).decide(
                 ),
                 sh.ph.literal("}"),
             ]))
-            case 'array': return p_.ss($, ($) => sh.ph.composed([
+            case 'array': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("["),
                 sh.ph.rich(
                     p_.from.list($).map(
@@ -70,18 +70,18 @@ export const Value: interface_.Value = ($) => p_.from.state($).decide(
                 ),
                 sh.ph.literal(" ]"),
             ]))
-            case 'null': return p_.ss($, ($) => sh.ph.literal("null"))
-            case 'boolean': return p_.ss($, ($) => sh.ph.literal($ ? "true" : "false"))
-            case 'null': return p_.ss($, ($) => sh.ph.literal("null"))
-            case 'number': return p_.ss($, ($) => p_.from.state($).decide(
+            case 'null': return p_.option($, ($) => sh.ph.literal("null"))
+            case 'boolean': return p_.option($, ($) => sh.ph.literal($ ? "true" : "false"))
+            case 'null': return p_.option($, ($) => sh.ph.literal("null"))
+            case 'number': return p_.option($, ($) => p_.from.state($).decide(
                 ($) => {
                     switch ($[0]) {
-                        case 'integer': return p_.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
-                        case 'float': return p_.ss($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
+                        case 'integer': return p_.option($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
+                        case 'float': return p_.option($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
                         default: return p_.au($[0])
                     }
                 }))
-            case 'string': return p_.ss($, ($) => String($))
+            case 'string': return p_.option($, ($) => String($))
             default: return p_.au($[0])
         }
     })

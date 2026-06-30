@@ -22,7 +22,7 @@ export const Array: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'array': return p_.ss($, ($) => $)
+                case 'array': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["array"]) }],
                     'range': value.range,
@@ -40,7 +40,7 @@ export const Boolean: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'boolean': return p_.ss($, ($) => $)
+                case 'boolean': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["boolean"]) }],
                     'range': value.range,
@@ -58,7 +58,7 @@ export const Null: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'null': return p_.ss($, ($) => $)
+                case 'null': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["null"]) }],
                     'range': value.range,
@@ -76,7 +76,7 @@ export const Number: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'number': return p_.ss($, ($) => $)
+                case 'number': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["number"]) }],
                     'range': value.range,
@@ -94,7 +94,7 @@ export const Object: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'object': return p_.ss($, ($) => $)
+                case 'object': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["object"]) }],
                     'range': value.range,
@@ -162,7 +162,7 @@ export const String: p_i.Refiner<
     return p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {
-                case 'string': return p_.ss($, ($) => $)
+                case 'string': return p_.option($, ($) => $)
                 default: return abort({
                     'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
                     'range': value.range,
