@@ -28,7 +28,7 @@ namespace interface_ {
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 //dependencies
-import * as t_primitives_to_loc from "../primitives/list_of_characters"
+import * as t_primitives_to_loc from "../primitives/deprecated_list_of_characters"
 
 const String: interface_.String = ($) => sh.ph.serialize(t_primitives_to_loc.String($))
 
