@@ -15,8 +15,8 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_json_from_parse_tree_to_fountain_pen from "../json_from_parse_tree/fountain_pen"
-import * as t_unmarshalled_from_json_to_fountain_pen from "../unmarshalled_from_json/fountain_pen"
+import * as t_json_from_parse_tree_to_fountain_pen from "../json_from_parse_tree/prose"
+import * as t_unmarshalled_from_json_to_fountain_pen from "../unmarshalled_from_json/prose"
 
 
 
