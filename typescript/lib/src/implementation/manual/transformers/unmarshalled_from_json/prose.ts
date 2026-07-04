@@ -28,7 +28,7 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
                         ($, key) => sh.sentence([
                             sh.ph.literal(key),
                             // sh.ph.literal(": "),
-                            // t_astn_location_to_fountain_pen.Range($, {'character location reporting': }),
+                            // t_astn_location_to_prose.Range($, {'character location reporting': }),
                         ])))
                 ),
             ]))
