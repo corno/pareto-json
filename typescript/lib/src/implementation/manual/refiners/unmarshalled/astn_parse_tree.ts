@@ -1,16 +1,16 @@
 
 // //data types
-// import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
-// import * as d_function from "../../../../interface/data/unmarshalled_from_parse_tree_x"
-// import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
+// import * as d_in from "astn-core/interface/generated/liana/schemas/parse_tree/data"
+// import * as d_function from "../../../../interface/data/unmarshalled_from_parse_tree_x.js"
+// import * as d_location from "astn-core/interface/generated/liana/schemas/location/data"
 
-// import * as d_astn_unmarshalled from "astn-core/dist/interface/data/unmarshalled"
+// import * as d_astn_unmarshalled from "astn-core/interface/data/unmarshalled"
 
 // //dependencies
-// import * as r_astn_unmarshalled_from_parse_tree from "astn-core/dist/implementation/manual/refiners/unmarshalled/parse_tree"
-// import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/start_token_range"
-// import * as r_primitives_from_loc from "../primitives/list_of_characters"
-// import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
+// import * as r_astn_unmarshalled_from_parse_tree from "astn-core/implementation/manual/refiners/unmarshalled/parse_tree"
+// import * as t_astn_parse_tree_to_location from "astn-core/implementation/manual/transformers/parse_tree/start_token_range"
+// import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
+// import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
 // export const Array_Dynamic = (

@@ -1,7 +1,7 @@
-import * as p_ from 'pareto-core/dist/interface/data'
+import * as p_ from 'pareto-core/interface/data'
 
-import * as d_json_with_parse_info from "./json_with_parse_info"
-import * as d_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
+import * as d_json_with_parse_info from "./json_with_parse_info.js"
+import * as d_location from "astn-core/interface/generated/liana/schemas/location/data"
 
 export type Object = d_json_with_parse_info.Object
 

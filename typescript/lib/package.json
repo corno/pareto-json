@@ -1,6 +1,6 @@
 {
   "name": "pareto-json",
-  "version": "0.3.76",
+  "version": "0.3.77",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for building JSON values in Pareto-style which can then be serialized",
@@ -12,6 +12,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/corno/pareto-json.git"
+  },
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
   },
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",

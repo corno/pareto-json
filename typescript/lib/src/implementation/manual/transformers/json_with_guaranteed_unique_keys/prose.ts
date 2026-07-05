@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import * as d_in from "../../../../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data"
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data.js"
+import * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
 
 namespace interface_ {
 
@@ -25,10 +25,10 @@ namespace interface_ {
 }
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 //dependencies
-import * as t_primitives_to_loc from "../primitives/deprecated_list_of_characters"
+import * as t_primitives_to_loc from "../primitives/deprecated_list_of_characters.js"
 
 const String: interface_.String = ($) => sh.ph.serialize(t_primitives_to_loc.String($))
 

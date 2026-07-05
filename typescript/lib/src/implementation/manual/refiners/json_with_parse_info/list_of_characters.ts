@@ -1,14 +1,14 @@
-import * as p_i from 'pareto-core/dist/interface/refiner'
+import * as p_i from 'pareto-core/interface/refiner'
 
 //data types
-import * as d_out from "../../../../interface/data/json_with_parse_info"
-import * as d_function from "../../../../interface/data/json_from_list_of_characters_refiner"
-import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
-import * as d_parse_tree_from_list_of_characters from "astn-core/dist/interface/generated/liana/schemas/deserialize_parse_tree/data"
+import * as d_out from "../../../../interface/data/json_with_parse_info.js"
+import * as d_function from "../../../../interface/data/json_from_list_of_characters_refiner.js"
+import * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+import * as d_parse_tree_from_list_of_characters from "astn-core/interface/generated/liana/schemas/deserialize_parse_tree/data"
 
 //dependencies
-import * as r_from_parse_tree from "./astn_parse_tree"
-import * as r_astn_parse_tree_from_list_of_characters from "astn-core/dist/implementation/manual/refiners/parse_tree/list_of_characters"
+import * as r_from_parse_tree from "./astn_parse_tree.js"
+import * as r_astn_parse_tree_from_list_of_characters from "astn-core/implementation/manual/refiners/parse_tree/list_of_characters"
 
 export type Value = p_i.Refiner_With_Parameter<
     d_out.Value,

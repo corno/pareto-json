@@ -1,15 +1,15 @@
-import * as p_ from 'pareto-core/dist/implementation/refiner'
-import * as p_i from 'pareto-core/dist/interface/refiner'
-import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/implementation/refiner'
+import * as p_i from 'pareto-core/interface/refiner'
+import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types
-import * as d_out from "../../../../interface/data/json_with_parse_info"
-import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
-import * as d_function from "../../../../interface/data/json_from_parse_tree_refiner"
+import * as d_out from "../../../../interface/data/json_with_parse_info.js"
+import * as d_in from "astn-core/interface/generated/liana/schemas/parse_tree/data"
+import * as d_function from "../../../../interface/data/json_from_parse_tree_refiner.js"
 
 //dependencies
-import * as r_primitives_from_loc from "../primitives/list_of_characters"
-import * as t_astn_parse_tree_to_location from "astn-core/dist/implementation/manual/transformers/parse_tree/full_value_range"
+import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
+import * as t_astn_parse_tree_to_location from "astn-core/implementation/manual/transformers/parse_tree/full_value_range"
 
 export const Value: p_i.Refiner<
     d_out.Value,

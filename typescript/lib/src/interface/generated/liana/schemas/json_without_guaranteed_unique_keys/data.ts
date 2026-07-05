@@ -1,6 +1,6 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
 export type Document_ = Value_
 
@@ -61,7 +61,7 @@ export type Value_ =
     | readonly ['boolean', Value_.boolean_]
     | readonly ['null', Value_.null_]
 
-export { 
+export type { 
     Document_ as Document, 
     Value_ as Value, 
 }

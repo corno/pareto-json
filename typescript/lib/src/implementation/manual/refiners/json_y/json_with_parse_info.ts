@@ -1,13 +1,13 @@
 
-import * as p_i from 'pareto-core/dist/interface/refiner'
-import * as p_temp from 'pareto-core/dist/implementation/transformer'
-import p_unreachable_code_path from 'pareto-core/dist/implementation/transformer/specials/unreachable_code_path'
+import * as p_i from 'pareto-core/interface/refiner'
+import * as p_temp from 'pareto-core/implementation/transformer'
+import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
-import * as d_in from "../../../../interface/data/json_with_parse_info"
-import * as d_out from "../../../../interface/data/json_x"
-import * as d_function from "../../../../interface/data/unmarshalled_from_json"
+import * as d_in from "../../../../interface/data/json_with_parse_info.js"
+import * as d_out from "../../../../interface/data/json_x.js"
+import * as d_function from "../../../../interface/data/unmarshalled_from_json.js"
 
-import * as r_json_x from "../json_x/json_with_parse_info"
+import * as r_json_x from "../json_x/json_with_parse_info.js"
 
 export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
     d_out.Object_With_Unique_Keys,

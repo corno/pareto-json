@@ -1,16 +1,16 @@
-import * as p_ from 'pareto-core/dist/implementation/refiner'
-import * as p_t from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/refiner'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_ from 'pareto-core/implementation/refiner'
+import * as p_t from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/refiner'
+import * as p_di from 'pareto-core/interface/data'
 
 
-import * as d_in from "../../../../interface/data/json_with_parse_info"
-import * as d_in_location from "astn-core/dist/interface/generated/liana/schemas/location/data"
-import * as d_out from "../../../../interface/data/json_x"
-import * as d_function from "../../../../interface/data/unmarshalled_from_json"
+import * as d_in from "../../../../interface/data/json_with_parse_info.js"
+import * as d_in_location from "astn-core/interface/generated/liana/schemas/location/data"
+import * as d_out from "../../../../interface/data/json_x.js"
+import * as d_function from "../../../../interface/data/unmarshalled_from_json.js"
 
 //dependencies
-import * as r_json_y from "../json_y/json_with_parse_info"
+import * as r_json_y from "../json_y/json_with_parse_info.js"
 
 
 export const Array: p_i.Refiner<

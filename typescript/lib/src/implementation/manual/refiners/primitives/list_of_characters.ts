@@ -1,7 +1,7 @@
-import * as p_t from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/refiner'
+import * as p_t from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/refiner'
 
-import * as d_in from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
+import * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
 
 export const Number: p_i.Refiner<
     number,

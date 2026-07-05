@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import * as d_in from "../../../../interface/data/unmarshalled_from_parse_tree"
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
+import * as d_in from "../../../../interface/data/unmarshalled_from_parse_tree.js"
+import * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
 
 export namespace interface_ {
 
@@ -15,8 +15,8 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree_refiner/prose"
-import * as t_unmarshalled_from_json_to_prose from "../unmarshalled_from_json/prose"
+import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree_refiner/prose.js"
+import * as t_unmarshalled_from_json_to_prose from "../unmarshalled_from_json/prose.js"
 
 
 
