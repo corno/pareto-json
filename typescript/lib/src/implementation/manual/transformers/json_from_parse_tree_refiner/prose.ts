@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
 //data types
-import * as d_in from "../../../../interface/data/json_from_parse_tree"
+import * as d_in from "../../../../interface/data/json_from_parse_tree_refiner"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //shorthands

@@ -5,7 +5,7 @@ import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/l
 //data types
 import * as d_out from "../../../../interface/data/json_with_parse_info"
 import * as d_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
-import * as d_function from "../../../../interface/data/json_from_parse_tree"
+import * as d_function from "../../../../interface/data/json_from_parse_tree_refiner"
 
 //dependencies
 import * as r_primitives_from_loc from "../primitives/list_of_characters"

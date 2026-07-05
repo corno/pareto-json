@@ -15,7 +15,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree/prose"
+import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree_refiner/prose"
 import * as t_unmarshalled_from_json_to_prose from "../unmarshalled_from_json/prose"
 
 
