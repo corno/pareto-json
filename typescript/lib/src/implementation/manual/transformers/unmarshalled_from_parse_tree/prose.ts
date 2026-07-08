@@ -1,19 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_i from 'pareto-core/interface/transformer'
 
-//data types
-import type * as d_in from "../../../../interface/data/unmarshalled_from_parse_tree.js"
-import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
-
-export namespace interface_ {
-
-    export type Error = p_i.Transformer<
-        d_in.Error,
-        d_out.Phrase
-    >
-
-}
-import * as temp_interface_ from "../../../../interface/declarations/transformers/unmarshalled_from_parse_tree/prose.js"
+import type * as interface_ from "../../../../interface/declarations/transformers/unmarshalled_from_parse_tree/prose.js"
 
 //dependencies
 import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree_refiner/prose.js"
