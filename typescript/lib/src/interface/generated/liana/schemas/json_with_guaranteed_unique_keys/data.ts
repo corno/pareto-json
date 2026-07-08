@@ -1,8 +1,7 @@
 
-import * as p_i from 'pareto-core/interface/__internal/Abort'
 import * as p_di from 'pareto-core/interface/data'
 
-export type Document_ = Value_
+type Document_ = Value_
 
 export namespace Value_ {
     

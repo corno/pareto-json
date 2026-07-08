@@ -13,7 +13,7 @@ namespace interface_ {
     >
 
     export type Document_ = p_i.Transformer<
-        d_in.Document_,
+        d_in.Document,
         d_out.Paragraph
     >
 
