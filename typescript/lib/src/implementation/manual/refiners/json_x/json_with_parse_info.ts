@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/refiner'
 import * as p_t from 'pareto-core/implementation/transformer'
-import * as p_i from 'pareto-core/interface/refiner'
-import * as p_di from 'pareto-core/interface/data'
+import type * as p_i from 'pareto-core/interface/refiner'
+import type * as p_di from 'pareto-core/interface/data'
 
 
 import type * as d_in from "../../../../interface/data/json_with_parse_info.js"

@@ -1,5 +1,5 @@
 
-import * as p_i from 'pareto-core/interface/refiner'
+import type * as p_i from 'pareto-core/interface/refiner'
 import * as p_temp from 'pareto-core/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
