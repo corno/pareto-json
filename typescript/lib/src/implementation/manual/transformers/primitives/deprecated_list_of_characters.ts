@@ -6,7 +6,7 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 
 //data types
-import * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
 
 namespace interface_ {
 

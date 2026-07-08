@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
-import * as d_astn_unmarshall from "astn-core/interface/data/unmarshall"
-import * as d_astn_location from "astn-core/interface/generated/liana/schemas/location/data"
+import type * as d_astn_unmarshall from "astn-core/interface/data/unmarshall"
+import type * as d_astn_location from "astn-core/interface/generated/liana/schemas/location/data"
 
 
 export type Error =

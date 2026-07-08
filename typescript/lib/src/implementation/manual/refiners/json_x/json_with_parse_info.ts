@@ -4,10 +4,10 @@ import * as p_i from 'pareto-core/interface/refiner'
 import * as p_di from 'pareto-core/interface/data'
 
 
-import * as d_in from "../../../../interface/data/json_with_parse_info.js"
-import * as d_in_location from "astn-core/interface/generated/liana/schemas/location/data"
-import * as d_out from "../../../../interface/data/json_x.js"
-import * as d_function from "../../../../interface/data/unmarshalled_from_json.js"
+import type * as d_in from "../../../../interface/data/json_with_parse_info.js"
+import type * as d_in_location from "astn-core/interface/generated/liana/schemas/location/data"
+import type * as d_out from "../../../../interface/data/json_x.js"
+import type * as d_function from "../../../../interface/data/unmarshalled_from_json.js"
 
 //dependencies
 import * as r_json_y from "../json_y/json_with_parse_info.js"
