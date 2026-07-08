@@ -23,6 +23,6 @@ export const Error: interface_.Error = ($) => p_.from.state($).decide(
         switch ($[0]) {
             case 'deserialize astn parse tree': return p_.option($, ($) => t_deserialize_parse_tree_to_prose.Error($))
             case 'jsonify': return p_.option($, ($) => t_json_from_parse_tree_refiner_to_prose.Error($))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })

@@ -32,6 +32,6 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
             case 'optional': return p_.option($, ($) => sh.ph.literal("optional"))
             case 'state': return p_.option($, ($) => sh.ph.literal("state"))
 
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })

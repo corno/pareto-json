@@ -78,11 +78,11 @@ export const Value: interface_.Value = ($) => p_.from.state($).decide(
                     switch ($[0]) {
                         case 'integer': return p_.option($, ($) => sh.ph.serialize(t_primitives_to_loc.Fractional_Decimal($, { 'number of fractional digits': 0 })))
                         case 'float': return p_.option($, ($) => sh.ph.serialize(t_primitives_to_loc.Float($, { 'digits': 15 })))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
             case 'string': return p_.option($, ($) => String($))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 

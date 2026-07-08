@@ -56,6 +56,6 @@ export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
             ]))
             case 'multiple properties with this key': return p_.option($, ($) => sh.ph.literal("multiple properties with this key: " + $))
 
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })

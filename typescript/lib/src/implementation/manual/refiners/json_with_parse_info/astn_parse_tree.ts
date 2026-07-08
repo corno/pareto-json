@@ -99,11 +99,11 @@ export const Value: p_i.Refiner<
                                                     'range': range,
                                                     'type': ['backticked text', null]
                                                 }))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         })
                                 })
-                                default: return p_.au($[0])
+                                default: return p_.exhaustive($[0])
                             }
                         }))
                     case 'include': return p_.option($, ($) => abort({
@@ -114,7 +114,7 @@ export const Value: p_i.Refiner<
                         'range': range,
                         'type': ['missing data', null]
                     }))
-                    default: return p_.au($[0])
+                    default: return p_.exhaustive($[0])
                 }
             })
     }
