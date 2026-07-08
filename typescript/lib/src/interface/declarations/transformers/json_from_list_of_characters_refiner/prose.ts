@@ -11,9 +11,9 @@ import * as t_deserialize_parse_tree_to_prose from "astn-core/implementation/man
 
 
 
-    export type Error = p_.Transformer<
-        d_in.Error,
-        d_out.Phrase
-    >
+export type Error = p_.Transformer<
+    d_in.Error,
+    d_out.Phrase
+>
 
 
