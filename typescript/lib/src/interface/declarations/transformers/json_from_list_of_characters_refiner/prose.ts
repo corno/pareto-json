@@ -1,5 +1,5 @@
 
-import type * as p_i from 'pareto-core/interface/transformer'
+import type * as p_ from 'pareto-core/interface/transformer'
 
 //data types
 import type * as d_in from "../../../data/json_from_list_of_characters_refiner.js"
@@ -11,7 +11,7 @@ import * as t_deserialize_parse_tree_to_prose from "astn-core/implementation/man
 
 
 
-    export type Error = p_i.Transformer<
+    export type Error = p_.Transformer<
         d_in.Error,
         d_out.Phrase
     >
