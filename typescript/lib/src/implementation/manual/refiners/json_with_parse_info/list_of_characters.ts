@@ -18,6 +18,7 @@ export namespace interface_ {
         d_parse_tree_from_list_of_characters.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/refiners/json_with_parse_info/list_of_characters.js"
 
 export const Value: interface_.Value = ($, abort, $p) => r_from_parse_tree.Value(
     r_astn_parse_tree_from_list_of_characters.Document(

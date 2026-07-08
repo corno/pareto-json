@@ -17,6 +17,7 @@ export namespace interface_ {
     >
 
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/json_from_parse_tree_refiner/prose.js"
 
 export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
     ($) => {

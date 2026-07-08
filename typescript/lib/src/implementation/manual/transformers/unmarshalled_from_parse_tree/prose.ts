@@ -13,6 +13,7 @@ export namespace interface_ {
     >
 
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/unmarshalled_from_parse_tree/prose.js"
 
 //dependencies
 import * as t_json_from_parse_tree_to_prose from "../json_from_parse_tree_refiner/prose.js"

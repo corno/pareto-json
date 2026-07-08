@@ -12,6 +12,7 @@ export namespace interface_ {
         d_function.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/json_without_guaranteed_unique_keys/text.js"
 
 //dependencies
 import * as t_to_prose from "./prose.js"

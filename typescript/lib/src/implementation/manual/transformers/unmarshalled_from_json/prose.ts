@@ -17,6 +17,7 @@ export namespace interface_ {
     >
 
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/unmarshalled_from_json/prose.js"
 
 export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
     ($) => {
