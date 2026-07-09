@@ -1,5 +1,5 @@
 
-import type * as interface_ from "../../../../interface/declarations/transformers/json_without_guaranteed_unique_keys/text.js"
+import type * as interface_ from "../../../../declarations/transformers/json_without_guaranteed_unique_keys/text.js"
 
 //dependencies
 import * as t_to_prose from "./prose.js"

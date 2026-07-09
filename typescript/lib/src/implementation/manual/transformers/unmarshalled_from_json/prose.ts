@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-import type * as interface_ from "../../../../interface/declarations/transformers/unmarshalled_from_json/prose.js"
+import type * as interface_ from "../../../../declarations/transformers/unmarshalled_from_json/prose.js"
 
 export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
     ($) => {

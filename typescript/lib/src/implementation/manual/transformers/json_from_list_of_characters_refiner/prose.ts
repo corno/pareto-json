@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/json_from_list_of_characters_refiner/prose.js"
+import type * as interface_ from "../../../../declarations/transformers/json_from_list_of_characters_refiner/prose.js"
 
 //dependencies
 import * as t_json_from_parse_tree_refiner_to_prose from "../json_from_parse_tree_refiner/prose.js"
