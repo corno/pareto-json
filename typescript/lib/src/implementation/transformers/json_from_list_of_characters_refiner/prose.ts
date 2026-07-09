@@ -4,7 +4,7 @@ import type * as interface_ from "../../../declarations/transformers/json_from_l
 
 //dependencies
 import * as t_json_from_parse_tree_refiner_to_prose from "../json_from_parse_tree_refiner/prose.js"
-import * as t_deserialize_parse_tree_to_prose from "astn-core/implementation/manual/transformers/deserialize_parse_tree/prose"
+import * as t_deserialize_parse_tree_to_prose from "astn-core/implementation/transformers/deserialize_parse_tree/prose"
 
 export const Error: interface_.Error = ($) => p_.from.state($).decide(
     ($) => {

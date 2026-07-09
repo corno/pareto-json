@@ -9,7 +9,7 @@ import type * as d_function from "../../../interface/data/json_from_parse_tree_r
 
 //dependencies
 import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
-import * as t_astn_parse_tree_to_location from "astn-core/implementation/manual/transformers/parse_tree/full_value_range"
+import * as t_astn_parse_tree_to_location from "astn-core/implementation/transformers/parse_tree/full_value_range"
 
 export const Value: p_i.Refiner<
     d_out.Value,
