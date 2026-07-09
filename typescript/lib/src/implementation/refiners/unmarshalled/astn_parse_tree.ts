@@ -7,8 +7,8 @@
 // import type * as d_astn_unmarshalled from "astn-core/interface/data/unmarshalled"
 
 // //dependencies
-// import * as r_astn_unmarshalled_from_parse_tree from "astn-core/implementation/manual/refiners/unmarshalled/parse_tree"
-// import * as t_astn_parse_tree_to_location from "astn-core/implementation/manual/transformers/parse_tree/start_token_range"
+// import * as r_astn_unmarshalled_from_parse_tree from "astn-core/implementation/refiners/unmarshalled/parse_tree"
+// import * as t_astn_parse_tree_to_location from "astn-core/implementation/transformers/parse_tree/start_token_range"
 // import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
 // import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
