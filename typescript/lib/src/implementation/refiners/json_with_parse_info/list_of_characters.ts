@@ -1,5 +1,5 @@
 
-import type * as interface_ from "../../../../declarations/refiners/json_with_parse_info/list_of_characters.js"
+import type * as interface_ from "../../../declarations/refiners/json_with_parse_info/list_of_characters.js"
 
 //dependencies
 import * as r_from_parse_tree from "./astn_parse_tree.js"

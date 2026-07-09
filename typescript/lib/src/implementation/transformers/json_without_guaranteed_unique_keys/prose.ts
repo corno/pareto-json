@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../../interface/generated/liana/schemas/json_without_guaranteed_unique_keys/data.js"
+import type * as d_in from "../../../interface/generated/liana/schemas/json_without_guaranteed_unique_keys/data.js"
 import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
 
 namespace interface_ {
