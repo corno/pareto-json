@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import type * as d_out from "../../interface/generated/liana/schemas/json_with_guaranteed_unique_keys/data.js"
+import type * as d_out from "../../interface/data/json_with_guaranteed_unique_keys.js"
 
 
 export namespace v {
