@@ -1,4 +1,4 @@
-import type * as d_deserialize from "astn-core/interface/generated/liana/schemas/deserialize_parse_tree/data"
+import type * as d_deserialize from "astn-core/interface/data/deserialize_parse_tree"
 import type * as d_json_from_parse_tree from "./json_from_parse_tree_refiner.js"
 
 export type Error = 

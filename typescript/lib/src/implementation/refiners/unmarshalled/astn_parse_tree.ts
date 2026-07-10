@@ -1,8 +1,8 @@
 
 // //data types
-// import type * as d_in from "astn-core/interface/generated/liana/schemas/parse_tree/data"
+// import type * as d_in from "astn-core/interface/data/parse_tree"
 // import type * as d_function from "../../../../interface/data/unmarshalled_from_parse_tree_x.js"
-// import type * as d_location from "astn-core/interface/generated/liana/schemas/location/data"
+// import type * as d_location from "astn-core/interface/data/location"
 
 // import type * as d_astn_unmarshalled from "astn-core/interface/data/unmarshalled"
 

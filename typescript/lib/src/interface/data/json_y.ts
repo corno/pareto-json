@@ -1,5 +1,5 @@
 
-import type * as d_astn_location from "astn-core/interface/generated/liana/schemas/location/data"
+import type * as d_astn_location from "astn-core/interface/data/location"
 
 export type Error = {
     'conflicting key': string

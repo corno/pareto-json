@@ -5,7 +5,7 @@ import type * as p_di from 'pareto-core/interface/data'
 
 
 import type * as d_in from "../../../interface/data/json_with_parse_info.js"
-import type * as d_in_location from "astn-core/interface/generated/liana/schemas/location/data"
+import type * as d_in_location from "astn-core/interface/data/location"
 import type * as d_out from "../../../interface/data/json_x.js"
 import type * as d_function from "../../../interface/data/unmarshalled_from_json.js"
 

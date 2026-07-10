@@ -4,7 +4,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 //data types
 import type * as d_out from "../../../interface/data/json_with_parse_info.js"
-import type * as d_in from "astn-core/interface/generated/liana/schemas/parse_tree/data"
+import type * as d_in from "astn-core/interface/data/parse_tree"
 import type * as d_function from "../../../interface/data/json_from_parse_tree_refiner.js"
 
 //dependencies

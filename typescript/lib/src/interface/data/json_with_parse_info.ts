@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_location from "astn-core/interface/generated/liana/schemas/location/data"
-import type * as d_parse_tree from "astn-core/interface/generated/liana/schemas/parse_tree/data"
+import type * as d_location from "astn-core/interface/data/location"
+import type * as d_parse_tree from "astn-core/interface/data/parse_tree"
 
 export type Value = {
     'range': d_location.Range
