@@ -3,27 +3,27 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types
-import type * as d_out from "../../../interface/schemas/json_with_parse_info.js"
-import type * as d_in from "astn-core/interface/data/parse_tree"
-import type * as d_function from "../../../interface/schemas/json_from_parse_tree_refiner.js"
+import type * as s_out from "../../../interface/schemas/json_with_parse_info.js"
+import type * as s_in from "astn-core/interface/data/parse_tree"
+import type * as s_function from "../../../interface/schemas/json_from_parse_tree_refiner.js"
 
 //dependencies
 import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
 import * as t_astn_parse_tree_to_location from "astn-core/implementation/transformers/parse_tree/full_value_range"
 
 export const Value: p_i.Refiner<
-    d_out.Value,
-    d_function.Error,
-    d_in.Value
+    s_out.Value,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const range = t_astn_parse_tree_to_location.Value($)
     return {
         'range': range,
         'type': p_.from.state($.type).decide(
-            ($): d_out.Value_Type => {
+            ($): s_out.Value_Type => {
                 switch ($[0]) {
                     case 'concrete': return p_.option($, ($) => p_.from.state($).decide(
-                        ($): d_out.Value_Type => {
+                        ($): s_out.Value_Type => {
                             switch ($[0]) {
                                 case 'dictionary': return p_.option($, ($) => ['object', {
                                     'dictionary': $,
@@ -65,17 +65,17 @@ export const Value: p_i.Refiner<
                                     'range': range,
                                     'type': ['state', null]
                                 }))
-                                case 'text': return p_.option($, ($): d_out.Value_Type => {
+                                case 'text': return p_.option($, ($): s_out.Value_Type => {
                                     const x = $
                                     return p_.from.state($.token.type).decide(
-                                        ($): d_out.Value_Type => {
+                                        ($): s_out.Value_Type => {
                                             switch ($[0]) {
                                                 case 'quoted': return p_.option($, ($) => ['string', x])
                                                 case 'apostrophed': return p_.option($, ($) => abort({
                                                     'range': range,
                                                     'type': ['apostrophed text', null]
                                                 }))
-                                                case 'undelimited': return p_.option($, ($): d_out.Value_Type => {
+                                                case 'undelimited': return p_.option($, ($): s_out.Value_Type => {
                                                     return x.token.value === "null"
                                                         ? ['null', x]
                                                         : x.token.value === "true"

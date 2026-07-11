@@ -1,10 +1,10 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_location from "astn-core/interface/data/location"
-import type * as d_parse_tree from "astn-core/interface/data/parse_tree"
+import type * as s_location from "astn-core/interface/data/location"
+import type * as s_parse_tree from "astn-core/interface/data/parse_tree"
 
 export type Value = {
-    'range': d_location.Range
+    'range': s_location.Range
     'type': Value_Type
 }
 
@@ -16,17 +16,17 @@ export type Value_Type =
     | ['object', Object]
     | ['string', String]
 
-export type Null = d_parse_tree.Text
+export type Null = s_parse_tree.Text
 
-export type String = d_parse_tree.Text
+export type String = s_parse_tree.Text
 
 export type Boolean = {
-    'text': d_parse_tree.Text
+    'text': s_parse_tree.Text
     'value': boolean
 }
 
 export type Number = {
-    'text': d_parse_tree.Text
+    'text': s_parse_tree.Text
     'value': number
 }
 
@@ -35,11 +35,11 @@ export type Array = {
 }
 
 export type Key_Value_Pair = {
-    'key': d_parse_tree.Text
+    'key': s_parse_tree.Text
     'value': Value
 }
 
 export type Object = {
-    'dictionary': d_parse_tree.Value.type_.concrete.dictionary
+    'dictionary': s_parse_tree.Value.type_.concrete.dictionary
     'entries': p_.List<Key_Value_Pair>
 }

@@ -6,13 +6,13 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 
 //data types
-import type * as d_out from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_out from "pareto-fountain-pen/interface/data/list_of_characters"
 
 namespace interface_ {
 
     export type Float = p_i.Transformer_With_Parameter<
         number,
-        d_out.List_of_Characters,
+        s_out.List_of_Characters,
         {
             'digits': number
         }
@@ -20,7 +20,7 @@ namespace interface_ {
 
     export type Fractional_Decimal = p_i.Transformer_With_Parameter<
         number,
-        d_out.List_of_Characters,
+        s_out.List_of_Characters,
         {
             'number of fractional digits': number
         }
@@ -28,7 +28,7 @@ namespace interface_ {
 
     export type String = p_i.Transformer<
         string,
-        d_out.List_of_Characters
+        s_out.List_of_Characters
     >
 
 }

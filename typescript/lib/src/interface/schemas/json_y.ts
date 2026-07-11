@@ -1,7 +1,7 @@
 
-import type * as d_astn_location from "astn-core/interface/data/location"
+import type * as s_astn_location from "astn-core/interface/data/location"
 
 export type Error = {
     'conflicting key': string
-    'range': d_astn_location.Range
+    'range': s_astn_location.Range
 }

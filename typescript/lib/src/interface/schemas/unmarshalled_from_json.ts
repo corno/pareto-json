@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_astn_location from "astn-core/interface/data/location"
+import type * as s_astn_location from "astn-core/interface/data/location"
 
 export type Error = {
     'type':
@@ -13,11 +13,11 @@ export type Error = {
     | ['unexpected enum value', {
         'expected': p_.List<string>
     }]
-    'range': d_astn_location.Range
+    'range': s_astn_location.Range
 }
 
 
 export type Unexpected_Properties = {
     'expected properties': p_.Dictionary<null>
-    'unexpected properties': p_.Dictionary<d_astn_location.Range>
+    'unexpected properties': p_.Dictionary<s_astn_location.Range>
 }

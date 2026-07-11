@@ -2,24 +2,24 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../interface/schemas/json_with_guaranteed_unique_keys.js"
-import type * as d_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_in from "../../../interface/schemas/json_with_guaranteed_unique_keys.js"
+import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
 namespace interface_ {
 
     export type Value = p_i.Transformer<
-        d_in.Value,
-        d_out.Phrase
+        s_in.Value,
+        s_out.Phrase
     >
 
     export type Document_ = p_i.Transformer<
-        d_in.Document,
-        d_out.Paragraph
+        s_in.Document,
+        s_out.Paragraph
     >
 
     export type String = p_i.Transformer<
         string, //should have been a schema type
-        d_out.Phrase
+        s_out.Phrase
     >
 
 }

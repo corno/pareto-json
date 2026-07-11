@@ -4,19 +4,19 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import type * as p_di from 'pareto-core/interface/data'
 
 
-import type * as d_in from "../../../interface/schemas/json_with_parse_info.js"
-import type * as d_in_location from "astn-core/interface/data/location"
-import type * as d_out from "../../../interface/schemas/json_x.js"
-import type * as d_function from "../../../interface/schemas/unmarshalled_from_json.js"
+import type * as s_in from "../../../interface/schemas/json_with_parse_info.js"
+import type * as s_in_location from "astn-core/interface/data/location"
+import type * as s_out from "../../../interface/schemas/json_x.js"
+import type * as s_function from "../../../interface/schemas/unmarshalled_from_json.js"
 
 //dependencies
 import * as r_json_y from "../json_y/json_with_parse_info.js"
 
 
 export const Array: p_i.Refiner<
-    d_out.Array,
-    d_function.Error,
-    d_in.Value
+    s_out.Array,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -32,9 +32,9 @@ export const Array: p_i.Refiner<
 }
 
 export const Boolean: p_i.Refiner<
-    d_out.Boolean,
-    d_function.Error,
-    d_in.Value
+    s_out.Boolean,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -50,9 +50,9 @@ export const Boolean: p_i.Refiner<
 }
 
 export const Null: p_i.Refiner<
-    d_out.Null,
-    d_function.Error,
-    d_in.Value
+    s_out.Null,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -68,9 +68,9 @@ export const Null: p_i.Refiner<
 }
 
 export const Number: p_i.Refiner<
-    d_out.Number,
-    d_function.Error,
-    d_in.Value
+    s_out.Number,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -86,9 +86,9 @@ export const Number: p_i.Refiner<
 }
 
 export const Object: p_i.Refiner<
-    d_out.Object,
-    d_function.Error,
-    d_in.Value
+    s_out.Object,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -104,9 +104,9 @@ export const Object: p_i.Refiner<
 }
 
 export const Object_No_Unexpected_Properties_From_Value: p_i.Refiner_With_Parameter<
-    d_out.Object_No_Unexpected_Properties,
-    d_function.Error,
-    d_in.Value,
+    s_out.Object_No_Unexpected_Properties,
+    s_function.Error,
+    s_in.Value,
     {
         'expected properties': p_di.Dictionary<null>
     }
@@ -117,9 +117,9 @@ export const Object_No_Unexpected_Properties_From_Value: p_i.Refiner_With_Parame
 )
 
 export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Parameter<
-    d_out.Object_No_Unexpected_Properties,
-    d_function.Error,
-    d_in.Object,
+    s_out.Object_No_Unexpected_Properties,
+    s_function.Error,
+    s_in.Object,
     {
         'expected properties': p_di.Dictionary<null>
     }
@@ -132,7 +132,7 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
     const $v_unexpected_properties = p_t.from.dictionary(
         p_t.from.dictionary(object.properties).join(
             $p['expected properties'],
-            ($, other, id): p_di.Optional_Value<d_in_location.Range> => p_t.from.optional(other).decide(
+            ($, other, id): p_di.Optional_Value<s_in_location.Range> => p_t.from.optional(other).decide(
                 () => p_.literal.not_set(),
                 () => p_.literal.set($.key.range)
             )
@@ -154,9 +154,9 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
 }
 
 export const String: p_i.Refiner<
-    d_out.String,
-    d_function.Error,
-    d_in.Value
+    s_out.String,
+    s_function.Error,
+    s_in.Value
 > = ($, abort) => {
     const value = $
     return p_.from.state($.type).decide(
@@ -172,9 +172,9 @@ export const String: p_i.Refiner<
 }
 
 export const Property: p_i.Refiner_With_Parameter<
-    d_out.Property,
-    d_function.Error,
-    d_out.Object_With_Unique_Keys,
+    s_out.Property,
+    s_function.Error,
+    s_out.Object_With_Unique_Keys,
     {
         'key': string
     }
@@ -192,8 +192,8 @@ export const Property: p_i.Refiner_With_Parameter<
 }
 
 export const Nullable_Value = (
-    $: d_in.Value,
-): d_out.Nullable_Value => {
+    $: s_in.Value,
+): s_out.Nullable_Value => {
     const value = $
     return p_.from.state($.type).decide(
         ($) => {

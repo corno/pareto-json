@@ -1,27 +1,27 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_json_with_parse_info from "./json_with_parse_info.js"
-import type * as d_location from "astn-core/interface/data/location"
+import type * as s_json_with_parse_info from "./json_with_parse_info.js"
+import type * as s_location from "astn-core/interface/data/location"
 
-export type Object = d_json_with_parse_info.Object
+export type Object = s_json_with_parse_info.Object
 
 export type Object_With_Unique_Keys = {
-    'range': d_location.Range
-    'properties': p_.Dictionary<d_json_with_parse_info.Key_Value_Pair>
+    'range': s_location.Range
+    'properties': p_.Dictionary<s_json_with_parse_info.Key_Value_Pair>
 }
 
 export type Object_No_Unexpected_Properties = Object_With_Unique_Keys
 
-export type Property = d_json_with_parse_info.Key_Value_Pair
+export type Property = s_json_with_parse_info.Key_Value_Pair
 
-export type Array = d_json_with_parse_info.Array
+export type Array = s_json_with_parse_info.Array
 
-export type Boolean = d_json_with_parse_info.Boolean
+export type Boolean = s_json_with_parse_info.Boolean
 
-export type Null = d_json_with_parse_info.Null
+export type Null = s_json_with_parse_info.Null
 
-export type Number = d_json_with_parse_info.Number
+export type Number = s_json_with_parse_info.Number
 
-export type String = d_json_with_parse_info.String
+export type String = s_json_with_parse_info.String
 
-export type Nullable_Value = p_.Optional_Value<d_json_with_parse_info.Value>
+export type Nullable_Value = p_.Optional_Value<s_json_with_parse_info.Value>

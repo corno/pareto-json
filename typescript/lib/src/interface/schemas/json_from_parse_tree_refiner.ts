@@ -1,7 +1,7 @@
-import type * as d_location from "astn-core/interface/data/location"
+import type * as s_location from "astn-core/interface/data/location"
 
 export type Error = {
-    'range': d_location.Range
+    'range': s_location.Range
     'type': Error_Type
 }
 
