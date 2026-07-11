@@ -1,7 +1,7 @@
 import type * as p_ from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../interface/data/json_with_guaranteed_unique_keys.js"
+import type * as d_in from "../../../interface/schemas/json_with_guaranteed_unique_keys.js"
 import type * as d_out from "pareto-fountain-pen/interface/data/text"
 import type * as d_function_fp from "pareto-fountain-pen/interface/data/prose_serialize"
 

@@ -3,9 +3,9 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import * as p_temp from 'pareto-core/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
-import type * as d_in from "../../../interface/data/json_with_parse_info.js"
-import type * as d_out from "../../../interface/data/json_x.js"
-import type * as d_function from "../../../interface/data/unmarshalled_from_json.js"
+import type * as d_in from "../../../interface/schemas/json_with_parse_info.js"
+import type * as d_out from "../../../interface/schemas/json_x.js"
+import type * as d_function from "../../../interface/schemas/unmarshalled_from_json.js"
 
 import * as r_json_x from "../json_x/json_with_parse_info.js"
 
