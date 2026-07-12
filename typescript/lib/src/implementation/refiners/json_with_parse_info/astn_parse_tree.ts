@@ -3,9 +3,9 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //schemas
+import type * as s_in from "../../../interface/schemas/parse_tree.js"
 import type * as s_out from "../../../interface/schemas/json_with_parse_info.js"
-import type * as s_in from "astn-core/interface/data/parse_tree"
-import type * as s_function from "../../../interface/schemas/json_from_parse_tree_refiner.js"
+import type * as s_error from "../../../interface/schemas/json_from_parse_tree_refiner.js"
 
 //dependencies
 import * as r_primitives_from_loc from "../primitives/list_of_characters.js"
@@ -13,7 +13,7 @@ import * as t_astn_parse_tree_to_location from "astn-core/implementation/transfo
 
 export const Value: p_i.Refiner<
     s_out.Value,
-    s_function.Error,
+    s_error.Error,
     s_in.Value
 > = ($, abort) => {
     const range = t_astn_parse_tree_to_location.Value($)

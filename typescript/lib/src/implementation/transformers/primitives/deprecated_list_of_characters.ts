@@ -6,9 +6,9 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 
 //schemas
-import type * as s_out from "pareto-fountain-pen/interface/data/list_of_characters"
 
-namespace interface_ {
+import type * as s_out from "../../../interface/schemas/list_of_characters.js"
+namespace declarations {
 
     export type Float = p_i.Transformer_With_Parameter<
         number,
@@ -33,7 +33,7 @@ namespace interface_ {
 
 }
 
-export const Float: interface_.Float = ($, $p) => {
+export const Float: declarations.Float = ($, $p) => {
     return p_list_build_deprecated(
         ($i) => {
             // Handle special case for zero in scientific notation
@@ -179,7 +179,7 @@ export const Float: interface_.Float = ($, $p) => {
         })
 }
 
-export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
+export const Fractional_Decimal: declarations.Fractional_Decimal = ($, $p) => {
 
     return p_list_build_deprecated<number>(
         ($i) => {
@@ -266,7 +266,7 @@ export const Fractional_Decimal: interface_.Fractional_Decimal = ($, $p) => {
         })
 }
 
-export const String: interface_.String = ($) => p_.literal.segmented_list([
+export const String: declarations.String = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x22, // "
     ]),

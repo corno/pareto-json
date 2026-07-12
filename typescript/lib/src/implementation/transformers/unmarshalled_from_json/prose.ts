@@ -1,11 +1,20 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
+//schemas
+import type * as s_in from "../../../interface/schemas/unmarshalled_from_json.js"
+import type * as s_out from "../../../interface/schemas/prose.js"
+
+namespace declarations {
+    export type Error = p_.Transformer<
+        s_in.Error,
+        s_out.Phrase
+    >
+}
+
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-import type * as interface_ from "../../../declarations/transformers/unmarshalled_from_json/prose.js"
-
-export const Error: interface_.Error = ($) => p_.from.state($.type).decide(
+export const Error: declarations.Error = ($) => p_.from.state($.type).decide(
     ($) => {
         switch ($[0]) {
             case 'unexpected properties': return p_.option($, ($) => sh.ph.composed([

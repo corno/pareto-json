@@ -3,9 +3,9 @@ import type * as p_i from 'pareto-core/interface/transformer'
 
 //schemas
 import type * as s_in from "../../../interface/schemas/json_with_guaranteed_unique_keys.js"
-import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
-namespace interface_ {
+import type * as s_out from "../../../interface/schemas/prose.js"
+namespace declarations {
 
     export type Value = p_i.Transformer<
         s_in.Value,
@@ -30,9 +30,9 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 //dependencies
 import * as t_primitives_to_loc from "../primitives/deprecated_list_of_characters.js"
 
-const String: interface_.String = ($) => sh.ph.serialize(t_primitives_to_loc.String($))
+const String: declarations.String = ($) => sh.ph.serialize(t_primitives_to_loc.String($))
 
-export const Value: interface_.Value = ($) => p_.from.state($).decide(
+export const Value: declarations.Value = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'object': return p_.option($, ($) => sh.ph.composed([
@@ -86,7 +86,7 @@ export const Value: interface_.Value = ($) => p_.from.state($).decide(
         }
     })
 
-export const Document: interface_.Document_ = ($) => sh.pg.sentences([
+export const Document: declarations.Document_ = ($) => sh.pg.sentences([
     sh.sentence([
         Value($)
     ])

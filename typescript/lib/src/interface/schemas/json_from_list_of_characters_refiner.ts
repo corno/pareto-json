@@ -1,4 +1,4 @@
-import type * as s_deserialize from "astn-core/interface/data/deserialize_parse_tree"
+import type * as s_deserialize from "./deserialize_parse_tree.js"
 import type * as s_json_from_parse_tree from "./json_from_parse_tree_refiner.js"
 
 export type Error = 

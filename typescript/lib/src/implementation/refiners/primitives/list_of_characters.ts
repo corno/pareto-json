@@ -1,7 +1,7 @@
 import * as p_t from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/refiner'
 
-import type * as s_in from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_in from "../../../interface/schemas/list_of_characters.js"
 
 export const Number: p_i.Refiner<
     number,

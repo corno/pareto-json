@@ -1,10 +1,10 @@
 
 // //schemas
-// import type * as s_in from "astn-core/interface/data/parse_tree"
+// import type * as s_in from "../../../interface/schemas/parse_tree.js"
 // import type * as s_function from "../../../../interface/schemas/unmarshalled_from_parse_tree_x.js"
-// import type * as s_location from "astn-core/interface/data/location"
+// import type * as s_location from "../../../interface/schemas/location.js"
 
-// import type * as s_astn_unmarshalled from "astn-core/interface/data/unmarshalled"
+// import type * as s_astn_unmarshalled from "../../../interface/schemas/unmarshalled.js"
 
 // //dependencies
 // import * as r_astn_unmarshalled_from_parse_tree from "astn-core/implementation/refiners/unmarshalled/parse_tree"

@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
-import type * as s_astn_unmarshall from "astn-core/interface/data/unmarshall"
-import type * as s_astn_location from "astn-core/interface/data/location"
+import type * as s_astn_unmarshall from "../../interface/schemas/unmarshall.js"
+import type * as s_astn_location from "../../interface/schemas/location.js"
 
 
 export type Error =

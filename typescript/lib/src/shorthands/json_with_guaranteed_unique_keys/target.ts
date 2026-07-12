@@ -1,9 +1,10 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
+
+
 import type * as s_out from "../../interface/schemas/json_with_guaranteed_unique_keys.js"
 
-
-export namespace v {
+namespace v {
 
     export const string = (
         value: string

@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as s_astn_location from "astn-core/interface/data/location"
+import type * as s_astn_location from "./location.js"
 
 export type Error = {
     'type':

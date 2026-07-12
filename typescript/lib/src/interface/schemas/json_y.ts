@@ -1,5 +1,5 @@
 
-import type * as s_astn_location from "astn-core/interface/data/location"
+import type * as s_astn_location from "./location.js"
 
 export type Error = {
     'conflicting key': string
