@@ -1,5 +1,5 @@
 
-// //data types
+// //schemas
 // import type * as s_in from "astn-core/interface/data/parse_tree"
 // import type * as s_function from "../../../../interface/schemas/unmarshalled_from_parse_tree_x.js"
 // import type * as s_location from "astn-core/interface/data/location"

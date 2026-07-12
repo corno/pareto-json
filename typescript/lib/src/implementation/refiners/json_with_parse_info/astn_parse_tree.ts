@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/refiner'
 import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-//data types
+//schemas
 import type * as s_out from "../../../interface/schemas/json_with_parse_info.js"
 import type * as s_in from "astn-core/interface/data/parse_tree"
 import type * as s_function from "../../../interface/schemas/json_from_parse_tree_refiner.js"

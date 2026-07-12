@@ -1,6 +1,6 @@
 
 
-//data types
+//schemas
 import type * as s_unmarshalled_from_json from "./unmarshalled_from_json.js"
 import type * as s_json_from_list_of_characters from "./json_from_list_of_characters_refiner.js"
 
