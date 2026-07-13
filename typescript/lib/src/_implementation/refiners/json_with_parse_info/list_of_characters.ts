@@ -2,7 +2,7 @@ import type * as p_ from 'pareto-core/implementation/refiner'
 
 import type * as s_out from "../../../interface/schemas/json_with_parse_info.js"
 import type * as s_error from "../../../interface/schemas/deserialize_json.js"
-import type * as s_parameters from "../../../interface/schemas/astn_deserialize_parse_tree.js"
+import type * as s_parameters from "../../../interface/schemas/astn_parse_tree_deserialization.js"
 import type * as s_in from "../../../interface/schemas/list_of_characters.js"
 
 namespace declarations {

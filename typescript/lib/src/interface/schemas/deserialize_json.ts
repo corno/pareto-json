@@ -1,4 +1,4 @@
-import type * as s_astn_deserialize from "./astn_deserialize_parse_tree.js"
+import type * as s_astn_deserialize from "./astn_parse_tree_deserialization.js"
 import type * as s_location from "./location.js"
 
 export type Parameters = s_astn_deserialize.Parameters

@@ -11,21 +11,21 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 namespace declarations {
 
-    export type Float = p_.Serializer_With_Parameter<
+    export type Float = p_.Phrase_Serializer_With_Parameter<
         number,
         {
             'digits': number
         }
     >
 
-    export type Fractional_Decimal = p_.Serializer_With_Parameter<
+    export type Fractional_Decimal = p_.Phrase_Serializer_With_Parameter<
         number,
         {
             'number of fractional digits': number
         }
     >
 
-    export type String = p_.Serializer<
+    export type String = p_.Phrase_Serializer<
         string
     >
 

@@ -12,12 +12,12 @@ import * as s_json_without_guaranteed_unique_keys from "./schemas/json_without_g
 export type API = {
     'serializers': {
         'json without unique keys': {
-            'Document': p_s.Serializer<
+            'Document': p_s.Paragraph_Serializer<
                 s_json_without_guaranteed_unique_keys.Document
             >
         }
         'json with unique keys': {
-            'Document': p_s.Serializer<
+            'Document': p_s.Paragraph_Serializer<
                 s_json_with_guaranteed_unique_keys.Document
             >
         }

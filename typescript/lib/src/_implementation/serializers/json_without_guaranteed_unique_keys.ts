@@ -5,15 +5,15 @@ import type * as s_in from "../../interface/schemas/json_without_guaranteed_uniq
 
 namespace declarations {
 
-    export type String = p_.Serializer<
+    export type String = p_.Phrase_Serializer<
         string //should have been a schema type
     >
 
-    export type Value = p_.Serializer<
+    export type Value = p_.Phrase_Serializer<
         s_in.Value
     >
 
-    export type Document_ = p_.Serializer<
+    export type Document_ = p_.Paragraph_Serializer<
         s_in.Document_
     >
 
@@ -84,4 +84,4 @@ export const Value: declarations.Value = ($) => p_.from.state($).decide(
     }
 )
 
-export const Document: declarations.Document_ = ($) => Value($)
+export const Document: declarations.Document_ = ($) => sh.pg.sentences([sh.sentence([Value($)])])

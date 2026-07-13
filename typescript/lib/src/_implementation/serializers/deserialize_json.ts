@@ -4,10 +4,10 @@ import * as p_ from 'pareto-core/implementation/serializer'
 import type * as s_in from "../../interface/schemas/deserialize_json.js"
 
 namespace declarations {
-    export type Error = p_.Serializer<
+    export type Error = p_.Phrase_Serializer<
         s_in.Error
     >
-    export type JSONify_Error = p_.Serializer<
+    export type JSONify_Error = p_.Phrase_Serializer<
         s_in.JSONify_Error
     >
 }
@@ -21,7 +21,7 @@ import * as api_astn_core from "astn-core/api"
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'deserialize astn parse tree': return p_.option($, ($) => api_astn_core.api.serializers['deserialize parse tree'].Error($))
+            case 'deserialize astn parse tree': return p_.option($, ($) => api_astn_core.api.serializers['parse tree deserialization'].Error($))
             case 'jsonify': return p_.option($, ($) => JSONify_Error($))
             default: return p_.exhaustive($[0])
         }
