@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/data'
+import * as p_ from 'pareto-core/interface/schema'
 
 import type * as s_json_with_parse_info from "./json_with_parse_info.js"
 import type * as s_location from "./location.js"

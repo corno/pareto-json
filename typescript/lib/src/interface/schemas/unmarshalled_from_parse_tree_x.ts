@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/data'
+import * as p_ from 'pareto-core/interface/schema'
 import type * as s_astn_unmarshall from "../../interface/schemas/unmarshall.js"
 import type * as s_astn_location from "../../interface/schemas/location.js"
 

@@ -35,29 +35,21 @@ const String: declarations.String = ($) => sh.ph.serialize(t_primitives_to_loc.S
 export const Value: declarations.Value = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'object': return p_.option($, ($) => sh.ph.composed([
+            case 'object': return p_.option($, ($) => sh.ph.rich_paragraph(
+                p_.from.dictionary($).convert_to_list(
+                    ($, id) => sh.sentence([
+                        String(id),
+                        sh.ph.literal(": "),
+                        Value($)
+                    ])),
+                sh.ph.nothing(),
                 sh.ph.literal("{"),
-                sh.ph.indent(
-                    sh.pg.rich(
-                        p_.from.dictionary($).convert_to_list(
-                            ($, id) => sh.sentence([
-                                String(id),
-                                sh.ph.literal(": "),
-                                Value($)
-                            ])),
-                        null,
-                        false,
-                        null,
-                        sh.ph.literal(","),
-                        null,
-                    ),
-
-                ),
+                sh.ph.literal(","),
                 sh.ph.literal("}"),
-            ]))
+            ))
             case 'array': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("["),
-                sh.ph.rich(
+                sh.ph.rich_phrase(
                     p_.from.list($).map(
                         ($) => sh.ph.composed([
                             sh.ph.literal(" "),
