@@ -1,7 +1,5 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-
-
 import type * as s_out from "../../interface/schemas/json_with_guaranteed_unique_keys.js"
 
 namespace v {
@@ -20,4 +18,5 @@ namespace v {
     export const array = (
         elements: p_.Normal_List<s_out.Value.array.L>
     ): s_out.Value => ['array', p_.list(elements)]
+    
 }
