@@ -7,7 +7,7 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 //schemas
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 namespace declarations {
 
