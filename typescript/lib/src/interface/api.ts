@@ -8,22 +8,29 @@ import * as s_list_of_characters from "./schemas/list_of_characters.js"
 import * as s_json_with_guaranteed_unique_keys from "./schemas/json_with_guaranteed_unique_keys.js"
 import * as s_json_with_parse_info from "./schemas/json_with_parse_info.js"
 import * as s_json_without_guaranteed_unique_keys from "./schemas/json_without_guaranteed_unique_keys.js"
+import type * as s_paragraph from "./schemas/paragraph.js"
 
 export type API = {
     'serializers': {
-        'json without unique keys': {
-            'Document': p_s.Paragraph_Serializer<
-                s_json_without_guaranteed_unique_keys.Document
-            >
-        }
-        'json with unique keys': {
-            'Document': p_s.Paragraph_Serializer<
-                s_json_with_guaranteed_unique_keys.Document
-            >
-        }
     },
     'transformers': {
 
+        'json without unique keys': {
+            'paragraph': {
+                'Document': p_t.Transformer<
+                    s_json_without_guaranteed_unique_keys.Document,
+                    s_paragraph.Paragraph
+                >
+            }
+        }
+        'json with unique keys': {
+            'paragraph': {
+                'Document': p_t.Transformer<
+                    s_json_with_guaranteed_unique_keys.Document,
+                    s_paragraph.Paragraph
+                >
+            }
+        }
 
     },
     'refiners': {

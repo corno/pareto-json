@@ -4,34 +4,30 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 
-//schemas
-
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 namespace declarations {
 
-    export type Float = p_.Phrase_Serializer_With_Parameter<
+    export type Float = p_.Serializer_With_Parameter<
         number,
         {
             'digits': number
         }
     >
 
-    export type Fractional_Decimal = p_.Phrase_Serializer_With_Parameter<
+    export type Fractional_Decimal = p_.Serializer_With_Parameter<
         number,
         {
             'number of fractional digits': number
         }
     >
 
-    export type String = p_.Phrase_Serializer<
+    export type String = p_.Serializer<
         string
     >
 
 }
 
-export const Float: declarations.Float = ($, $p) => sh.ph.list_of_characters(
+export const Float: declarations.Float = ($, $p) => p_.ph.list_of_characters(
     p_list_build_deprecated(
         ($i) => {
             // Handle special case for zero in scientific notation
@@ -178,7 +174,7 @@ export const Float: declarations.Float = ($, $p) => sh.ph.list_of_characters(
     )
 )
 
-export const Fractional_Decimal: declarations.Fractional_Decimal = ($, $p) => sh.ph.list_of_characters(
+export const Fractional_Decimal: declarations.Fractional_Decimal = ($, $p) => p_.ph.list_of_characters(
     p_list_build_deprecated<number>(
         ($i) => {
             let value = $
@@ -265,7 +261,7 @@ export const Fractional_Decimal: declarations.Fractional_Decimal = ($, $p) => sh
     ),
 )
 
-export const String: declarations.String = ($) => sh.ph.list_of_characters(
+export const String: declarations.String = ($) => p_.ph.list_of_characters(
     p_.literal.segmented_list([
         p_.literal.list([
             0x22, // "
@@ -277,7 +273,7 @@ export const String: declarations.String = ($) => sh.ph.list_of_characters(
         ).flatten(
             ($): p_di.List<number> => {
                 switch ($) {
-                    case 0x2F: // slash (\/)
+                    case 0x2F: // slap_.(\/)
                         return p_.literal.list([
                             0x5c, // \
                             0x2f, // /

@@ -4,16 +4,13 @@ import * as p_ from 'pareto-core/implementation/serializer'
 import type * as s_in from "../../interface/schemas/deserialize_json.js"
 
 namespace declarations {
-    export type Error = p_.Phrase_Serializer<
+    export type Error = p_.Serializer<
         s_in.Error
     >
-    export type JSONify_Error = p_.Phrase_Serializer<
+    export type JSONify_Error = p_.Serializer<
         s_in.JSONify_Error
     >
 }
-
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 //dependencies
 import * as api_astn_core from "astn-core/api"
@@ -31,16 +28,16 @@ export const Error: declarations.Error = ($) => p_.from.state($).decide(
 export const JSONify_Error: declarations.JSONify_Error = ($) => p_.from.state($.type).decide(
     ($) => {
         switch ($[0]) {
-            case 'missing property': return p_.option($, ($) => sh.ph.literal("missing property"))
-            case 'apostrophed text': return p_.option($, ($) => sh.ph.literal("apostrophed text"))
-            case 'backticked text': return p_.option($, ($) => sh.ph.literal("backticked text"))
-            case 'undelimited text': return p_.option($, ($) => sh.ph.literal("undelimited text"))
-            case 'group': return p_.option($, ($) => sh.ph.literal("group"))
-            case 'include': return p_.option($, ($) => sh.ph.literal("include"))
-            case 'missing data': return p_.option($, ($) => sh.ph.literal("missing data"))
-            case 'nothing': return p_.option($, ($) => sh.ph.literal("nothing"))
-            case 'optional': return p_.option($, ($) => sh.ph.literal("optional"))
-            case 'state': return p_.option($, ($) => sh.ph.literal("state"))
+            case 'missing property': return p_.option($, ($) => p_.ph.literal("missing property"))
+            case 'apostrophed text': return p_.option($, ($) => p_.ph.literal("apostrophed text"))
+            case 'backticked text': return p_.option($, ($) => p_.ph.literal("backticked text"))
+            case 'undelimited text': return p_.option($, ($) => p_.ph.literal("undelimited text"))
+            case 'group': return p_.option($, ($) => p_.ph.literal("group"))
+            case 'include': return p_.option($, ($) => p_.ph.literal("include"))
+            case 'missing data': return p_.option($, ($) => p_.ph.literal("missing data"))
+            case 'nothing': return p_.option($, ($) => p_.ph.literal("nothing"))
+            case 'optional': return p_.option($, ($) => p_.ph.literal("optional"))
+            case 'state': return p_.option($, ($) => p_.ph.literal("state"))
 
             default: return p_.exhaustive($[0])
         }
