@@ -1,1 +1,1 @@
-export * from "astn-core/interface/schemas/value_unmarshalling"
+export * from "astn-core/modules/unmarshalling/schemas/value_unmarshalling"

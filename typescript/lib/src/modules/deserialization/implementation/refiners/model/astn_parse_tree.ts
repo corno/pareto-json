@@ -16,7 +16,7 @@ export const Value: p_i.Refiner<
     s_error.JSONify_Error,
     s_in.Value
 > = ($, abort) => {
-    const range = api_astn_core.api.transformers['parse tree']['full value range'].Value($)
+    const range = api_astn_core.api.deserialization.transformers['parse tree']['full value range'].Value($)
     return {
         'range': range,
         'type': p_.from.state($.type).decide(

@@ -19,7 +19,7 @@ import * as r_from_parse_tree from "./astn_parse_tree.js"
 import * as api_astn_core from "astn-core/api"
 
 export const Value: declarations.Value = ($, abort, $p) => r_from_parse_tree.Value(
-    api_astn_core.api.refiners['parse tree']['list of characters'].Document(
+    api_astn_core.api.deserialization.refiners['parse tree']['list of characters'].Document(
         $,
         ($) => abort(['deserialize astn parse tree', $]),
         $p,

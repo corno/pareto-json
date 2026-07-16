@@ -18,7 +18,7 @@ import * as api_astn_core from "astn-core/api"
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'deserialize astn parse tree': return p_.option($, ($) => api_astn_core.api.serializers['parse tree deserialization'].Error($))
+            case 'deserialize astn parse tree': return p_.option($, ($) => api_astn_core.api.deserialization.serializers['parse tree deserialization'].Error($))
             case 'jsonify': return p_.option($, ($) => JSONify_Error($))
             default: return p_.exhaustive($[0])
         }
