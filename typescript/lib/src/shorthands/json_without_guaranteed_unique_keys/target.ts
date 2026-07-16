@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import type * as s_out from "../../interface/schemas/json_without_guaranteed_unique_keys.js"
+import type * as s_out from "../../modules/serialization/schemas/without_guaranteed_unique_keys.js"
 
 namespace v {
 
