@@ -1,14 +1,13 @@
 import * as p_ from 'pareto-core/implementation/refiner'
 import * as p_t from 'pareto-core/implementation/transformer'
-
-import * as s_list_of_characters from "../../../schemas/list_of_characters.js"
+import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 export const Number: p_.Refiner<
     number,
     string,
-    s_list_of_characters.List_Of_Characters
+    string
 > = ($, abort) => {
-    const characters = $
+    const characters = p_list_from_text($, ($) => $)
     let result = 0
     let isNegative = false
     let startIndex = 0

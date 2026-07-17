@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/schema'
 
-import type * as s_json_with_parse_info from "../../deserialization/schemas/model.js"
+import type * as s_json_with_parse_info from "../../deserialization/schemas/deserialized_json.js"
 import type * as s_location from "./location.js"
 
 export type Object = s_json_with_parse_info.Object

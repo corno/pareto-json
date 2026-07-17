@@ -6,7 +6,7 @@ import * as p_s from 'pareto-core/implementation/serializer'
 import * as s_deserialize_json from "../modules/deserialization/schemas/deserialization.js"
 import * as s_list_of_characters from "../modules/deserialization/schemas/list_of_characters.js"
 import * as s_json_with_guaranteed_unique_keys from "../modules/serialization/schemas/with_guaranteed_unique_keys.js"
-import * as s_json_with_parse_info from "../modules/deserialization/schemas/model.js"
+import * as s_json_with_parse_info from "../modules/deserialization/schemas/deserialized_json.js"
 import * as s_json_without_guaranteed_unique_keys from "../modules/serialization/schemas/without_guaranteed_unique_keys.js"
 import type * as s_paragraph from "../modules/serialization/schemas/paragraph.js"
 
@@ -34,7 +34,7 @@ export type API = {
 
     },
     'refiners': {
-        'json with parse info': {
+        'deserialized json': {
             'list of characters': {
                 'Value': p_r.Refiner_With_Parameter<
                     s_json_with_parse_info.Value,

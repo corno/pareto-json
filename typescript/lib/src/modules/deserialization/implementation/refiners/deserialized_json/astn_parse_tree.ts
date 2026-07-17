@@ -4,12 +4,12 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 //schemas
 import type * as s_in from "../../../schemas/parse_tree.js"
-import type * as s_out from "../../../schemas/model.js"
+import type * as s_out from "../../../schemas/deserialized_json.js"
 import type * as s_error from "../../../schemas/deserialization.js"
 
 //dependencies
 import * as api_astn_core from "astn-core/api"
-import * as r_primitives_from_loc from "../../refiners/primitives/list_of_characters.js"
+import * as deser_primitives from "../../deserializers/primitives.js"
 
 export const Value: p_i.Refiner<
     s_out.Value,
@@ -83,11 +83,8 @@ export const Value: p_i.Refiner<
                                                             : x.token.value === "false"
                                                                 ? ['boolean', { 'text': x, 'value': false }]
                                                                 : ['number', {
-                                                                    'text': x, 'value': r_primitives_from_loc.Number(
-                                                                        p_list_from_text(
-                                                                            x.token.value,
-                                                                            ($) => $,
-                                                                        ),
+                                                                    'text': x, 'value': deser_primitives.Number(
+                                                                        x.token.value,
                                                                         ($) => abort({
                                                                             'range': range,
                                                                             'type': ['undelimited text', null]

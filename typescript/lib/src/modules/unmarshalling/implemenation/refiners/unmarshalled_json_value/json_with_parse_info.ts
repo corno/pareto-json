@@ -7,7 +7,7 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 
 import type * as s_out from "../../../schemas/unmarshalled_json_value.js"
-import type * as s_in from "../../../../deserialization/schemas/model.js"
+import type * as s_in from "../../../../deserialization/schemas/deserialized_json.js"
 import type * as s_in_location from "../../../../deserialization/schemas/location.js"
 import type * as s_error from "../../../schemas/json_value_unmarshalling.js"
 

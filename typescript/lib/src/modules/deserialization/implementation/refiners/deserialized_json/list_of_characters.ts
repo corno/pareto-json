@@ -1,6 +1,6 @@
 import type * as p_ from 'pareto-core/implementation/refiner'
 
-import type * as s_out from "../../../schemas/model.js"
+import type * as s_out from "../../../schemas/deserialized_json.js"
 import type * as s_error from "../../../schemas/deserialization.js"
 import type * as s_parameters from "../../../schemas/astn_parse_tree_deserialization.js"
 import type * as s_in from "../../../schemas/list_of_characters.js"
