@@ -67,6 +67,21 @@ export const Null: p_i.Refiner<
     )
 }
 
+export const Nullable_Value: p_.Refiner_Without_Error<
+    s_out.Nullable_Value,
+    s_in.Value
+> = ($) => {
+    const value = $
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'null': return p_.literal.not_set()
+                default: return p_.literal.set(value)
+            }
+        }
+    )
+}
+
 export const Number: p_i.Refiner<
     s_out.Number,
     s_error.Error,
@@ -153,58 +168,6 @@ export const Object_No_Unexpected_Properties_From_Object: p_i.Refiner_With_Param
     )
 }
 
-export const String: p_i.Refiner<
-    s_out.String,
-    s_error.Error,
-    s_in.Value
-> = ($, abort) => {
-    const value = $
-    return p_.from.state($.type).decide(
-        ($) => {
-            switch ($[0]) {
-                case 'string': return p_.option($, ($) => $)
-                default: return abort({
-                    'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
-                    'range': value.range,
-                })
-            }
-        })
-}
-
-export const Property: p_i.Refiner_With_Parameter<
-    s_out.Property,
-    s_error.Error,
-    s_out.Object_With_Unique_Keys,
-    {
-        'key': string
-    }
-> = ($, abort, $p) => {
-    const range = $.range
-    return p_.from.dictionary($.properties).get_entry(
-        $p.key,
-        {
-            'no_such_entry': () => abort({
-                'type': ['missing property', $p.key],
-                'range': range,
-            })
-        }
-    )
-}
-
-export const Nullable_Value: p_.Refiner_Without_Error<
-    s_out.Nullable_Value,
-    s_in.Value
-> = ($)=> {
-        const value = $
-        return p_.from.state($.type).decide(
-            ($) => {
-                switch ($[0]) {
-                    case 'null': return p_.literal.not_set()
-                    default: return p_.literal.set(value)
-                }
-            })
-    }
-
 export const Object_With_Unique_Keys_From_Object: p_i.Refiner<
     s_out.Object_With_Unique_Keys,
     s_error.Error,
@@ -236,3 +199,42 @@ export const Object_With_Unique_Keys_From_Value: p_i.Refiner<
     Object($, abort),
     abort
 )
+
+export const Property: p_i.Refiner_With_Parameter<
+    s_out.Property,
+    s_error.Error,
+    s_out.Object_With_Unique_Keys,
+    {
+        'key': string
+    }
+> = ($, abort, $p) => {
+    const range = $.range
+    return p_.from.dictionary($.properties).get_entry(
+        $p.key,
+        {
+            'no_such_entry': () => abort({
+                'type': ['missing property', $p.key],
+                'range': range,
+            })
+        }
+    )
+}
+
+export const String: p_i.Refiner<
+    s_out.String,
+    s_error.Error,
+    s_in.Value
+> = ($, abort) => {
+    const value = $
+    return p_.from.state($.type).decide(
+        ($) => {
+            switch ($[0]) {
+                case 'string': return p_.option($, ($) => $)
+                default: return abort({
+                    'type': ['unexpected type', { 'expected': p_.literal.list(["string"]) }],
+                    'range': value.range,
+                })
+            }
+        }
+    )
+}
