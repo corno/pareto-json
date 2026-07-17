@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in from "../../schemas/json_value_unmarshalling.js"
-import type * as s_out from "../../schemas/paragraph.js"
+import type * as s_in from "../../../schemas/json_value_unmarshalling.js"
+import type * as s_out from "../../../schemas/paragraph.js"
 
 namespace declarations {
     export type Error = p_.Transformer<
