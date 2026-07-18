@@ -34,18 +34,21 @@ const String: declarations.String = ($) => sh.ph.text(t_primitives_to_loc.String
 export const Value: declarations.Value = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'object': return p_.option($, ($) => sh.ph.rich_paragraph(
-                p_.from.list($).map(
-                    ($) => sh.sentence([
-                        String($.key),
-                        sh.ph.text(": "),
-                        Value($.value)
-                    ])),
-                sh.ph.nothing(),
-                sh.ph.text("{"),
-                sh.ph.text(","),
-                sh.ph.text("}"),
-            ))
+            case 'object': return p_.option($, ($) => sh.ph.composed([
+                sh.ph.text("{"), sh.ph.rich_paragraph(
+                    p_.from.list($).map(
+                        ($) => sh.sentence([
+                            String($.key),
+                            sh.ph.text(": "),
+                            Value($.value)
+                        ])),
+                    sh.ph.nothing(),
+                    sh.ph.nothing(),
+                    sh.ph.text(","),
+                    sh.ph.nothing(),
+                ),
+                sh.ph.text(" }"),
+            ]))
             case 'array': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.text("["),
                 sh.ph.rich_phrase(
