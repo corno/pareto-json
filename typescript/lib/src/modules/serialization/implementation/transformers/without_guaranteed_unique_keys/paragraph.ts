@@ -47,7 +47,7 @@ export const Value: declarations.Value = ($) => p_.from.state($).decide(
                     sh.ph.text(","),
                     sh.ph.nothing(),
                 ),
-                sh.ph.text(" }"),
+                sh.ph.text("}"),
             ]))
             case 'array': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.text("["),
