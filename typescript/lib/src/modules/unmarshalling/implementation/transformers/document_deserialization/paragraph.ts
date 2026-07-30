@@ -7,7 +7,7 @@ import * as s_out from "../../../schemas/paragraph.js"
 import * as ser_deserialize_parse_tree from "../../../../deserialization/implementation/serializers/deserialization.js"
 import * as t_json_value_unmarshalling_to_paragraph from "../json_value_unmarshalling/paragraph.js"
 
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/target"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/target"
 
 export const Error: p_.Transformer<s_in.Error, s_out.Phrase> = ($) => p_.from.state($).decide(
     ($) => {

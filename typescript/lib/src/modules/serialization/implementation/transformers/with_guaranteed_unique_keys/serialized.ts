@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 //schemas
 import type * as s_in from "../../../schemas/with_guaranteed_unique_keys.js"
 import type * as s_out from "../../../schemas/serialized.js"
-import type * as s_parameters from "pareto-fountain-pen/interface/schemas/paragraph_serialization"
+import type * as s_parameters from "pareto-fountain-pen/modules/paragraph/schemas/paragraph_serialization"
 
 namespace declarations {
 
@@ -17,7 +17,7 @@ namespace declarations {
 
 //dependencies
 import * as t_to_paragraph from "./paragraph.js"
-import * as t_paragraph_to_serialized from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized from "pareto-fountain-pen/modules/paragraph/implementation/transformers/paragraph/serialized"
 
 export const Document: declarations.Document_ = ($, $p) => t_paragraph_to_serialized.Paragraph(
     t_to_paragraph.Document(
