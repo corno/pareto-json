@@ -12,9 +12,9 @@ import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/sho
 export const Error: p_.Transformer<s_in.Error, s_out.Phrase> = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'deserialization': return p_.ss($, ($) => sh.ph.text(ser_deserialize_parse_tree.Error($)))
-            case 'unmarshalling': return p_.ss($, ($) => t_json_value_unmarshalling_to_paragraph.Error($))
-            default: return p_.au($[0])
+            case 'deserialization': return p_.option($, ($) => sh.ph.text(ser_deserialize_parse_tree.Error($)))
+            case 'unmarshalling': return p_.option($, ($) => t_json_value_unmarshalling_to_paragraph.Error($))
+            default: return p_.exhaustive($[0])
         }
     }
 )
