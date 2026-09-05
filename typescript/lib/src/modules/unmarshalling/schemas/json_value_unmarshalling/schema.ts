@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import type * as s_astn_location from "astn-core/modules/deserialization/schemas/location/schema"
 

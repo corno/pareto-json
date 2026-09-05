@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core/implementation/refiner'
-import * as p_t from 'pareto-core/implementation/transformer'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/refiner'
+import * as p_t from 'pareto-core/transformer'
+import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 export const Number: p_.Refiner<
     number,
