@@ -308,21 +308,17 @@ export const String: declarations.String = ($) => p_.ph.list_of_characters(
                             0x5C, // \
                             0x72, // r
                         ])
-                    case 0x09: // horizontal tab (\t)
-                        return p_.literal.list([
-                            0x5C, // \
-                            0x74, // t
-                        ])
-                    case 0x0B: // vertical tab (\v)
-                        return p_.literal.list([
-                            0x5C, // \
-                            0x76, // v
-                        ])
-                    default: {
-                        return p_.literal.list([
-                            $,
-                        ])
-                    }
+                    case 0x09: return p_.literal.list([ // horizontal tab (\t)
+                        0x5C, // \
+                        0x74, // t
+                    ])
+                    case 0x0B: return p_.literal.list([ // vertical tab (\v)
+                        0x5C, // \
+                        0x76, // v
+                    ])
+                    default: return p_.literal.list([
+                        $,
+                    ])
                 }
             }
         ),
