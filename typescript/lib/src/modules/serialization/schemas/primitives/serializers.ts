@@ -4,25 +4,26 @@ import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 import p_unreachable_code_path from 'pareto-core/transformer/specials/unreachable_code_path'
 import p_list_build_deprecated from 'pareto-core/refiner/specials/list_build_deprecated'
 
+import * as s_in from "./schema.js"
 
 namespace declarations {
 
     export type Float = p_.Serializer_With_Parameter<
-        number,
+        s_in.Float,
         {
             'digits': number
         }
     >
 
     export type Fractional_Decimal = p_.Serializer_With_Parameter<
-        number,
+        s_in.Fractional_Decimal,
         {
             'number of fractional digits': number
         }
     >
 
     export type String = p_.Serializer<
-        string
+        s_in.String
     >
 
 }
