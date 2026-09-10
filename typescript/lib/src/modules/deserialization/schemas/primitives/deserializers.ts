@@ -1,12 +1,11 @@
-import * as p_ from 'pareto-core/refiner'
+import * as p_ from 'pareto-core/deserializer'
 import * as p_t from 'pareto-core/transformer'
 import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 import * as s_out from "./schema.js"
 
-export const Number: p_.Refiner<
+export const Number: p_.Deserializer<
     s_out.Number,
-    string,
     string
 > = ($, abort) => {
     const characters = p_list_from_text($, ($) => $)
