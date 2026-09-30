@@ -1,5 +1,5 @@
-import type * as s_astn_deserialize from "astn-core/modules/deserialization/schemas/parse_tree_deserialization/schema"
-import type * as s_location from "astn-core/modules/deserialization/schemas/location/schema"
+import type * as s_astn_deserialize from "astn-runtime/modules/deserialization/schemas/parse_tree_deserialization/schema"
+import type * as s_location from "astn-runtime/modules/deserialization/schemas/location/schema"
 
 export type Parameters = s_astn_deserialize.Parameters
 

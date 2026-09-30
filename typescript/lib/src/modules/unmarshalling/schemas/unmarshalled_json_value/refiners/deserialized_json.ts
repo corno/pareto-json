@@ -8,7 +8,7 @@ import p_unreachable_code_path from 'pareto-core/transformer/specials/unreachabl
 
 import type * as s_out from "../schema.js"
 import type * as s_in from "../../../../deserialization/schemas/deserialized_json/schema.js"
-import type * as s_in_location from "astn-core/modules/deserialization/schemas/location/schema"
+import type * as s_in_location from "astn-runtime/modules/deserialization/schemas/location/schema"
 import type * as s_error from "../../json_value_unmarshalling/schema.js"
 
 

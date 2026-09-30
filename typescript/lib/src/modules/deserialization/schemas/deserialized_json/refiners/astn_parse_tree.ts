@@ -3,14 +3,14 @@ import type * as p_i from 'pareto-core/refiner'
 import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 //schemas
-import type * as s_in from "astn-core/modules/deserialization/schemas/parse_tree/schema"
+import type * as s_in from "astn-runtime/modules/deserialization/schemas/parse_tree/schema"
 import type * as s_out from "../schema.js"
 import type * as s_error from "../../deserialization/schema.js"
 
 //dependencies
-// import * as api_astn_core from "astn-core/api"
+// import * as api_astn_core from "astn-runtime/api"
 import * as deser_primitives from "../../primitives/deserializers.js"
-import * as t_parse_tree_to_full_range from "astn-core/modules/deserialization/schemas/parse_tree/transformers/full_value_range"
+import * as t_parse_tree_to_full_range from "astn-runtime/modules/deserialization/schemas/parse_tree/transformers/full_value_range"
 
 export const Value: p_i.Refiner<
     s_out.Value,

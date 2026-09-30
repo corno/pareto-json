@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/schema'
 
-import type * as s_location from "astn-core/modules/deserialization/schemas/location/schema"
-import type * as s_parse_tree from "astn-core/modules/deserialization/schemas/parse_tree/schema"
+import type * as s_location from "astn-runtime/modules/deserialization/schemas/location/schema"
+import type * as s_parse_tree from "astn-runtime/modules/deserialization/schemas/parse_tree/schema"
 
 export type Value = {
     'range': s_location.Range

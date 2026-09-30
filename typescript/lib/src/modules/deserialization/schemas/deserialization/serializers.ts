@@ -13,7 +13,7 @@ namespace declarations {
 }
 
 //dependencies
-import * as ser_parse_tree from "astn-core/modules/deserialization/schemas/parse_tree_deserialization/serializers"
+import * as ser_parse_tree from "astn-runtime/modules/deserialization/schemas/parse_tree_deserialization/serializers"
 
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
